@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecurityQuestionsConfigComponent implements OnInit {
 
+  loadCreateSecurityComponent = false;
+  loadListSecurityComponent = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  showCreateSecurityComponent() {
+    this.loadCreateSecurityComponent = true;
+    this.loadListSecurityComponent = false;
+  }
+  showListSecurityComponent() {
+    this.loadCreateSecurityComponent = false;
+    this.loadListSecurityComponent = true;
+  }
 }

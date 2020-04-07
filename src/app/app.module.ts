@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +14,10 @@ import { UsersConfigComponent } from './admin/users-config/users-config.componen
 import { CreateUserComponent } from './admin/users-config/create-user/create-user.component';
 import { ListUsersComponent } from './admin/users-config/list-users/list-users.component';
 import { CreateSecurityQuestionComponent } from './admin/security-questions-config/create-security-question/create-security-question.component';
-import { ListSecurityQuestionsComponent } from './admin/security-questions-config/create-security-question/list-security-questions/list-security-questions.component';
+import { ListSecurityQuestionsComponent } from './admin/security-questions-config/list-security-questions/list-security-questions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+
+import { DropdownDirective } from './dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ListUsersComponent,
     CreateSecurityQuestionComponent,
     ListSecurityQuestionsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

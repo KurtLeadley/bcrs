@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+main {
+  margin: 15px 15%;
+  padding:10px;
+  background-color: #e7e7e7;
+}
+
+.content-grid {
+  margin: 15px 0;
+}

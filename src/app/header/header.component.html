@@ -11,13 +11,15 @@
         <li><a routerLink="/about">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class=dropdown-toggle role="button">Admin <span class="caret"></span></a>
+        <!--Drop down menu start-->
+        <li class="dropdown" appDropdown>
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Admin<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a routerLink="/">placeholder</a></li>
-            <li><a routerLink="/">placeholder</a></li>
+            <li><a routerLink="/admin/users" style="cursor: pointer;">Users</a></li>
+            <li><a routerLink="/admin/security" style="cursor: pointer;">Security</a></li>
           </ul>
         </li>
+         <!--Drop down menu end-->
       </ul>
     </div>
   </div>

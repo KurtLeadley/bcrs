@@ -1,1 +1,13 @@
-<p>users-config works!</p>
+<h2>Admin: User Configuration</h2>
+<div class="admin-grid">
+  <button mat-button (click) = "showCreateUserComponent()" routerLink="/admin/users/create-user">Create User</button>
+  <button mat-button (click) = "showListUsersComponent()" routerLink="/admin/users/list-users">List Users</button>
+</div>
+<div class="content-grid">
+  <app-create-user *ngIf="loadCreateUserComponent"></app-create-user>
+  <app-list-users *ngIf="loadListUsersComponent"></app-list-users>
+</div>
+
+
+
+
