@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+      <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+      </button>
+      <a routerLink="/" class="navbar-brand">BCRS</a>
+    </div>
+    <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/about">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class=dropdown-toggle role="button">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/">placeholder</a></li>
+            <li><a routerLink="/">placeholder</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
