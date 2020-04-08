@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+//import { MatInputModule } from '@angular/material/input';
+//import { FlexLayoutModule } from "@angular/flex-layout";
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,12 +41,19 @@ import { DropdownDirective } from './dropdown.directive';
     CreateSecurityQuestionComponent,
     ListSecurityQuestionsComponent,
     NotFoundComponent,
-    DropdownDirective,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-  ],
+    ActivatedRoute,
+    Router,
+    MatCardModule,
+    MatFormFieldModule,
+    //MatInputModule,
+    //FlexLayoutModule
+
+     ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,54 @@
-<p>create-user works!</p>
+<app-navbar></app-navbar>
+<mat-card>
+  <h2>Create new user </h2><br>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Email" type="text" [formControl]="form.controls['email']" />
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" [formControl]="form.controls['password']" />
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput placeholder="First Name" type="text" [formControl]="form.controls['firstname']" />
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput placeholder="Last Name" type="text" [formControl]="form.controls['lastname']" />
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput placeholder="Address" type="text" [formControl]="form.controls['address']" />
+      </mat-form-field><br><br>
+
+      <h3>Answer Security Questions</h3><br>
+
+      <p>What is your Mother's Maiden name?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [formControl]="form.controls['answer1']" />
+      </mat-form-field><br>
+
+      <p>What town were you born in?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [formControl]="form.controls['answer2']" />
+      </mat-form-field><br>
+
+      <p>What is your favorite color?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [formControl]="form.controls['answer3']" />
+      </mat-form-field><br>
+
+      <p>What is your favorite planet?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [formControl]="form.controls['answer4']" />
+      </mat-form-field>
+
+      <br />
+      <mat-card-actions>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid">Submit</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </form>
+</mat-card>

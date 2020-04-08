@@ -1,1 +1,35 @@
-<p>create-security-question works!</p>
+<app-navbar></app-navbar>
+
+<mat-card>
+  <h2>Fill Out Security Questionnaire</h2><br>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <mat-card-content>
+
+      <p>What is your Mother's Maiden name?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [value]="questionnaire.answer1" [formControl]="form.controls['answer1']" />
+      </mat-form-field><br>
+
+      <p>In which town were you born?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [value]="questionnaire.answer2" [formControl]="form.controls['answer2']" />
+      </mat-form-field><br>
+
+      <p>What is your favourite color?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [value]="questionnaire.answer3" [formControl]="form.controls['answer3']" />
+      </mat-form-field><br>
+
+      <p>What is your favourite planet?</p>
+      <mat-form-field>
+        <input matInput placeholder="Answer" type="text" [value]="questionnaire.answer4" [formControl]="form.controls['answer4']" />
+      </mat-form-field>
+
+      <br />
+      <mat-card-actions>
+        <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid">Submit</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </form>
+</mat-card>
