@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Router} from '@angular/router';
+import {RouterModule } from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-//import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
+
 //import { FlexLayoutModule } from "@angular/flex-layout";
 //import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -25,6 +28,7 @@ import { ListSecurityQuestionsComponent } from './admin/security-questions-confi
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { DropdownDirective } from './dropdown.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,11 +50,14 @@ import { DropdownDirective } from './dropdown.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ActivatedRoute,
-    Router,
+    RouterModule,
     MatCardModule,
     MatFormFieldModule,
-    //MatInputModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatInputModule
     //FlexLayoutModule
 
      ],
