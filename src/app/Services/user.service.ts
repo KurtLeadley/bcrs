@@ -8,24 +8,24 @@ import { Subject } from 'rxjs';
 export class UserService {
 
   private email: string;
-  private passward: string;
-  private firstname: string;
-  private lastname: string;
+  private password: string;
+  private firstName: string;
+  private lastName: string;
   private address: string;
 
   constructor(private http: HttpClient, private router: Router) {}
 
   // we can make our create user related http requests in this file - Kurt
-  createUser(email:string, passward: string, firstname:string, lastname:string,
+  createUser(email:string, password: string, firstName:string, lastName:string,
     address:string) {
     // this.http.post( BACKEND_URL + "/create")
     //   .subscribe(response => {
     //     console.log(response);
     //   });
     console.log("user.service.ts-email: " + email);
-    console.log("user.service.ts-passward:  " + passward);
-    console.log("user.service.ts-firstname: " + firstname);
-    console.log("user.service.ts-lastname:  " + lastname);
+    console.log("user.service.ts-passward:  " + password);
+    console.log("user.service.ts-firstname: " + firstName);
+    console.log("user.service.ts-lastname:  " + lastName);
     console.log("user.service.ts-address: " + address);
 
   }

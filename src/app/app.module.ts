@@ -29,6 +29,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { DropdownDirective } from './dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QuestionService } from './Services/question.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     //FlexLayoutModule
 
      ],
-  providers: [],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

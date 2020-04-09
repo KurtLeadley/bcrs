@@ -1,0 +1,22 @@
+1. Open a command prompt at the bcrs level
+
+2. Install the package...only do this once
+    npm install -g json-server --save
+
+3. Then start the mock server...everytime you launch vs code
+    json-server --watch mock-server/db.json
+
+4. Navigate to : http://localhost:3000/questions to see the questions
+
+5. You can test the get and post operations for our security questions right on the user interface
+    and view the results in db.json and also the browser's console.
+
+Important Note One:
+
+*** The 'users' array will require an "id" field for each entry. ***
+*** However, this is automatically populated by the json server package. ***
+*** So just create a fake user to start off with like I did with the questions. ***
+
+Important Note Two:
+
+*** The folder where our mock database is being held is at the top level of our project named "mock-server" ***

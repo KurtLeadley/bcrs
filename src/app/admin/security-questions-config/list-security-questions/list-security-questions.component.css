@@ -1,0 +1,23 @@
+.question-panel {
+  margin: 15px 0;
+  padding:15px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  display:grid;
+  grid-template-areas:
+  "header header header header"
+   "question . edit delete";
+}
+.q-header {
+  grid-area: header;
+}
+.q-question {
+  grid-area: question;
+}
+.q-edit {
+  grid-area: edit;
+}
+.q-delete {
+  grid-area: delete;
+}
+

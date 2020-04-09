@@ -1,6 +1,3 @@
-.mat-card {
-  font-family: Quicksand;
-  font-size: 22pt;
-  font-weight: 200;
-  margin: 5%;
+.create-qid, .create-q, .submit-q-button {
+  margin: 15px 0;
 }

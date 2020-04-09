@@ -1,17 +1,18 @@
-<mat-card>
-  <mat-card-title>
-    Create New Security Question
-  </mat-card-title>
+<div class="create-question">
+  <h4 class='q-header'> Create New Security Question </h4>
   <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-    <label>
-      Question ID:
-      <input type="text" formControlName="qId" required />
-    </label>
-    <label>
-      Question:
-      <input type="text" formControlName="question" required />
-    </label>
-    <button class="submit-button" mat-raised-button type="submit">Create</button>
+    <div class="create-qid">
+      <label>
+        Question ID:
+        <input type="text" formControlName="qId" required />
+      </label>
+    </div>
+    <div class="create-q">
+      <label>
+        Question:
+        <input type="text" formControlName="question" required />
+      </label>
+    </div>
+    <button class="submit-q-button" mat-raised-button type="submit">Create</button>
   </form>
-</mat-card>
-
+</div>

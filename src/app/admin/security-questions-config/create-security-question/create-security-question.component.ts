@@ -21,7 +21,7 @@ export class CreateSecurityQuestionComponent {
   onSubmit() {
     // logging the form on submission tells us how to get to the question and question id values
     console.log(this.questionForm);
-    // send the question and question id to our service, where we will eventually do an http post
-    this.questionService.createQuestion(this.questionForm.value.question,this.questionForm.value.qId);
+    // send the question and question id to our service, where we post to our mock db
+    this.questionService.createQuestion(this.questionForm.value.qId,this.questionForm.value.question);
   }
 }
