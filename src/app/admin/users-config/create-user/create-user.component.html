@@ -1,28 +1,43 @@
-<mat-card>
-  <mat-card-title>
+<div class="create-user">
+  <h4 class='u-header'> Create new user </h4>
     Create new user
-  </mat-card-title>
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <label>
-      Email:
-      <input type="text" formControlName="email" required />
-    </label>
-    <label>
-     Password:
-      <input type="password" formControlName="password" required />
-    </label>
-    <label>
-      First Name:
-      <input type="text" formControlName="firstname" required />
-    </label>
-    <label>
-     Last Name:
-      <input type="text" formControlName="lastname" required />
-    </label>
-    <label>
-      Address:
-      <input type="text" formControlName="address" required />
-    </label>
-    <button class="submit-button" mat-raised-button type="submit">Create User</button>
+    <div class="create-UserId">
+      <label>
+        User ID:
+        <input type="text" formControlName="userId" required />
+      </label>
+    </div>
+    <div class="create-p">
+      <label>
+      Password:
+        <input type="password" formControlName="password" required />
+      </label>
+    </div>
+    <div class="create-fn">
+      <label>
+        First Name:
+        <input type="text" formControlName="firstname" required />
+      </label>
+    </div>
+    <div class="create-ln">
+      <label>
+      Last Name:
+        <input type="text" formControlName="lastname" required />
+      </label>
+    </div>
+    <div class="create-a">
+      <label>
+        Address:
+        <input type="text" formControlName="address" required />
+      </label>
+    </div>
+    <div class="create-e">
+      <label>
+        Email:
+        <input type="text" formControlName="email" required />
+      </label>
+    </div>
+      <button class="submit-u-button" mat-raised-button type="submit">Create User</button>
   </form>
-</mat-card>
+</div>

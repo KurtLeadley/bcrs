@@ -1,0 +1,22 @@
+.user-panel {
+  margin: 15px 0;
+  padding:15px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  display:grid;
+  grid-template-areas:
+  "header header header header"
+   "user . edit delete";
+}
+.u-header {
+  grid-area: header;
+}
+.u-user {
+  grid-area: user;
+}
+.u-edit {
+  grid-area: edit;
+}
+.u-delete {
+  grid-area: delete;
+}

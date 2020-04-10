@@ -1,15 +1,3 @@
-.mat-card {
-  font-family: Quicksand;
-  font-size: 16pt;
-  font-weight: 200;
-  margin: 2%;
-  margin-left: 32%;
-  width: 40%;
-  color: white;
-  background-color: #424242;
-  padding-bottom: 0%;
-}
-
-.mat-raised-button{
-  margin-left: 5%;
+.create-userId, .create-p,.create-fn,.create-ln,.create-a,.create-e .submit-u-button {
+  margin: 15px 0;
 }
