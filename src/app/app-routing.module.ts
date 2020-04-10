@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component'
+import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UsersConfigComponent } from './admin/users-config/users-config.component';
@@ -15,19 +15,27 @@ import { ListSecurityQuestionsComponent } from './admin/security-questions-confi
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'admin/users', component: UsersConfigComponent, children: [
-    { path: 'create-user', component: CreateUserComponent },
-    { path: 'list-users', component: ListUsersComponent }
-  ] },
-  { path: 'admin/security', component: SecurityQuestionsConfigComponent, children: [
-    { path: 'create-security', component: CreateSecurityQuestionComponent },
-    { path: 'list-security', component: ListSecurityQuestionsComponent }
-  ] },
-  { path: '**', pathMatch: "full", component: NotFoundComponent}
+  {
+    path: 'admin/users',
+    component: UsersConfigComponent,
+    children: [
+      { path: 'create-user', component: CreateUserComponent },
+      { path: 'list-users', component: ListUsersComponent },
+    ],
+  },
+  {
+    path: 'admin/security',
+    component: SecurityQuestionsConfigComponent,
+    children: [
+      { path: 'create-security', component: CreateSecurityQuestionComponent },
+      { path: 'list-security', component: ListSecurityQuestionsComponent },
+    ],
+  },
+  { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

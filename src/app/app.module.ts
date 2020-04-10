@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {RouterModule } from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 
-//import { FlexLayoutModule } from "@angular/flex-layout";
-//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+// import { FlexLayoutModule } from "@angular/flex-layout";
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,7 +45,7 @@ import { QuestionService } from './Services/question.service';
     CreateSecurityQuestionComponent,
     ListSecurityQuestionsComponent,
     NotFoundComponent,
-    DropdownDirective
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
@@ -58,11 +57,10 @@ import { QuestionService } from './Services/question.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatInputModule
-    //FlexLayoutModule
-
-     ],
+    MatInputModule,
+    // FlexLayoutModule
+  ],
   providers: [QuestionService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

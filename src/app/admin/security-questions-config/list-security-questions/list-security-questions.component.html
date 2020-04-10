@@ -1,8 +1,8 @@
 <div class="question-div" *ngFor="let question of questions">
   <div class="question-panel">
-    <h4 class='q-header'> Question: {{question.qId}}</h4>
-    <p class='q-question'> {{question.question}}</p>
-    <a class='q-edit' [routerLink]="['/edit', question.qId]">EDIT</a>
-    <button class='q-delete' (click)="onDelete(question.qId)">DELETE</button>
+    <h4 class="q-header">Question: {{ question.qId }}</h4>
+    <p class="q-question">{{ question.question }}</p>
+    <a class="q-edit" [routerLink]="['/edit', question.qId]">EDIT</a>
+    <button class="q-delete" (click)="onDelete(question.qId)">DELETE</button>
   </div>
 </div>

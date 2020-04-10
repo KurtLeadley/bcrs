@@ -1,1 +1,8 @@
-<p>list-users works!</p>
+<div class="question-div" *ngFor="let user of users">
+  <div class="user-panel">
+    <h4 class="u-header">User: {{ user.userId }}</h4>
+    <p class="u-user">{{ user.password }}</p>
+    <a class="u-edit" [routerLink]="['/edit', user.userId]">EDIT</a>
+    <button class="u-delete" (click)="onDelete(user.userId)">DELETE</button>
+  </div>
+</div>

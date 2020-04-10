@@ -1,32 +1,35 @@
 import { Component } from '@angular/core';
-import { FormGroup, Validators,FormControl} from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../../../Services/user.service';
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  styleUrls: ['./create-user.component.css'],
 })
-export class CreateUserComponent{
+export class CreateUserComponent {
   userForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    userId: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
   });
 
-// call in the user.service.ts file on construction of this component
-  constructor(public userService: UserService) { }
+  // call in the user.service.ts file on construction of this component
+  constructor(public userService: UserService) {}
 
   onSubmit() {
-    // logging the form on submission tells us how to get to the email,password, firstname, lastname,address values
+    // logging the form on submission tells us how to get to the userId,password, firstname, lastname,address,email values
     console.log(this.userForm);
-    // send the email,passward, firstname, lastname,address to our service, where we will eventually do an http post
-    this.userService.createUser(this.userForm.value.email,
-                                this.userForm.value.password,
-                                this.userForm.value.firstName,
-                                this.userForm.value.lastName,
-                                this.userForm.value.address
+    // send the userId,passward, firstname, lastname,address,email to our service, where we will eventually do an http post
+    this.userService.createUser(
+      this.userForm.value.userId,
+      this.userForm.value.password,
+      this.userForm.value.firstName,
+      this.userForm.value.lastName,
+      this.userForm.value.address,
+      this.userForm.value.email
     );
   }
 }
