@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators,FormControl} from '@angular/forms';
 import { UserService } from '../../../Services/user.service';
+
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
+
 export class CreateUserComponent{
   userForm = new FormGroup({
-   userId: new FormControl('', Validators.required),
+    userId: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
@@ -16,13 +18,13 @@ export class CreateUserComponent{
     email: new FormControl('', Validators.required),
   });
 
-// call in the user.service.ts file on construction of this component
+  // call in the user.service.ts file on construction of this component
   constructor(public userService: UserService) { }
 
   onSubmit() {
-    // logging the form on submission tells us how to get to the userId,password, firstname, lastname,address,email values
+    // logging the form on submission tells us how to get to the userId,password, firstName, lastName,address,email values
     console.log(this.userForm);
-    // send the userId,passward, firstname, lastname,address,email to our service, where we will eventually do an http post
+    // send the userId,password, firstName, lastName, address,email to our service, where we will eventually do an http post
     this.userService.createUser(this.userForm.value.userId,
                                 this.userForm.value.password,
                                 this.userForm.value.firstName,

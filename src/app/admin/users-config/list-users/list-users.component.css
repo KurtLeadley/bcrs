@@ -6,7 +6,7 @@
   display:grid;
   grid-template-areas:
   "header header header header"
-   "user . edit delete";
+   "user address edit delete";
 }
 .u-header {
   grid-area: header;
@@ -16,6 +16,9 @@
 }
 .u-edit {
   grid-area: edit;
+}
+.u-address {
+  grid-area: address;
 }
 .u-delete {
   grid-area: delete;

@@ -15,14 +15,14 @@ users : User[] =[];
 
   ngOnInit(){
     // as soon as the page loads, get our users from the user service http call
-    this.userService.getUsers().subscribe(ResponseData => {
+    this.userService.getUsers().subscribe(responseData => {
       // users is now subscribed to, so that means we can place it in our html file.
       // We can't access users outside this subscribe method.
-      this.users = ResponseData;
+      this.users = responseData;
     });
   }
-  onDelete(userId:string){
-    this.userService.deleteUser(userId);
+  onDelete(id:string){
+    this.userService.deleteUser(id);
   }
 
 }

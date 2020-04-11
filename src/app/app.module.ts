@@ -30,6 +30,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DropdownDirective } from './dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionService } from './Services/question.service';
+import { UserService } from './Services/user.service';
 import { LoginComponent } from './login/login.component';
 import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 
@@ -66,7 +67,7 @@ import { UpdatepasswordComponent } from './updatepassword/updatepassword.compone
     //FlexLayoutModule
 
      ],
-  providers: [QuestionService],
+  providers: [QuestionService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

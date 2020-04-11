@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersConfigComponent implements OnInit {
 
-  loadCreateUserComponent = false;
-  loadListUsersComponent = false;
+  loadCreateUserComponent: boolean = false;
+  loadListUsersComponent: boolean;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.loadListUsersComponent = true;
   }
   showCreateUserComponent() {
     this.loadCreateUserComponent = true;

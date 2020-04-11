@@ -1,7 +1,6 @@
 <h2>Admin: Security Configuration</h2>
 <div class="admin-grid">
   <button mat-button (click) = "showCreateSecurityComponent()" routerLink="/admin/security/create-security">Create Security</button>
-  <button mat-button (click) = "showListSecurityComponent()" routerLink="/admin/security/list-security">List Security</button>
 </div>
 <div class="content-grid">
   <app-create-security-question *ngIf="loadCreateSecurityComponent"></app-create-security-question>

@@ -5,11 +5,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
 }
 button {
+  background-color: darkblue;
   color: #fff;
+  border: 1px solid darkblue;
+  border-radius: 5px;
 }

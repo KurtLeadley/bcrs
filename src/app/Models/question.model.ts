@@ -1,4 +1,4 @@
 export interface Question {
-  qId: string;
+  id: string;
   question: string;
 }

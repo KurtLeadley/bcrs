@@ -23,5 +23,7 @@ export class CreateSecurityQuestionComponent {
     console.log(this.questionForm);
     // send the question and question id to our service, where we post to our mock db
     this.questionService.createQuestion(this.questionForm.value.qId,this.questionForm.value.question);
+    this.questionService.setDisplayListStatus(true);
+    this.questionService.setDisplayCreateStatus(false);
   }
 }

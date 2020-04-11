@@ -1,29 +1,23 @@
 <div class="create-user">
   <h4 class='u-header'> Create new user </h4>
-    Create new user
+
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <div class="create-UserId">
-      <label>
-        User ID:
-        <input type="text" formControlName="userId" required />
-      </label>
-    </div>
-    <div class="create-p">
-      <label>
-      Password:
-        <input type="password" formControlName="password" required />
-      </label>
-    </div>
     <div class="create-fn">
       <label>
         First Name:
-        <input type="text" formControlName="firstname" required />
+        <input type="text" formControlName="firstName" required />
       </label>
     </div>
     <div class="create-ln">
       <label>
-      Last Name:
-        <input type="text" formControlName="lastname" required />
+        Last Name:
+        <input type="text" formControlName="lastName" required />
+      </label>
+    </div>
+    <div class="create-e">
+      <label>
+        Email:
+        <input type="text" formControlName="email" required />
       </label>
     </div>
     <div class="create-a">
@@ -32,10 +26,10 @@
         <input type="text" formControlName="address" required />
       </label>
     </div>
-    <div class="create-e">
+    <div class="create-p">
       <label>
-        Email:
-        <input type="text" formControlName="email" required />
+      Password:
+        <input type="password" formControlName="password" required />
       </label>
     </div>
       <button class="submit-u-button" mat-raised-button type="submit">Create User</button>
