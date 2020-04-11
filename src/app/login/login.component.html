@@ -1,0 +1,21 @@
+<mat-card>
+  <h2>Log In </h2><br>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Email" type="text" [formControl]="form.controls['email']" />
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" [formControl]="form.controls['password']" />
+      </mat-form-field><br>
+
+      <br />
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </form>
+  <button mat-raised-button color="accent" routerLink="/admin/users">Register Account</button>
+  <button mat-raised-button color="accent" routerLink="/updatepassword">Forgot Password?</button>
+</mat-card>

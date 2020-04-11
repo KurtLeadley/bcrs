@@ -30,6 +30,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DropdownDirective } from './dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionService } from './Services/question.service';
+import { LoginComponent } from './login/login.component';
+import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { QuestionService } from './Services/question.service';
     CreateSecurityQuestionComponent,
     ListSecurityQuestionsComponent,
     NotFoundComponent,
-    DropdownDirective
+    DropdownDirective,
+    LoginComponent,
+    UpdatepasswordComponent
   ],
   imports: [
     BrowserModule,
