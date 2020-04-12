@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../Services/user.service';
 import { User } from "../../../Models/user.model";
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-users',
@@ -10,6 +10,7 @@ import { User } from "../../../Models/user.model";
 })
 export class ListUsersComponent implements OnInit {
 users : User[] =[];
+deleteOperationSubscription: Subscription;
 // initialize our UserService methods on component construction
   constructor(public userService: UserService) { }
 
@@ -19,7 +20,19 @@ users : User[] =[];
       // users is now subscribed to, so that means we can place it in our html file.
       // We can't access users outside this subscribe method.
       this.users = responseData;
+      console.log(responseData);
     });
+    this.deleteOperationSubscription = this.userService.deleteOperationEvent
+    .subscribe(isSuccessful => {
+      if (isSuccessful === true) {
+        this.userService.getUsers().subscribe(responseData => {
+          this.users = responseData;
+        });
+      } else {
+          console.log("Delete was not successful");
+      }
+  });
+
   }
   onDelete(id:string){
     this.userService.deleteUser(id);

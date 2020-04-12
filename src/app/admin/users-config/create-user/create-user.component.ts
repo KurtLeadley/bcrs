@@ -32,5 +32,7 @@ export class CreateUserComponent{
                                 this.userForm.value.address,
                                 this.userForm.value.email
     );
+    this.userService.setDisplayListStatus(true);
+    this.userService.setDisplayCreateStatus(false);
   }
 }
