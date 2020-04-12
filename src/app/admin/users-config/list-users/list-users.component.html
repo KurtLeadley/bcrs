@@ -1,9 +1,11 @@
 <h4>User List</h4>
 <div class="question-div" *ngFor="let user of users">
   <div class="user-panel">
-    <h4 class='u-header'> User: {{user.firstName}} {{user.lastName}}</h4>
+    <p class='u-header'> Fist Name: {{user.firstName}} </p>
+    <p class='u-header'> Last Name:{{user.lastName}}</p>
     <p class='u-user'> Email: {{user.email}}</p>
     <p class='u-address'> Address: {{user.address}}</p>
+    <p class='u-address'> Password: {{user.address}}</p>
     <!-- switched this to a button because 'routerLink' acts like an 'a' tag anyways-->
     <button class='u-edit' [routerLink]="['/edit', user.id]">EDIT</button>
     <button class='u-delete' (click)="onDelete(user.id)">DELETE</button>

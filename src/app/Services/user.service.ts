@@ -24,7 +24,7 @@ export class UserService {
 
   public deleteOperationEvent: Subject<boolean> = new Subject();
    // posts a user to our mock server db
-  createUser(id:string, password: string, firstName:string, lastName:string, address:string, email:string) {
+  createUser(id:string, firstName:string, lastName:string, email:string, address:string, password: string) {
     // build our user with the User model
     const newUser: User = {id:id, firstName:firstName, lastName:lastName, email: email, address:address, password:password};
 
@@ -40,7 +40,21 @@ export class UserService {
   getUsers():Observable<any>{
     return this.http.get<User>(this.userUrl);
   }
-
+  // get specific question with id passed in
+  getUser(id: string) {
+    return this.http.get<User>(this.userUrl + "/" + id);
+  }
+ // update a question
+ updateUser(id: string, firstName: string,lastName:string, email:string,address:string,password:string) {
+  // only difference from the create is that it is a http.put with an id being passed
+  const user: User = { id: id, firstName: firstName,lastName:lastName,email:email,address:address,password:password};
+  this.http
+    .put(this.userUrl + "/" + id,user)
+    .subscribe(response => {
+      console.log(response);
+      this.router.navigate(["admin/users/"]);
+    });
+}
   deleteUser(id){
     //todo: we can't delete questions completely apparently....Instead, we need to update the boolean property defined in the BRD
     console.log(this.userUrl + "/" + id)
