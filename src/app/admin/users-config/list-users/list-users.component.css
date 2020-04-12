@@ -1,9 +1,13 @@
+/* Read up on css-grid if you want to understand some of the weird css going on here */
+/* https://css-tricks.com/snippets/css/complete-guide-grid/ */
 .user-panel {
   margin: 15px 0;
   padding:15px;
   border: 1px solid #666;
   border-radius: 5px;
   display:grid;
+  grid-template-columns: 3fr 7fr 1fr 1fr;
+  column-gap: 5px;
   grid-template-areas:
   "header header header header"
    "user address edit delete";

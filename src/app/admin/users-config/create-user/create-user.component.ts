@@ -34,5 +34,7 @@ export class CreateUserComponent{
     );
     this.userService.setDisplayListStatus(true);
     this.userService.setDisplayCreateStatus(false);
+    console.log(this.userService.displayList);
+    console.log(this.userService.displayCreate);
   }
 }

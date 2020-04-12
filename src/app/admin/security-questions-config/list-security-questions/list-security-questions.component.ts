@@ -23,6 +23,7 @@ export class ListSecurityQuestionsComponent implements OnInit {
       console.log(responseData);
     });
 
+    // subscribe to deleteOperation, if a deletion occurs, we want to 'getQuestions' again, so it updates in the UI
     this.deleteOperationSubscription = this.questionService.deleteOperationEvent
       .subscribe(isSuccessful => {
         if (isSuccessful === true) {
@@ -35,8 +36,11 @@ export class ListSecurityQuestionsComponent implements OnInit {
     });
   }
 
-  onDelete(qId: string) {
-    this.questionService.deleteQuestion(qId);
+  onDelete(id: string) {
+    this.questionService.deleteQuestion(id);
   }
-
+  showCreateSecurityComponent() {
+    this.questionService.setDisplayListStatus(false);
+    this.questionService.setDisplayCreateStatus(true);
+  }
 }

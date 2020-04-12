@@ -1,8 +1,18 @@
 <h2>Admin: Security Configuration</h2>
 <div class="admin-grid">
-  <button mat-button (click) = "showCreateSecurityComponent()" routerLink="/admin/security/create-security">Create Security</button>
+  <!-- *ngIf statements are there to determine if we want to show the Create or List security questions buttons at the top-->
+  <button
+    mat-button (click) = "showCreateSecurityComponent()"
+    *ngIf="router.url != '/admin/security/create-security'"
+    routerLink="/admin/security/create-security">Create Security Question
+  </button>
+  <button
+    mat-button (click) = "showListSecurityComponent()"
+    *ngIf="(router.url != '/admin/security/list-security' && router.url !='/admin/security')"
+    routerLink="/admin/security/list-security">List Security Questions</button>
 </div>
 <div class="content-grid">
+  <!-- show one or the other components based on the boolean value from our questionService-->
   <app-create-security-question *ngIf="loadCreateSecurityComponent"></app-create-security-question>
   <app-list-security-questions *ngIf="loadListSecurityComponent"></app-list-security-questions>
 </div>

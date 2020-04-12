@@ -4,7 +4,8 @@
     <h4 class='u-header'> User: {{user.firstName}} {{user.lastName}}</h4>
     <p class='u-user'> Email: {{user.email}}</p>
     <p class='u-address'> Address: {{user.address}}</p>
-    <a class='u-edit' [routerLink]="['/edit', user.id]">EDIT</a>
+    <!-- switched this to a button because 'routerLink' acts like an 'a' tag anyways-->
+    <button class='u-edit' [routerLink]="['/edit', user.id]">EDIT</button>
     <button class='u-delete' (click)="onDelete(user.id)">DELETE</button>
   </div>
 </div>

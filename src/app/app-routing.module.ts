@@ -19,11 +19,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin/users', component: UsersConfigComponent, children: [
     { path: 'create-user', component: CreateUserComponent },
-    { path: 'list-users', component: ListUsersComponent }
+    { path: 'list-users', component: ListUsersComponent },
   ] },
   { path: 'admin/security', component: SecurityQuestionsConfigComponent, children: [
+    { path: 'list-security', component: ListSecurityQuestionsComponent },
     { path: 'create-security', component: CreateSecurityQuestionComponent },
-    { path: 'list-security', component: ListSecurityQuestionsComponent }
+    { path: 'edit-security/:id', component: CreateSecurityQuestionComponent}
   ] },
   { path: '**', pathMatch: "full", component: NotFoundComponent}
 ];

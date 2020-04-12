@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-users-config',
@@ -7,20 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersConfigComponent implements OnInit {
 
-  loadCreateUserComponent: boolean = false;
   loadListUsersComponent: boolean;
+  loadCreateUserComponent: boolean;
 
-  constructor() { }
+  constructor(public userService: UserService) {}
 
   ngOnInit() {
-    this.loadListUsersComponent = true;
+    // observe the booleans for displaying the components
+    this.userService.displayList.subscribe((displayList) => {
+      this.loadListUsersComponent = displayList;
+    });
+    this.userService.displayCreate.subscribe((displayCreate) => {
+      this.loadCreateUserComponent = displayCreate;
+    });
   }
   showCreateUserComponent() {
-    this.loadCreateUserComponent = true;
-    this.loadListUsersComponent = false;
-  }
-  showListUsersComponent() {
-    this.loadCreateUserComponent = false;
-    this.loadListUsersComponent = true;
+    this.userService.setDisplayListStatus(false);
+    this.userService.setDisplayCreateStatus(true);
   }
 }

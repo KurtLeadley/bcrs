@@ -24,6 +24,7 @@ export class QuestionService {
   private displayCreateSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
   displayCreate = this.displayCreateSubject.asObservable();
 
+  // observe delete
   public deleteOperationEvent: Subject<boolean> = new Subject();
 
   // post a question to our mock server db
@@ -44,6 +45,23 @@ export class QuestionService {
     return this.http.get<Question>(this.questionUrl);
   }
 
+  // get specific question with id passed in
+  getQuestion(id: string) {
+    return this.http.get<Question>(this.questionUrl + "/" + id);
+  }
+
+  // update a question
+  updateQuestion(id: string, questionText: string) {
+    // only difference from the create is that it is a http.put with an id being passed
+    const question: Question = { id: id, question: questionText};
+    this.http
+      .put(this.questionUrl + "/" + id, question)
+      .subscribe(response => {
+        console.log(response);
+        this.router.navigate(["admin/security/"]);
+      });
+  }
+
   deleteQuestion(id) {
     //todo: we can't delete questions completely apparently....Instead, we need to update the boolean property defined in the BRD
     console.log(this.questionUrl + "/" + id);
@@ -52,11 +70,6 @@ export class QuestionService {
       this.router.navigate(["admin/security/"]);
       this.deleteOperationEvent.next(true);
     });
-  }
-
-  // don't worry about trying to log this right now, this is much more complicated and not set up to work yet
-  editQuestion(id, question) {
-    console.log("Todo: Make HTTP update request here for qId: " +id);
   }
 
   // methods to set display status of components
@@ -68,6 +81,7 @@ export class QuestionService {
     this.displayCreateSubject.next(value);
   }
 
+  // delete event observable
   getDeleteOperationEvent(): Observable<boolean> {
     return this.deleteOperationEvent.asObservable();
   }

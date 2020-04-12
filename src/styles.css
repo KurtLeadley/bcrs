@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 main {
   margin: 15px 15%;
-  padding:10px;
-  background-color: #e7e7e7;
+  padding:30px;
+  border-radius: 5px;
 }
 
 .content-grid {
@@ -11,3 +11,15 @@ main {
 
 /* html, body { height: 100%; } */
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button {
+  padding:5px 10px;
+  border-radius: 5px;
+}
+
+.question-div {
+  margin:15px 0;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+}
+

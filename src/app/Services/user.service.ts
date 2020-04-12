@@ -26,8 +26,7 @@ export class UserService {
    // posts a user to our mock server db
   createUser(id:string, password: string, firstName:string, lastName:string, address:string, email:string) {
     // build our user with the User model
-    const newUser: User = {id:id, password:password, firstName:firstName,lastName:lastName,
-    address:address, email: email}
+    const newUser: User = {id:id, firstName:firstName, lastName:lastName, email: email, address:address, password:password};
 
     this.http.post(this.userUrl,newUser).subscribe(
       Response =>{
