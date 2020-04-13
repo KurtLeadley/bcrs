@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Question } from "../Models/question.model";
 import { Observable} from 'rxjs';
 import { Router } from "@angular/router";
 import { BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs';
+
+import { Question } from "../Models/question.model";
 
 
 @Injectable()

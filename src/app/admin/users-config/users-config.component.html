@@ -1,11 +1,22 @@
 <h2>Admin: User Configuration</h2>
 <div class="admin-grid">
-  <button mat-button (click) = "showCreateUserComponent()" routerLink="/admin/users/create-user">Create User</button>
+  <button
+    mat-button (click) = "showCreateUserComponent()"
+    *ngIf="router.url != '/admin/users/create-user'"
+    routerLink="/admin/users/create-user">Create User
+  </button>
+  <button
+    mat-button (click) = "showListUserComponent()"
+    *ngIf="(router.url != '/admin/users/list-users' && router.url !='/admin/users')"
+    routerLink="/admin/users/list-users">List Users
+  </button>
 </div>
 <div class="content-grid">
   <app-create-user *ngIf="loadCreateUserComponent"></app-create-user>
   <app-list-users *ngIf="loadListUsersComponent"></app-list-users>
 </div>
+
+
 
 
 

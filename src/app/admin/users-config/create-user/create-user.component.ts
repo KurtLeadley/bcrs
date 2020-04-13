@@ -21,6 +21,7 @@ export class CreateUserComponent implements OnInit {
   ngOnInit(){
     // create a form group with two required fields
     this.userForm = new FormGroup({
+      id: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
@@ -72,16 +73,29 @@ export class CreateUserComponent implements OnInit {
     // logging the form on submission tells us how to get to the userId,password, firstName, lastName,address,email values
     console.log(this.userForm);
     // send the userId,password, firstName, lastName, address,email to our service, where we will eventually do an http post
-    this.userService.createUser(this.userForm.value.id,
-                                this.userForm.value.password,
-                                this.userForm.value.firstName,
-                                this.userForm.value.lastName,
-                                this.userForm.value.address,
-                                this.userForm.value.email
-    );
+    // if the mode is create, we want to create a user
+    if (this.mode === "create") {
+      this.userService.createUser(this.userForm.value.id,
+                                  this.userForm.value.password,
+                                  this.userForm.value.firstName,
+                                  this.userForm.value.lastName,
+                                  this.userForm.value.address,
+                                  this.userForm.value.email
+      );
+      // if the mode is not create, we want to update the question
+    } else {
+        // call our updateQuestion method from the questionService
+        this.userService.updateUser(
+          this.id,
+          this.userForm.value.password,
+          this.userForm.value.firstName,
+          this.userForm.value.lastName,
+          this.userForm.value.address,
+          this.userForm.value.email
+        )
+    }
+    // after submitting, we want to display the list again and hide the create component
     this.userService.setDisplayListStatus(true);
     this.userService.setDisplayCreateStatus(false);
-    /* console.log(this.userService.displayList);
-    console.log(this.userService.displayCreate); */
   }
 }

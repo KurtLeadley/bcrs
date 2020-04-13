@@ -18,8 +18,9 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin/users', component: UsersConfigComponent, children: [
-    { path: 'create-user', component: CreateUserComponent },
     { path: 'list-users', component: ListUsersComponent },
+    { path: 'create-user', component: CreateUserComponent },
+    { path: 'edit-user/:id', component: CreateUserComponent }
   ] },
   { path: 'admin/security', component: SecurityQuestionsConfigComponent, children: [
     { path: 'list-security', component: ListSecurityQuestionsComponent },

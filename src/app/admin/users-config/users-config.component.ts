@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../Services/user.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-users-config',
@@ -11,7 +12,7 @@ export class UsersConfigComponent implements OnInit {
   loadListUsersComponent: boolean;
   loadCreateUserComponent: boolean;
 
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService, public router: Router) {}
 
   ngOnInit() {
     // observe the booleans for displaying the components
@@ -22,8 +23,13 @@ export class UsersConfigComponent implements OnInit {
       this.loadCreateUserComponent = displayCreate;
     });
   }
+  // next two methods toggle our component display booleans (they are used in the html files)
   showCreateUserComponent() {
     this.userService.setDisplayListStatus(false);
     this.userService.setDisplayCreateStatus(true);
+  }
+  showListUserComponent() {
+    this.userService.setDisplayListStatus(true);
+    this.userService.setDisplayCreateStatus(false);
   }
 }

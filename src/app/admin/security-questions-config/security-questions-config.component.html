@@ -9,7 +9,8 @@
   <button
     mat-button (click) = "showListSecurityComponent()"
     *ngIf="(router.url != '/admin/security/list-security' && router.url !='/admin/security')"
-    routerLink="/admin/security/list-security">List Security Questions</button>
+    routerLink="/admin/security/list-security">List Security Questions
+  </button>
 </div>
 <div class="content-grid">
   <!-- show one or the other components based on the boolean value from our questionService-->

@@ -38,4 +38,9 @@ deleteOperationSubscription: Subscription;
     this.userService.deleteUser(id);
   }
 
+  showCreateUserComponent() {
+    this.userService.setDisplayListStatus(false);
+    this.userService.setDisplayCreateStatus(true);
+  }
+
 }
