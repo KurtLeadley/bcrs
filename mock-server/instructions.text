@@ -4,7 +4,8 @@
     npm install -g json-server --save
 
 3. Then start the mock server...everytime you launch vs code
-    json-server --watch mock-server/db.json
+     // json-server --watch mock-server/db.json  (without auth)
+    json-server --watch mock-server/db.json -m ./node_modules/json-server-auth
 
 4. Navigate to : http://localhost:3000/questions to see the questions
 

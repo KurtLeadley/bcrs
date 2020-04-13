@@ -1,3 +1,32 @@
-.create-userId, .create-p,.create-fn,.create-ln,.create-a,.create-e .submit-u-button {
+.user-field, .submit-u-button {
   margin: 15px 0;
+}
+
+.form-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap:30px;
+  grid-template-areas:
+  "area-1 area-2"
+  "area-3 area-3";
+}
+
+.user-field {
+  display:grid;
+  grid-template-rows: 2;
+}
+.user-grid-one, .user-grid-two, .user-grid-three {
+  background-color: #e7e7e7;
+  padding:15px;
+  border-radius: 5px;
+}
+.user-grid-one {
+  grid-area: area-1;
+}
+.user-grid-two {
+  grid-area: area-2;
+}
+.user-grid-three {
+  grid-area: area-3;
 }

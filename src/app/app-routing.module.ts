@@ -13,6 +13,7 @@ import { CreateSecurityQuestionComponent } from './admin/security-questions-conf
 import { ListSecurityQuestionsComponent } from './admin/security-questions-config/list-security-questions/list-security-questions.component';
 import { LoginComponent } from './login/login.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },

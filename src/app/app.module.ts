@@ -26,13 +26,15 @@ import { ListUsersComponent } from './admin/users-config/list-users/list-users.c
 import { CreateSecurityQuestionComponent } from './admin/security-questions-config/create-security-question/create-security-question.component';
 import { ListSecurityQuestionsComponent } from './admin/security-questions-config/list-security-questions/list-security-questions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 import { DropdownDirective } from './dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { QuestionService } from './Services/question.service';
 import { UserService } from './Services/user.service';
-import { LoginComponent } from './login/login.component';
-import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
+import { AuthService } from './Services/auth/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -50,8 +52,7 @@ import { UpdatepasswordComponent } from './updatepassword/updatepassword.compone
     ListSecurityQuestionsComponent,
     NotFoundComponent,
     DropdownDirective,
-    LoginComponent,
-    UpdatepasswordComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +65,8 @@ import { UpdatepasswordComponent } from './updatepassword/updatepassword.compone
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule
-    //FlexLayoutModule
-
-     ],
-  providers: [QuestionService, UserService],
+  ],
+  providers: [QuestionService, UserService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

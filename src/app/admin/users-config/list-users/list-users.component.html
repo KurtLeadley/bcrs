@@ -3,7 +3,7 @@
   <div class="user-panel">
     <p class='u-header'>Name: {{user.firstName}} {{user.lastName}} </p>
     <p class='u-user'> Email: {{user.email}}</p>
-    <p class='u-address'> Address: {{user.address}}</p>
+    <p class='u-address'> Address: {{user.street}}, {{user.city}} {{user.state}} </p>
     <!-- switched this to a button because 'routerLink' acts like an 'a' tag anyways-->
     <button class='u-edit' (click)="showCreateUserComponent()" [routerLink]="['edit-user', user.id]">EDIT</button>
     <button class='u-delete' (click)="onDelete(user.id)">DELETE</button>

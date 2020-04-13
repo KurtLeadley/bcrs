@@ -15,36 +15,40 @@
   ],
   "users": [
     {
-      "id": 1,
-      "firstName": "Bob",
-      "lastName": "Bobby",
-      "email": "bob@bobby.com",
-      "address": "10 Main Street",
-      "password": "pw"
+      "id": 3,
+      "userName": "TomTommy",
+      "firstName": "Thomas",
+      "lastName": "Tommy",
+      "email": "Tom@Tommy.com",
+      "phoneNumber": "519-234-5335",
+      "street": "10 main street",
+      "city": "Anytown",
+      "state": "NY",
+      "zipCode": "12053",
+      "disabled": "",
+      "role": "Admin",
+      "securityQuestions": [],
+      "password": "$2a$10$0wrnED/wKxe2swIGSYhOXejroWk/ufeDAFbN1afGqye6efxwIYH0m",
+      "dateCreated": "",
+      "dateModified": ""
     },
     {
-      "id": 2,
-      "password": "pw",
+      "email": "kurt@email.com",
+      "password": "$2a$10$spOfvSecJRSlOsEyIhQB..oTjI5M6HNz9CjhYGOb9i6UMPXen83va",
+      "id": 5,
+      "userName": "Kurt",
       "firstName": "Kurt",
       "lastName": "Leadley",
-      "address": "10",
-      "email": "kurt@email.com"
-    },
-    {
-      "id": 3,
-      "firstName": "s",
-      "lastName": "a",
-      "email": "s",
-      "address": "s",
-      "password": "s"
-    },
-    {
-      "id": 4,
-      "firstName": "s",
-      "lastName": "s",
-      "email": "s",
-      "address": "s",
-      "password": "s"
+      "phoneNumber": "",
+      "street": "",
+      "city": "",
+      "state": "",
+      "zipCode": "",
+      "disabled": "",
+      "role": "",
+      "securityQuestions": [],
+      "dateCreated": "",
+      "dateModified": ""
     }
   ]
 }

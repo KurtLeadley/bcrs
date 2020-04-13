@@ -3,7 +3,6 @@
 .user-panel {
   margin: 15px 0;
   padding:15px;
-  border: 1px solid #666;
   border-radius: 5px;
   display:grid;
   grid-template-columns: 3fr 7fr 1fr 1fr;

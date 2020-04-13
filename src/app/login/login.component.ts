@@ -1,38 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
-//import {SessionService} from '../session.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from '../Services/auth/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  title: 'login';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) { }
-  form: FormGroup
-  user: any
+  loginForm: FormGroup;
+  email= new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required, Validators.minLength(6)]);
+
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {}
+
   ngOnInit() {
-    this.form = this.fb.group({
-      email: [null, Validators.compose([Validators.required ])],
-      password: [null, Validators.compose([Validators.required ])],
-    })
-    // set default value for quick logging in
-    //this.form.controls['email'].setValue('bobsmith@email.com')
-    //this.form.controls['password'].setValue('s3cret')
-  }
-
-  onSubmit() {
-    this.user = {
-      email: this.form.controls['email'].value,
-      password: this.form.controls['password'].value,
+    if (this.auth.loggedIn) {
+      this.router.navigate(['/']);
     }
-
-    /* this.http.post('/api/session/login', this.user).subscribe(res => {
-      this.sessionService.setLocalStorage(res['token'])
-      this.router.navigate(['/homepage'], res);
-    }) */
+    this.loginForm = this.formBuilder.group({
+      email: this.email,
+      password: this.password,
+    });
   }
 
+  login() {
+    this.auth.login(this.loginForm.value).subscribe(
+      (res) => this.router.navigate(['/']),
+      (error) => console.log('invalid credentials!', error.message)
+    );
+  }
 }

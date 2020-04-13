@@ -2,36 +2,65 @@
   <h4 class='u-header'> Create new user </h4>
 
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <div class="create-fn">
-      <label>
-        First Name:
-        <input type="text" formControlName="firstName" required />
-      </label>
+    <div class="form-grid">
+      <div class="user-grid-one">
+        <h4>User Fields</h4>
+        <div class="user-field">
+          <label>First Name:</label>
+          <input type="text" formControlName="firstName" required />
+        </div>
+        <div class="user-field">
+          <label>Last Name:</label>
+          <input type="text" formControlName="lastName" required />
+        </div>
+        <div class="user-field">
+          <label>User Name:</label>
+          <input type="text" formControlName="userName" required />
+        </div>
+        <div class="user-field">
+          <label>Email:</label>
+          <input type="text" formControlName="email" required />
+        </div>
+        <div class="user-field">
+          <label>Password:</label>
+          <input type="password" formControlName="password" required />
+        </div>
+        <div class="user-field">
+          <label>Security Questions:</label>
+          <input type="text" formControlName="securityQuestions" required />
+        </div>
+      </div>
+      <div class="user-grid-two">
+        <h4>Address Fields</h4>
+        <div class="user-field">
+          <label>Street:</label>
+          <input type="text" formControlName="street" required />
+        </div>
+        <div class="user-field">
+          <label>City:</label>
+          <input type="text" formControlName="city" required />
+        </div>
+        <div class="user-field">
+          <label>State:</label>
+          <input type="text" formControlName="state" required />
+        </div>
+        <div class="user-field">
+          <label>Zip Code:</label>
+            <input type="text" formControlName="zipCode" required />
+        </div>
+        <div class="user-field">
+          <label>Phone:</label>
+          <input type="text" formControlName="phoneNumber" required />
+        </div>
+      </div>
+      <div class="user-grid-three">
+        <h4>Admin Only</h4>
+        <div class="user-field">
+          <label>Role:</label>
+          <input type="text" formControlName="role" required />
+        </div>
+      </div>
     </div>
-    <div class="create-ln">
-      <label>
-        Last Name:
-        <input type="text" formControlName="lastName" required />
-      </label>
-    </div>
-    <div class="create-e">
-      <label>
-        Email:
-        <input type="text" formControlName="email" required />
-      </label>
-    </div>
-    <div class="create-a">
-      <label>
-        Address:
-        <input type="text" formControlName="address" required />
-      </label>
-    </div>
-    <div class="create-p">
-      <label>
-      Password:
-        <input type="password" formControlName="password" required />
-      </label>
-    </div>
-      <button class="submit-u-button" mat-raised-button type="submit">Save User</button>
+    <button class="submit-u-button" mat-raised-button type="submit">Save User</button>
   </form>
 </div>
