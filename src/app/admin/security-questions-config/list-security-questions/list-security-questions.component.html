@@ -1,7 +1,7 @@
 <div class="question-div" *ngFor="let question of questions">
   <div class="question-panel">
     <h4 class='q-header'> Question: {{question.id}}</h4>
-    <p class='q-question'> {{question.question}}</p>
+    <p class='q-question'> {{question.text}}</p>
     <!-- turned edit into a button because 'routerLink' acts like an 'a' tag'-->
     <button class='q-edit' (click)="showCreateSecurityComponent()"[routerLink]="['edit-security', question.id]">EDIT</button>
     <button class='q-delete' (click)="onDelete(question.id)">DELETE</button>

@@ -16,7 +16,7 @@ export class QuestionService {
   constructor(private http: HttpClient,  private router: Router) {}
 
   // mock server route to questions using json server
-  questionUrl = 'http://localhost:3000/questions';
+  questionUrl = 'http://localhost:3000/securityQuestions';
 
   // create observable subjects for displaying security question components
   private displayListSubject: BehaviorSubject<boolean> = new BehaviorSubject(true);
@@ -29,9 +29,9 @@ export class QuestionService {
   public deleteOperationEvent: Subject<boolean> = new Subject();
 
   // post a question to our mock server db
-  createQuestion(id: string, question:string,) {
+  createQuestion(id: string, text:string,) {
     // build our question in Question form
-    const newQuestion: Question = {id: id, question: question}
+    const newQuestion: Question = {id: id, text: text}
     // post the Question to the this.questionUrl
     this.http.post( this.questionUrl, newQuestion)
       .subscribe(response => {
@@ -52,9 +52,9 @@ export class QuestionService {
   }
 
   // update a question
-  updateQuestion(id: string, questionText: string) {
+  updateQuestion(id: string, text: string) {
     // only difference from the create is that it is a http.put with an id being passed
-    const question: Question = { id: id, question: questionText};
+    const question: Question = { id: id, text: text};
     this.http
       .put(this.questionUrl + "/" + id, question)
       .subscribe(response => {

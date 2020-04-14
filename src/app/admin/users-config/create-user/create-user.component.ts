@@ -22,7 +22,7 @@ export class CreateUserComponent implements OnInit {
     // create a form group with two required fields
     this.userForm = new FormGroup({
       id: new FormControl('', Validators.required),
-      userName: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
@@ -55,7 +55,7 @@ export class CreateUserComponent implements OnInit {
         this.userService.getUser(this.id).subscribe(userData => {
           this.user = {
             id:userData.id,
-            userName: userData.userName,
+            username: userData.username,
             firstName:userData.firstName,
             lastName: userData.lastName,
             email:userData.email,
@@ -75,7 +75,7 @@ export class CreateUserComponent implements OnInit {
           // load our user of interest into this components form
           this.userForm.setValue({
             id:userData.id,
-            userName: this.user.userName,
+            username: this.user.username,
             firstName: this.user.firstName,
             lastName:this.user.lastName,
             email:this.user.email,
@@ -108,7 +108,7 @@ export class CreateUserComponent implements OnInit {
     if (this.mode === "create") {
       this.userService.createUser(
         this.userForm.value.id,
-        this.userForm.value.userName,
+        this.userForm.value.username,
         this.userForm.value.firstName,
         this.userForm.value.lastName,
         this.userForm.value.email,
@@ -129,7 +129,7 @@ export class CreateUserComponent implements OnInit {
         // call our updateQuestion method from the questionService
         this.userService.updateUser(
           this.id,
-          this.userForm.value.userName,
+          this.userForm.value.username,
           this.userForm.value.firstName,
           this.userForm.value.lastName,
           this.userForm.value.email,

@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   title: 'login';
 
   loginForm: FormGroup;
-  email= new FormControl('', [Validators.required]);
+  username= new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
   constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {}
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.loginForm = this.formBuilder.group({
-      email: this.email,
+      username: this.username,
       password: this.password,
     });
   }

@@ -1,4 +1,5 @@
 <div class="container">
+  <h4>Login</h4>
   <div class="row">
     <div class="col-md-4 col-sm-12 col-centered">
       <div class="form-wrap">
@@ -8,8 +9,8 @@
               <span matPrefix>
                 <i class="prefix fa fa-envelope"></i>
               </span>
-              <input matInput type="text" name="email" [formControl]="email" />
-              <mat-error *ngIf="email.hasError('required')"> Email is <strong>required</strong> </mat-error>
+              <input matInput type="text" name="username" placeholder="enter username..." [formControl]="username" />
+              <mat-error *ngIf="username.hasError('required')"> Email is <strong>required</strong> </mat-error>
             </mat-form-field>
           </div>
           <div class="input-wrap">
@@ -17,7 +18,7 @@
               <span matPrefix>
                 <i class="prefix fa fa-key"></i>
               </span>
-              <input matInput type="password" name="password" [formControl]="password" />
+              <input matInput type="password" name="password" placeholder="enter password..." [formControl]="password" />
               <mat-error *ngIf="password.hasError('minLength')">
                 Password must be at least 6 characters long
               </mat-error>

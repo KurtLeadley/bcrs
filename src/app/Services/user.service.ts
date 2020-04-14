@@ -16,7 +16,7 @@ export class UserService {
 
   // mock server route to questions using json server
   userUrl = 'http://localhost:3000/users';
-  authUrl = 'http://localhost:3000';
+  authUrl = 'http://localhost:3000/auth';
 
   // create observable subjects for displaying security question components
   private displayListSubject: BehaviorSubject<boolean> = new BehaviorSubject(true);
@@ -30,7 +30,7 @@ export class UserService {
   // posts a user to our mock server db
   createUser(
     id?: string,
-    userName?: string,
+    username?: string,
     firstName?: string,
     lastName?: string,
     email?: string,
@@ -49,7 +49,7 @@ export class UserService {
       // build our user with the User model
       const newUser: User = {
         id:id,
-        userName : userName,
+        username : username,
         firstName:firstName,
         lastName:lastName,
         email: email,
@@ -98,7 +98,7 @@ export class UserService {
   // update a question
   updateUser(
     id?: string,
-    userName?: string,
+    username?: string,
     firstName?: string,
     lastName?: string,
     email?: string,
@@ -117,7 +117,7 @@ export class UserService {
       // only difference from the create is that it is a http.put with an id being passed
       const user: User = {
         id:id,
-        userName : userName,
+        username : username,
         firstName:firstName,
         lastName:lastName,
         email: email,

@@ -9,9 +9,11 @@
     <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
       <ul class="nav navbar-nav">
         <li><a routerLink="/about">About</a></li>
-        <li><a routerLink="/login">Login</a></li>
+        <li *ngIf="!loggedInUser"><a routerLink="/login">Login</a></li>
+        <li *ngIf="loggedInUser"><a routerLink="/" (click)="onLogout()">Logout</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul *ngIf="loggedInUser" class="nav navbar-nav navbar-right">
+        <li class="logged-in-header" *ngIf="loggedInUser">Welcome: {{loggedInUser}}</li>
         <!--Drop down menu start-->
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer;" class="dropdown-toggle" role="button">Admin<span class="caret"></span></a>

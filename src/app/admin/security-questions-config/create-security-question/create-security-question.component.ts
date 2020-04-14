@@ -29,7 +29,7 @@ export class CreateSecurityQuestionComponent implements OnInit {
     // create a form group with two required fields
     this.questionForm = new FormGroup({
       id: new FormControl('', Validators.required),
-      questionText: new FormControl('', Validators.required),
+      text: new FormControl('', Validators.required),
     });
 
     // Note: 'firstChild' is the key to getting the id parameter.
@@ -48,13 +48,13 @@ export class CreateSecurityQuestionComponent implements OnInit {
         this.questionService.getQuestion(this.id).subscribe(questionData => {
           this.question = {
             id: questionData.id,
-            question: questionData.question
+            text: questionData.text
           };
           console.log(this.question);
           // load our question of interest into this components form
           this.questionForm.setValue({
             id: this.question.id,
-            questionText: this.question.question
+            text: this.question.text
           })
         });
         // if the url does not contain an id, we are creating
@@ -70,13 +70,13 @@ export class CreateSecurityQuestionComponent implements OnInit {
     console.log(this.questionForm);
     // send the question and question id to our service, where we post to our mock db
     if (this.mode === "create") {
-      this.questionService.createQuestion(this.questionForm.value.id,this.questionForm.value.questionText);
+      this.questionService.createQuestion(this.questionForm.value.id,this.questionForm.value.text);
       // if the mode is not create, we want to update the question
     } else {
       // call our updateQuestion method from the questionService
       this.questionService.updateQuestion(
         this.id,
-        this.questionForm.value.questionText
+        this.questionForm.value.text
       )
     }
     // after submitting, we want to display the list again and hide the create component

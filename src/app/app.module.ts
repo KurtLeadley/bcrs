@@ -5,7 +5,7 @@ import {RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 
 //import { FlexLayoutModule } from "@angular/flex-layout";
@@ -34,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionService } from './Services/question.service';
 import { UserService } from './Services/user.service';
 import { AuthService } from './Services/auth/auth.service';
+import { AuthInterceptor } from './Services/auth/auth.interceptor';
 
 
 @NgModule({
@@ -66,7 +67,7 @@ import { AuthService } from './Services/auth/auth.service';
     HttpClientModule,
     MatInputModule
   ],
-  providers: [QuestionService, UserService, AuthService],
+  providers: [QuestionService, UserService, AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
