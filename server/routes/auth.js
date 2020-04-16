@@ -3,30 +3,25 @@
  * Author: Nathaniel Liebhart
  * Description: bcrs-api
  */
-const express = require('express');
+const express = require("express");
 const {
   register,
   login,
   logout,
   getMe,
-  forgotPassword,
-  resetPassword,
   updateDetails,
-  updatePassword,
-} = require('../controllers/auth');
+} = require("../controllers/auth");
 
 const router = express.Router();
-const { protect } = require('../middleware/auth');
+const { protect } = require("../middleware/auth");
 
-router.post('/register', register);
-router.post('/login', login);
-router.post('/forgotpassword', forgotPassword);
+router.post("/register", register);
+router.post("/login", login);
+router.post("/forgotpassword", forgotPassword);
 
-router.put('/resetPassword/:resettoken', resetPassword);
-router.put('/updatedetails', protect, updateDetails);
-router.put('/updatepassword', protect, updatePassword);
+router.put("/updatedetails", protect, updateDetails);
 
-router.get('/me', protect, getMe);
-router.get('/logout', logout);
+router.get("/me", protect, getMe);
+router.get("/logout", logout);
 
 module.exports = router;
