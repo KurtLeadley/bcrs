@@ -1,0 +1,87 @@
+<h1 mat-dialog-title>{{ data.action.toString() === 'Delete' ? 'Update' : data.action }} User</h1>
+<div mat-dialog-content>
+  <div [hidden]="data.action.toString() === 'Add'"><b>User Id: </b>{{ data.obj._id }}<br /><br /></div>
+  <form [formGroup]="usersForm" (ngSubmit)="onSave()">
+    <div [hidden]="data.action.toString() === 'Delete' || data.action.toString() === 'Reset'">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="username" placeholder="Username" formControlName="username" />
+        <mat-error *ngIf="usersForm.controls.username?.errors?.required">Please enter a valid username.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput type="firstName" placeholder="First Name" formControlName="firstName" />
+        <mat-error *ngIf="usersForm.controls.firstName?.errors?.required">Please enter a valid first name.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput type="lastName" placeholder="Last Name" formControlName="lastName" />
+        <mat-error *ngIf="usersForm.controls.lastName?.errors?.required">Please enter a valid last name.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="phoneNumber" placeholder="Phone Number" formControlName="phoneNumber" />
+        <span matPrefix>+1 &nbsp;</span>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Street Address</mat-label>
+        <input matInput type="street" placeholder="Street Address" formControlName="street" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput type="city" placeholder="City" formControlName="city" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>State</mat-label>
+        <input matInput type="state" placeholder="State" formControlName="state" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Zip Code</mat-label>
+        <input matInput type="zipCode" placeholder="Zip Code" formControlName="zipCode" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Email" formControlName="email" />
+        <mat-error *ngIf="usersForm.controls.email?.errors?.required || usersForm.controls.email?.errors?.email"
+          >Please enter a valid email.</mat-error
+        >
+      </mat-form-field>
+      <div [hidden]="true">
+        <mat-form-field>
+          <input matInput type="text" formControlName="disabled" />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Select a role</mat-label>
+        <mat-select formControlName="role" required>
+          <mat-option *ngFor="let role of roles" [value]="role.text">
+            {{ role.text }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="usersForm.controls.role?.errors?.required">Please enter a valid role.</mat-error>
+      </mat-form-field>
+    </div>
+    <div [hidden]="data.action.toString() === 'Delete' || data.action.toString() === 'Update'">
+      <mat-form-field>
+        <input matInput [type]="hide ? 'text' : 'password'" placeholder="Password" formControlName="password" />
+        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <mat-hint>
+          <span [ngClass]="usersForm.get('password').errors?.required ? 'text-danger' : 'text-success'">
+            <mat-icon>
+              {{ usersForm.get('password').errors?.required ? 'cancel' : 'check_circle' }}
+            </mat-icon>
+            Password is Required </span
+          ><br />
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div [hidden]="data.action.toString() !== 'Delete'">
+      Are you sure you wish to <b>{{ !data.obj.disabled ? 'lock' : 'unlock' }}</b> user: {{ data.obj.username }}
+    </div>
+    <div>
+      <button type="submit" mat-button cdkFocusInitial [class.spinner]="loading" [disabled]="loading">
+        {{ data.action.toString() === 'Delete' ? 'Update' : data.action }}
+      </button>
+    </div>
+  </form>
+</div>

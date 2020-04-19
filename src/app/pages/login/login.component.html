@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <h2>Login</h2>
+  </mat-card-header>
+  <mat-card-body>
+    <form [formGroup]="loginForm" (submit)="onLogin()">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Username" required formControlName="username" />
+        <mat-error *ngIf="loginForm.controls.username?.errors?.required">Please enter your username</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="hide ? 'text' : 'password'" placeholder="Password" required formControlName="password" />
+        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visability_off' : 'visability' }}</mat-icon>
+        <mat-error *ngIf="loginForm.controls.password.errors?.required">Please enter your password</mat-error>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          <button type="submit" mat-raised-button [class.spinner]="loading" [disabled]="loading">Login</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-body>
+</mat-card>

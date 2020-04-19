@@ -1,0 +1,246 @@
+<div [class.hidden]="!show">
+  <div class="loader-overlay">
+    <div *ngIf="show" class="loader"></div>
+  </div>
+</div>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav>
+    <div class="box">
+      <img mat-card-avatar [src]="imageUrl" alt="User avatar" *ngIf="showAvatar" />
+      <span [hidden]="!userIsAuthenticated">Welcome {{ username }}</span>
+    </div>
+    <hr />
+    <mat-nav-list>
+      <a routerLink="/" mat-list-item>
+        <mat-icon>
+          <fa-icon [icon]="faHome"></fa-icon>
+        </mat-icon>
+        <span>Home</span>
+      </a>
+      <a mat-list-item routerLink="/about">
+        <mat-icon>
+          <fa-icon [icon]="faInfo"></fa-icon>
+        </mat-icon>
+        <span>&nbsp;About</span>
+      </a>
+      <a mat-list-item routerLink="/contact-us">
+        <mat-icon>
+          <fa-icon [icon]="faAddressBook"></fa-icon>
+        </mat-icon>
+        <span>&nbsp;Contact Us</span>
+      </a>
+      <div *ngIf="userIsAuthenticated">
+        <a mat-list-item [routerLink]="['/service-repair']">
+          <mat-icon>
+            <fa-icon [icon]="faWrench"></fa-icon>
+          </mat-icon>
+          <span>&nbsp;Service Repair</span>
+        </a>
+        <a mat-list-item [routerLink]="['/my-invoices']">
+          <mat-icon>
+            <fa-icon [icon]="faFileInvoice"></fa-icon>
+          </mat-icon>
+          <span>&nbsp;My Invoices</span>
+        </a>
+        <div *ngIf="role == 'admin'">
+          <a mat-list-item [routerLink]="['/manage/users']">
+            <mat-icon>
+              <fa-icon [icon]="faUserPlus"></fa-icon>
+            </mat-icon>
+            <span>&nbsp;&nbsp;Users</span>
+          </a>
+          <a mat-list-item [routerLink]="['/manage/security-questions']">
+            <mat-icon>
+              <fa-icon [icon]="faQuestion"></fa-icon>
+            </mat-icon>
+            <span>&nbsp;Security Questions</span>
+          </a>
+          <a mat-list-item [routerLink]="['/manage/roles']">
+            <mat-icon>
+              <fa-icon [icon]="faUser"></fa-icon>
+            </mat-icon>
+            <span>&nbsp;Roles</span>
+          </a>
+          <a mat-list-item [routerLink]="['/manage/services']">
+            <mat-icon>
+              <fa-icon [icon]="faPollH"></fa-icon>
+            </mat-icon>
+            <span>&nbsp;Services</span>
+          </a>
+          <a mat-list-item [routerLink]="['/manage/purchases']">
+            <mat-icon>
+              <fa-icon [icon]="faChartPie"></fa-icon>
+            </mat-icon>
+            <span>&nbsp;View Purchases</span>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="userIsAuthenticated">
+        <a mat-list-item [routerLink]="['/my-profile']">
+          <mat-icon>
+            <fa-icon [icon]="faUserCircle"></fa-icon>
+          </mat-icon>
+          <span>My Profile</span>
+        </a>
+        <a mat-list-item [hidden]="!userIsAuthenticated" (click)="onLogout()">
+          <mat-icon>
+            <fa-icon [icon]="faSignOutAlt"></fa-icon>
+          </mat-icon>
+          <span>&nbsp;Logout</span>
+        </a>
+      </div>
+      <div *ngIf="!userIsAuthenticated">
+        <a mat-list-item [hidden]="userIsAuthenticated" [routerLink]="['/login']">
+          <mat-icon>
+            <fa-icon [icon]="faSignInAlt"></fa-icon>
+          </mat-icon>
+          <span>&nbsp;Login</span>
+        </a>
+        <a mat-list-item [hidden]="userIsAuthenticated" [routerLink]="['/register']">
+          <mat-icon>
+            <fa-icon [icon]="faUserPlus"></fa-icon>
+          </mat-icon>
+          <span>&nbsp;Register</span>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column" fxFill>
+    <!-- navigation -->
+    <header>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+            <mat-icon>menu</mat-icon>
+          </button>
+          <button class="logo" routerLink="/" mat-button>BCRS</button>
+          <span class="menu-spacer"></span>
+          <div fxShow="true" fxHide.lt-md>
+            <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+            <button class="navbar-link" routerLink="/" mat-button>
+              <fa-icon [icon]="faHome"></fa-icon>
+              <span>&nbsp;Home</span>
+            </button>
+            <button class="navbar-link" routerLink="/about" mat-button>
+              <fa-icon [icon]="faInfo"></fa-icon>
+              <span>&nbsp;About</span>
+            </button>
+            <button class="navbar-link" routerLink="/contact-us" mat-button>
+              <fa-icon [icon]="faAddressBook"></fa-icon>
+              <span>&nbsp;Contact Us</span>
+            </button>
+            <button
+              *ngIf="userIsAuthenticated"
+              class="navbar-link toolbar__icon-button"
+              mat-button
+              mat-icon-button
+              [matMenuTriggerFor]="managemenu"
+            >
+              <fa-icon [icon]="faTasks"></fa-icon>
+              <span>&nbsp;Manage</span>
+            </button>
+            <mat-menu #managemenu="matMenu">
+              <button [routerLink]="['/service-repair']" mat-menu-item>
+                <mat-icon>
+                  <fa-icon [icon]="faWrench"></fa-icon>
+                </mat-icon>
+                <span>Service Repair</span>
+              </button>
+              <button [routerLink]="['/my-invoices']" mat-menu-item>
+                <mat-icon>
+                  <fa-icon [icon]="faFileInvoice"></fa-icon>
+                </mat-icon>
+                <span>My Invoices</span>
+              </button>
+              <div *ngIf="role == 'admin'">
+                <button [routerLink]="['/manage/users']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faUserPlus"></fa-icon>
+                  </mat-icon>
+                  <span>Users</span>
+                </button>
+                <button [routerLink]="['/manage/security-questions']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faQuestion"></fa-icon>
+                  </mat-icon>
+                  <span>Security Questions</span>
+                </button>
+                <button [routerLink]="['/manage/roles']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faUser"></fa-icon>
+                  </mat-icon>
+                  <span>Roles</span>
+                </button>
+                <button [routerLink]="['/manage/services']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faPollH"></fa-icon>
+                  </mat-icon>
+                  <span>Services</span>
+                </button>
+                <button [routerLink]="['/manage/purchases']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faChartPie"></fa-icon>
+                  </mat-icon>
+                  <span>View Purchases</span>
+                </button>
+              </div>
+            </mat-menu>
+          </div>
+          <span class="spacer"></span>
+          <div fxShow="true" fxHide.lt-md>
+            <span [hidden]="!userIsAuthenticated">Welcome {{ username }}</span>
+            <button mat-icon-button class="navbar-link toolbar__icon-button" [matMenuTriggerFor]="profilemenu">
+              <fa-icon [icon]="faUserCircle" *ngIf="!showAvatar"></fa-icon>
+              &nbsp;<img mat-card-avatar [src]="imageUrl" alt="avatar" *ngIf="showAvatar" />
+            </button>
+            <mat-menu #profilemenu="matMenu">
+              <div *ngIf="userIsAuthenticated">
+                <button [routerLink]="['/my-profile']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faUserCircle"></fa-icon>
+                  </mat-icon>
+                  <span>My Profile</span>
+                </button>
+                <button [hidden]="!userIsAuthenticated" (click)="onLogout()" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faSignOutAlt"></fa-icon>
+                  </mat-icon>
+                  <span>Logout</span>
+                </button>
+              </div>
+              <div *ngIf="!userIsAuthenticated">
+                <button [hidden]="userIsAuthenticated" [routerLink]="['/login']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faSignInAlt"></fa-icon>
+                  </mat-icon>
+                  <span>Login</span>
+                </button>
+                <button [hidden]="userIsAuthenticated" [routerLink]="['/register']" mat-menu-item>
+                  <mat-icon>
+                    <fa-icon [icon]="faUserPlus"></fa-icon>
+                  </mat-icon>
+                  <span>Register</span>
+                </button>
+              </div>
+            </mat-menu>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </header>
+    <main>
+      <mat-card fxLayoutAlign="center center" *ngIf="securityAnswersExist === false && usernameExist" class="alert-box">
+        Your security questions have not been filled out. Please fill out your security questions&nbsp;<a
+          [routerLink]="['/my-profile']"
+          >here</a
+        >.
+      </mat-card>
+      <router-outlet></router-outlet>
+    </main>
+    <footer fxFlexOffset="auto">
+      <p class="footer-content">
+        &copy; {{ year | date: 'yyyy' }} - Bob's Computer Repair Shop -
+        <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+      </p>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,81 @@
+<mat-card>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <div *ngIf="!loading">
+    <h2>Users Portal</h2>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column">
+      <div fxFlex="50">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Find User" />
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button (click)="openDialog('Add', null)">
+          <mat-icon>group_add</mat-icon>
+          <span> Add User</span>
+        </button>
+      </div>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Username Column -->
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Username: ">{{ element.username }}</mat-cell>
+      </ng-container>
+
+      <!-- First Name Column -->
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="First Name: ">{{ element.firstName }}</mat-cell>
+      </ng-container>
+
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Last Name: ">{{ element.lastName }}</mat-cell>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Email: ">{{ element.email }}</mat-cell>
+      </ng-container>
+
+      <!-- Archived Column -->
+      <ng-container matColumnDef="disabled">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Account Locked</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Account Locked: ">
+          <mat-slide-toggle [checked]="element.disabled" (click)="openDialog('Delete', element)">
+            {{ element.disabled ? 'Yes' : 'No' }}
+          </mat-slide-toggle>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Role Column -->
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Role: ">{{ element.role }}</mat-cell>
+      </ng-container>
+
+      <!-- Action Column-->
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item (click)="openDialog('Update', element)">Edit User</button>
+            <button mat-menu-item (click)="openDialog('Reset', element)">Reset Password</button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</mat-card>
