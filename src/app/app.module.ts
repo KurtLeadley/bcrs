@@ -39,7 +39,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { AppRoutes, AppRoutingModule } from './app-routing';
+import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
