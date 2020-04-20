@@ -9,13 +9,13 @@ const LineItemSchema = require('./LineItem');
 const InvoiceSchema = mongoose.Schema({
   lineItems: [LineItemSchema],
   partsAmount: {
-    type: String,
+    type: Number,
   },
   laborAmount: {
-    type: String,
+    type: Number,
   },
   lineItemTotal: {
-    type: String,
+    type: Number,
   },
   total: {
     type: Number,

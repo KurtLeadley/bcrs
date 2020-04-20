@@ -1,52 +1,32 @@
 [
   {
     "_id": "5e8e7185fc13ae3ea4000000",
-    "text": "Face to face contextually-based encoding",
+    "text": "What is question 1?",
     "disabled": false
   },
   {
     "_id": "5e8e7185fc13ae3ea4000001",
-    "text": "Organized uniform pricing structure",
+    "text": "What is question 2?",
     "disabled": false
   },
   {
     "_id": "5e8e7185fc13ae3ea4000002",
-    "text": "Progressive local success",
+    "text": "What is question 3?",
     "disabled": false
   },
   {
     "_id": "5e8e7185fc13ae3ea4000003",
-    "text": "Re-engineered object-oriented architecture",
+    "text": "What is question 4?",
     "disabled": false
   },
   {
     "_id": "5e8e7185fc13ae3ea4000004",
-    "text": "Adaptive value-added benchmark",
+    "text": "What is question 5?",
     "disabled": false
   },
   {
     "_id": "5e8e7185fc13ae3ea4000005",
-    "text": "Open-source tangible solution",
-    "disabled": false
-  },
-  {
-    "_id": "5e8e7185fc13ae3ea4000006",
-    "text": "Enterprise-wide foreground encoding",
-    "disabled": false
-  },
-  {
-    "_id": "5e8e7185fc13ae3ea4000007",
-    "text": "Visionary encompassing pricing structure",
-    "disabled": false
-  },
-  {
-    "_id": "5e8e7185fc13ae3ea4000008",
-    "text": "Vision-oriented solution-oriented alliance",
-    "disabled": false
-  },
-  {
-    "_id": "5e8e7185fc13ae3ea4000009",
-    "text": "Vision-oriented leading edge initiative",
-    "disabled": false
+    "text": "What is question 6?",
+    "disabled": true
   }
 ]

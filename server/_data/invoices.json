@@ -1,0 +1,59 @@
+[
+  {
+    "_id": "5e9dae23fc13ae1a14000010",
+    "lineItems": [
+      {
+        "_id": "5e9dae23fc13ae1a14000000",
+        "title": "Password Reset",
+        "price": 39.99
+      },
+      {
+        "_id": "5e9dae23fc13ae1a14000001",
+        "title": "Spyware Removal",
+        "price": 99.9
+      },
+      {
+        "_id": "5e9dae23fc13ae1a14000002",
+        "title": "RAM Upgrade",
+        "price": 129.99
+      }
+    ],
+    "partsTotle": 200.0,
+    "laborAmount": 200.0,
+    "lineItemTotal": 269.88,
+    "total": 669.88,
+    "username": "nliebhart",
+    "orderDate": "04/20/2020"
+  },
+  {
+    "_id": "5e9dae23fc13ae1a14000011",
+    "lineItems": [
+      {
+        "_id": "5e9dae23fc13ae1a14000003",
+        "title": "Software Installation",
+        "price": 49.99
+      },
+      {
+        "_id": "5e9dae23fc13ae1a14000004",
+        "title": "PC Tune-up",
+        "price": 89.99
+      },
+      {
+        "_id": "5e9dae23fc13ae1a14000005",
+        "title": "Keyboard Cleaning",
+        "price": 45.0
+      },
+      {
+        "_id": "5e9dae23fc13ae1a14000006",
+        "title": "Disk Clean-up",
+        "price": 149.99
+      }
+    ],
+    "partsTotle": 250.0,
+    "laborAmount": 600.0,
+    "lineItemTotal": 334.97,
+    "total": 1184.97,
+    "username": "nliebhart",
+    "orderDate": "04/17/2020"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "5e9dae23fc13ae1a14000000",
+    "title": "Password Reset",
+    "price": 39.99,
+    "disabled": false
+  },
+  {
+    "_id": "5e9dae23fc13ae1a14000001",
+    "title": "Spyware Removal",
+    "price": 99.9,
+    "disabled": false
+  },
+  {
+    "_id": "5e9dae23fc13ae1a14000002",
+    "title": "RAM Upgrade",
+    "price": 129.99,
+    "disabled": false
+  },
+  {
+    "_id": "5e9dae23fc13ae1a14000003",
+    "title": "Software Installation",
+    "price": 49.99,
+    "disabled": false
+  },
+  {
+    "_id": "5e9dae23fc13ae1a14000004",
+    "title": "PC Tune-up",
+    "price": 89.99,
+    "disabled": false
+  },
+  {
+    "_id": "5e9dae23fc13ae1a14000005",
+    "title": "Keyboard Cleaning",
+    "price": 45.0,
+    "disabled": false
+  },
+  {
+    "_id": "5e9dae23fc13ae1a14000006",
+    "title": "Disk Clean-ip",
+    "price": 149.99,
+    "disabled": false
+  }
+]
