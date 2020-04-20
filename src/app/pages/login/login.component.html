@@ -1,23 +1,68 @@
-<mat-card>
-  <mat-card-header>
-    <h2>Login</h2>
-  </mat-card-header>
-  <mat-card-body>
-    <form [formGroup]="loginForm" (submit)="onLogin()">
-      <mat-form-field>
-        <input matInput type="text" placeholder="Username" required formControlName="username" />
-        <mat-error *ngIf="loginForm.controls.username?.errors?.required">Please enter your username</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="hide ? 'text' : 'password'" placeholder="Password" required formControlName="password" />
-        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visability_off' : 'visability' }}</mat-icon>
-        <mat-error *ngIf="loginForm.controls.password.errors?.required">Please enter your password</mat-error>
-      </mat-form-field>
-      <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div>
-          <button type="submit" mat-raised-button [class.spinner]="loading" [disabled]="loading">Login</button>
+<div class="page-header" filter-color="blue">
+  <div
+    class="page-header-image"
+    style="background-image: url(assets/img/login-background.png); background-size: cover;"
+  ></div>
+  <div class="content-center">
+    <div class="container">
+      <div class="col-md-4 content-center">
+        <div id="loginCard" class="card card-login card-plain">
+          <form class="form" [formGroup]="loginForm" (submit)="onLogin()">
+            <div class="card-header text-center">
+              <div class="logo-container">
+                <img src="assets/img/bcrs-logo.png" alt="Company Logo" />
+              </div>
+            </div>
+            <div class="card-body">
+              <div
+                class="input-group form-group-no-border input-lg"
+                [ngClass]="{ 'input-group-focus': focus === true }"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Username..."
+                  formControlName="username"
+                  required
+                  (focus)="focus = true"
+                  (blur)="focus = false"
+                />
+              </div>
+              <div
+                class="input-group form-group-no-border input-lg"
+                [ngClass]="{ 'input-group-focus': focus1 === true }"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                </div>
+                <input
+                  type="password"
+                  placeholder="Password..."
+                  class="form-control"
+                  formControlName="password"
+                  required
+                  (focus)="focus1 = true"
+                  (blur)="focus1 = false"
+                />
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <button
+                id="btnLogin"
+                type="submit"
+                [class.spinner]="loading"
+                [disabled]="loading"
+                class="btn btn-primary btn-round btn-lg btn-block"
+              >
+                Login
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </form>
-  </mat-card-body>
-</mat-card>
+    </div>
+  </div>
+</div>

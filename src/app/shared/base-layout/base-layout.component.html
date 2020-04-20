@@ -4,8 +4,8 @@
   </div>
 </div>
 <div class="cd-section" id="headers">
-  <!-- !isAuthenticated -->
   <div class="header-2">
+    <!-- !isAuthenticated -->
     <nav *ngIf="!userIsAuthenticated" class="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute">
       <div class="container">
         <div class="navbar-translate">
@@ -19,16 +19,16 @@
         <div class="collapse navbar-collapse" id="noAuthNavbar">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item" routerLinkActive="active">
-              <a [routerLink]="['/home']" class="nav-link">Home</a>
+              <a routerLink="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a [routerLink]="['/home']" class="nav-link">About Us</a>
+              <a routerLink="/" class="nav-link">About Us</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a [routerLink]="['/home']" class="nav-link">Contact Us</a>
+              <a routerLink="/" class="nav-link">Contact Us</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a [routerLink]="['/home']" class="nav-link">Services</a>
+              <a routerLink="/" class="nav-link">Services</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -51,46 +51,109 @@
         </div>
       </div>
     </nav>
-    <div class="page-header header-filter">
-      <div class="page-header-image" style="background-image: url('assets/img/bcrs-logo.png');"></div>
-      <div class="content-center">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto text-center">
-              <h1 class="title">Bob's Computer Repair Shop</h1>
-              <h5 class="description" style="color: white; font-weight: 500;">
-                Leave your technology worries at the door.<br />We have you covered with our best-in-class service
-                team.<br />Big or small problems, we solve them all.
-              </h5>
-            </div>
-            <div class="col-md-10 ml-auto mr-auto">
-              <div class="card card-raised card-plain card-form-horizontal" data-background-color>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <button class="btn btn-primary btn-round btn-block" [routerLink]="['/register']">Register</button>
-                    </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-info btn-round btn-block" [routerLink]="['/login']">Login</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- isAuthenticated && !isAdmin -->
+    <nav
+      *ngIf="userIsAuthenticated && role != 'admin'"
+      class="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute"
+    >
+      <div class="container">
+        <div class="navbar-translate">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#authNavbar">
+            <span class="navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+          </button>
+          <a href="/" class="navbar-brand">BCRS</a>
+        </div>
+        <div class="collapse navbar-collapse" id="authNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Contact Us</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Service Repair</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Invocies</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-    <!-- isAuthenticated && !isAdmin -->
-
+    </nav>
     <!-- isAuthenticated && isAdmin -->
+    <nav
+      *ngIf="userIsAuthenticated && role == 'admin'"
+      class="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute"
+    >
+      <div class="container">
+        <div class="navbar-translate">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#authAdminNavbar">
+            <span class="navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+          </button>
+          <a href="/" class="navbar-brand">BCRS</a>
+        </div>
+        <div class="collapse navbar-collapse" id="authAdminNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Users</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Service Repair</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/" class="nav-link">Invocies</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>
 <main>
-  <mat-card fx-layoutAlign="center center" *ngIf="securityAnswersExist === false" class="alert-box">
-    Security questions have not been answered for this account.<br />
-    It is highly recommended that they are answered to prevent account lockout<br />
-    Please click <a [routerLink]="['/']">here</a>!
-  </mat-card>
   <router-outlet></router-outlet>
 </main>

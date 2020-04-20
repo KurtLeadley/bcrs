@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   loginForm: FormGroup;
   hide: boolean;
+  focus;
+  focus1;
 
   constructor(private auth: AuthService, private formBuilder: FormBuilder) {}
 
@@ -24,6 +26,8 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('login-page');
   }
 
   onLogin() {

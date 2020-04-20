@@ -1,22 +1,6 @@
 import { Component, OnInit, OnDestroy, OnChanges, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import {
-  faWrench,
-  faFileInvoice,
-  faQuestionCircle,
-  faTasks,
-  faUser,
-  faUserPlus,
-  faChartPie,
-  faAddressBook,
-  faInfo,
-  faHome,
-  faSignInAlt,
-  faSignOutAlt,
-  faUserCircle,
-  faPollH,
-} from '@fortawesome/free-solid-svg-icons';
 import { Router, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { LoaderService } from '../../services/loader.service';
 import { Loader } from '../../models/loader.model';
@@ -41,7 +25,7 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
   role: string;
   securityAnswersExist = false;
   usernameExist = true;
-  userObjId: string = '';
+  userObjId = '';
   private authListenerSubs: Subscription;
 
   @ViewChild('sidenav') public sideNav: MatSidenav;
