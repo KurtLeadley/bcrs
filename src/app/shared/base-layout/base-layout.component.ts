@@ -34,20 +34,6 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
   showAvatar = false;
   private sub: Subscription;
 
-  faWrench = faWrench;
-  faFileInvoice = faFileInvoice;
-  faQuestion = faQuestionCircle;
-  faTasks = faTasks;
-  faUser = faUser;
-  faUserPlus = faUserPlus;
-  faChartPie = faChartPie;
-  faAddressBook = faAddressBook;
-  faInfo = faInfo;
-  faHome = faHome;
-  faUserCircle = faUserCircle;
-  faSignOutAlt = faSignOutAlt;
-  faSignInAlt = faSignInAlt;
-  faPollH = faPollH;
   year: number = Date.now();
   badgeCount: number;
   userIsAuthenticated = false;
@@ -95,16 +81,6 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
           this.showAvatar = false;
           this.imageUrl = null;
         }
-      }
-
-      if (event instanceof NavigationEnd) {
-        //handle nav end
-        this.sideNav.close();
-      }
-
-      if (event instanceof NavigationError) {
-        //handle routing errors
-        //console.log(event.error);
       }
     });
   }
