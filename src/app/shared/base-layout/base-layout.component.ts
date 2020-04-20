@@ -26,7 +26,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
-  styleUrls: ['./base-layout.component.css'],
+  styleUrls: ['./base-layout.component.scss'],
 })
 export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
   show = false;

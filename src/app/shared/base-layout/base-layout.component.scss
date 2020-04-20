@@ -1,0 +1,31 @@
+.box {
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  font-weight: lighter;
+}
+
+.navbar-container {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  font-weight: lighter;
+}
+
+footer {
+  text-align: center;
+  background-color: purple;
+  font-weight: lighter;
+  letter-spacing: 3px;
+}

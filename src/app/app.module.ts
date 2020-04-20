@@ -73,7 +73,7 @@ import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes, {
       onSameUrlNavigation: 'reload',
-      useHash: true,
+      useHash: false,
       enableTracing: false,
       scrollPositionRestoration: 'enabled',
     }),

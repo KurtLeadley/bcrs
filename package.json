@@ -22,7 +22,6 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "proxy": "ng serve --proxy-config proxy.conf.json",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",

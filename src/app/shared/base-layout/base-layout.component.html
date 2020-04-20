@@ -228,7 +228,7 @@
       </mat-toolbar>
     </header>
     <main>
-      <mat-card fxLayoutAlign="center center" *ngIf="securityAnswersExist === false && usernameExist" class="alert-box">
+      <mat-card fxLayoutAlign="center center" *ngIf="securityAnswersExist === false" class="alert-box">
         Your security questions have not been filled out. Please fill out your security questions&nbsp;<a
           [routerLink]="['/my-profile']"
           >here</a
