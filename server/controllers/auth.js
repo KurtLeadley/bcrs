@@ -72,11 +72,8 @@ exports.login = (req, res, next) => {
       return bcrypt.compare(req.body.password, user.password);
     })
     .then((result) => {
-      if (fetchedUser.isDisabled) {
-        return res.status(401).json({
-          message:
-            'Account currently locked, please contact webmaster or reset your password by answering security questions.',
-        });
+      if (fetchedUser.disabled) {
+        return next(new ErrorResponse('Account has beed disabled. Please contact your system admin.', 403));
       }
       console.log(result);
       const token = jwt.sign(

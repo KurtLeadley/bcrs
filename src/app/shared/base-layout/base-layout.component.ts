@@ -38,7 +38,7 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
     private userService: UserService
   ) {
     this.router.events.subscribe((event) => {
-      //subscribe to every routing event that takes place for manipulation of data
+      // subscribe to every routing event that takes place for manipulation of data
       if (event instanceof NavigationStart) {
         this.username = auth.getUsername();
         this.role = auth.getCurrentRole();
@@ -70,10 +70,10 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
   }
   ngAfterContentChecked() {}
   ngOnInit() {
-    //created subscriptions for observables so they can be destroyed to prevent memory leaks
-    this.userIsAuthenticated = this.auth.getIsAuthenticated(); //check user is authenticated and store in a var that will be used on frontend to display/hide certain features
+    // created subscriptions for observables so they can be destroyed to prevent memory leaks
+    this.userIsAuthenticated = this.auth.getIsAuthenticated();
     this.authListenerSubs = this.auth.getAuthStatusListener().subscribe((isAuthenticated) => {
-      //repopulate values on listener change
+      // repopulate values on listener change
       this.userIsAuthenticated = isAuthenticated;
       this.username = this.auth.getUsername();
       this.role = this.auth.getCurrentRole();
@@ -92,7 +92,7 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onLogout() {
-    //log user out
+    // log user out
     this.auth.logout();
   }
 
