@@ -51,6 +51,7 @@ export class HttpJwtInterceptor implements HttpInterceptor {
             let errorMessage = '';
             if (error.error instanceof ErrorEvent) {
               errorMessage = `Client Error: ${error.error.message}`;
+              console.log(errorMessage);
             } else {
               this._snackBar.open(error.error.message, 'X', {
                 duration: 2000,

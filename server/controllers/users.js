@@ -5,7 +5,7 @@
  */
 const ErrorResponse = require('../utils/errorResponse');
 const User = require('../models/User');
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 /**
  * @desc        Get all users
@@ -74,8 +74,6 @@ exports.createUser = (req, res, next) => {
         role: req.body.role,
         password: hash,
         securityAnswers: req.body.securityAnswers,
-        date_created: req.body.date_created,
-        date_modified: req.body.date_modified,
       });
       user //finally save the user
         .save()
@@ -118,7 +116,6 @@ exports.updateUser = (req, res, next) => {
             zipCode: req.body.zipCode,
             email: req.body.email,
             role: req.body.role,
-            dateModified: req.body.dateModified,
           },
         }
       )
