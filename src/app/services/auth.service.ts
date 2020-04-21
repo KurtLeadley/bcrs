@@ -56,7 +56,7 @@ export class AuthService {
 
   // Login
   login(username: string, password: string) {
-    const user = { username: username, password: password };
+    const user = { username, password };
     this.http
       .post<{
         token: string;
@@ -84,7 +84,7 @@ export class AuthService {
       });
   }
 
-  //register user
+  // register user
   register(user: User): Observable<string> {
     return this.http
       .post<{ message: string; user: User }>(this.apiUrl + '/auth/register', user)
@@ -99,7 +99,7 @@ export class AuthService {
 
   checkIfSecurityAnswersExistsObservable(username: string): Observable<boolean> {
     return this.http
-      .get<{ answersExist: boolean }>(this.apiUrl + '/auth/verify/users/' + username + '/answers-exist')
+      .get<{ answersExist: boolean }>(this.apiUrl + '/auth/verify/user/' + username + '/security-answers')
       .pipe(map((x) => x.answersExist));
   }
 
