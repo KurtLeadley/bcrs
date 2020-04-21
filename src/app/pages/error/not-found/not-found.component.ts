@@ -4,6 +4,7 @@
  * Description: bcrs
  */
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-not-found',

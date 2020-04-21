@@ -124,7 +124,7 @@ export class RegisterComponent implements OnInit {
       firstName: this.personalFormGroup.get('firstName').value,
       lastName: this.personalFormGroup.get('lastName').value,
       email: this.accountFormGroup.get('email').value,
-      street: this.personalFormGroup.get('address').value,
+      street: this.personalFormGroup.get('street').value,
       city: this.personalFormGroup.get('city').value,
       state: this.personalFormGroup.get('state').value,
       zipCode: this.personalFormGroup.get('zipCode').value,

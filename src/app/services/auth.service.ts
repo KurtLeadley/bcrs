@@ -93,8 +93,8 @@ export class AuthService {
 
   checkIfUsernameExistsObservable(username: string): Observable<boolean> {
     return this.http
-      .get<{ userExists: boolean }>(this.apiUrl + '/auth/verify/users/' + username)
-      .pipe(map((x) => x.userExists));
+      .get<{ userExist: boolean }>(this.apiUrl + '/auth/verify/users/' + username)
+      .pipe(map((x) => x.userExist));
   }
 
   checkIfSecurityAnswersExistsObservable(username: string): Observable<boolean> {
