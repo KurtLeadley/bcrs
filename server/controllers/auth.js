@@ -33,8 +33,6 @@ exports.register = (req, res, next) => {
         role: req.body.role,
         password: hash,
         securityAnswers: req.body.securityAnswers,
-        date_created: req.body.date_created,
-        date_modified: req.body.date_modified,
       });
       user //finally save the user
         .save()
@@ -151,7 +149,6 @@ exports.updateDetails = (req, res, next) => {
           zipCode: req.body.zipCode,
           email: req.body.email,
           password: hash,
-          dateModified: req.body.body.dateModified,
           securityAnswers: req.body.securityAnswers,
         },
       }
@@ -186,7 +183,6 @@ exports.resetPassword = (req, res, next) => {
         $set: {
           // fields to update
           password: hash,
-          modifiedDate: new Date.now(),
         },
       }
     )
@@ -261,7 +257,7 @@ exports.findSelectedSecurityQuestions = (req, res, next) => {
     SecurityQuestions.find()
       .then((questions) => {
         // sa = security answers
-        user.securityAnswers.forEach((as) => {
+        user.securityAnswers.forEach((sa) => {
           // sq = security questions
           questions.forEach((sq) => {
             if (sq._id == sa.questionId) {

@@ -56,7 +56,7 @@ export class AuthService {
 
   // Login
   login(username: string, password: string) {
-    const user = { username: username, password: password };
+    const user = { username, password };
     this.http
       .post<{
         token: string;
@@ -84,7 +84,7 @@ export class AuthService {
       });
   }
 
-  //register user
+  // register user
   register(user: User): Observable<string> {
     return this.http
       .post<{ message: string; user: User }>(this.apiUrl + '/auth/register', user)
@@ -99,22 +99,22 @@ export class AuthService {
 
   checkIfSecurityAnswersExistsObservable(username: string): Observable<boolean> {
     return this.http
-      .get<{ answersExist: boolean }>(this.apiUrl + '/auth/verify/users/' + username + '/answers-exist')
+      .get<{ answersExist: boolean }>(this.apiUrl + '/auth/verify/users/' + username + '/security-answers')
       .pipe(map((x) => x.answersExist));
   }
 
   getUsersSecurityQuestions(username: string): Observable<SecurityQuestion[]> {
     return this.http
       .get<{ message: string; securityQuestions: SecurityQuestion[] }>(
-        this.apiUrl + '/api/auth/verify/' + username + '/get-security-questions'
+        this.apiUrl + '/auth/users/' + username + '/security-questions'
       )
       .pipe(map((x) => x.securityQuestions));
   }
 
-  verifyUsersSecurityQuestions(username: String, securityAnswers: String[]): Observable<boolean> {
+  verifyUsersSecurityQuestions(username: string, securityAnswers: string[]): Observable<boolean> {
     return this.http
       .post<{ message: string; valid: boolean }>(
-        this.apiUrl + '/api/auth/verify/users/' + username + '/check-security-answers',
+        this.apiUrl + '/auth/verify/users/' + username + '/security-answers',
         securityAnswers
       )
       .pipe(map((x) => x.valid));
@@ -122,20 +122,17 @@ export class AuthService {
 
   resetPassword(username: string, password: string): Observable<string> {
     const pass = {
-      password: password,
+      password,
     };
     return this.http
-      .patch<{ message: string; valid: boolean }>(
-        this.apiUrl + '/api/auth/verify/' + username + '/reset-password',
-        pass
-      )
+      .patch<{ message: string; valid: boolean }>(this.apiUrl + '/auth/verify/' + username + '/reset-password', pass)
       .pipe(map((x) => x.message));
   }
 
-  //allow user to update their profile
+  // allow user to update their profile
   editProfile(userProfile: User): Observable<string> {
     return this.http
-      .patch<{ message: string; user: User }>(this.apiUrl + '/api/auth/updateProfile/' + userProfile._id, userProfile)
+      .patch<{ message: string; user: User }>(this.apiUrl + '/auth/updateProfile/' + userProfile._id, userProfile)
       .pipe(map((x) => x.message));
   }
 
@@ -160,7 +157,7 @@ export class AuthService {
     localStorage.setItem('role', currentRole);
   }
 
-  //clear local storage vars on logout or timeout
+  // clear local storage vars on logout or timeout
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
@@ -169,7 +166,7 @@ export class AuthService {
     localStorage.removeItem('role');
   }
 
-  //get authenticated user's data from local storage if token matches what's stored
+  // get authenticated user's data from local storage if token matches what's stored
   private getAuthData() {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiration');
@@ -180,33 +177,33 @@ export class AuthService {
       return;
     }
     return {
-      token: token,
+      token,
       expirationDate: new Date(expirationDate),
-      userObjId: userObjId,
-      username: username,
-      currentRole: currentRole,
+      userObjId,
+      username,
+      currentRole,
     };
   }
 
-  //try to automatically authenticate user if they have non-expired token in browser
+  // try to automatically authenticate user if they have non-expired token in browser
   autoAuthUser() {
-    //auto check localstorage to see if user authenticated
-    const authInformation = this.getAuthData(); //get all set local storage vars
+    // auto check localstorage to see if user authenticated
+    const authInformation = this.getAuthData(); // get all set local storage vars
     if (!authInformation) {
       return;
     }
     const now = new Date();
-    const expiresIn = authInformation.expirationDate.getTime() - now.getTime(); //check local storage time and subtract from now to get value
-    //if that value is greater than 0, user still has time left to stay logged in
+    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
+    // if that value is greater than 0, user still has time left to stay logged in
     if (expiresIn > 0) {
-      //set vars
+      // set vars
       this.token = authInformation.token;
       this.isAuthenticated = true;
       this.userObjId = authInformation.userObjId;
       this.username = authInformation.username;
       this.currentRole = authInformation.currentRole;
 
-      //force logout after 1 hour
+      // force logout after 1 hour
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }

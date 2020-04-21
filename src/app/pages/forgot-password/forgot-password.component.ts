@@ -22,7 +22,8 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   isLinear = true;
   date = new Date();
   sqList: SecurityQuestion[];
-  username: string = '';
+  username = '';
+  securityAnswers = [];
   usernameExists = false;
   securityQuestionsCorrect = false;
   private authServiceSubscription: Subscription;
@@ -88,12 +89,12 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
       return;
     }
     this.loading = true;
-    const securityAnswers = [
+    this.securityAnswers = [
       this.questionsFormGroup.get('answer1').value,
       this.questionsFormGroup.get('answer2').value,
       this.questionsFormGroup.get('answer3').value,
     ];
-    this.auth.verifyUsersSecurityQuestions(this.username, securityAnswers).subscribe((valid) => {
+    this.auth.verifyUsersSecurityQuestions(this.username, this.securityAnswers).subscribe((valid) => {
       this.securityQuestionsCorrect = valid;
       if (valid === true) {
         stepper.next();
