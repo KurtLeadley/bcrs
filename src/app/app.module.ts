@@ -52,6 +52,7 @@ import { InternalServerComponent } from './pages/error/internal-server/internal-
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
     UsersDialogComponent,
     UnauthorizedComponent,
     InternalServerComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

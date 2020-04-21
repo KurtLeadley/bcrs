@@ -14,10 +14,12 @@ import { InternalServerComponent } from './pages/error/internal-server/internal-
 import { NotFoundComponent } from './pages/error/not-found/not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthorizationGuard } from './guards/authorization.guard';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: '', component: HomeComponent },
   {
     path: 'admin',
