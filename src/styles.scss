@@ -5,6 +5,10 @@ mat-spinner {
   margin: auto;
 }
 
+main {
+  padding-top: 60px;
+}
+
 @keyframes spinner {
   to {
     transform: rotate(360deg);
