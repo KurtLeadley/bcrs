@@ -43,6 +43,8 @@ import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactUsComponent} from './pages/contact-us/contact-us.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UsersComponent } from './pages/admin/users/users.component';
@@ -58,6 +60,8 @@ import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
     AppComponent,
     BaseLayoutComponent,
     HomeComponent,
+    AboutComponent,
+    ContactUsComponent,
     LoginComponent,
     RegisterComponent,
     UsersComponent,

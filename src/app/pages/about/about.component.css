@@ -1,0 +1,34 @@
+.mat-card{
+  text-align: justify;
+  margin: 5%;
+  margin-right: 10%;
+  margin-top: 3%;
+  font-size: 12px;
+}
+
+.mat-card-header{
+  font-family: Quicksand;
+  font-weight: 200;
+  font-size: 18pt;
+  margin: 0%;
+  width: 100%;
+
+}
+
+p{
+  font-family: Quicksand;
+  font-size: 14pt;
+  font-weight: 200;
+  width: 100%;
+  position: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.history-container{
+   margin: 0 10%;
+   text-align: justify;
+}
+img{
+  width: 100%;;
+}
