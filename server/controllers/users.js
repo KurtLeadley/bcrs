@@ -5,6 +5,7 @@
  */
 const ErrorResponse = require('../utils/errorResponse');
 const User = require('../models/User');
+const bcrypt = require("bcryptjs");
 
 /**
  * @desc        Get all users
