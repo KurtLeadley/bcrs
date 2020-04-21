@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user.model';
-import { SecurityQuestionService } from '../../services/security-questiion.service';
+import { SecurityQuestionService } from '../../services/security-question.service';
 import { SecurityQuestion } from 'src/app/models/security-question.model';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
