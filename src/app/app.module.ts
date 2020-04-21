@@ -105,7 +105,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     TabViewModule,
     FontAwesomeModule,
     MatSlideToggleModule,
-    MatTabsModule,
+    MatTabsModule
   ],
   providers: [
     AuthenticationGuard,

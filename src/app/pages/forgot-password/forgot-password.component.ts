@@ -64,9 +64,10 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     }
     this.loading = true;
     this.username = this.usernameFormGroup.get('username').value;
+    console.log(this.username);
     this.authServiceSubscription = this.auth.checkIfUsernameExistsObservable(this.username).subscribe((response) => {
       this.usernameExists = response;
-
+      console.log(this.usernameExists);
       if (response === true) {
         this.auth.getUsersSecurityQuestions(this.username).subscribe((securityQuestions) => {
           let i = 1;
