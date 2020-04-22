@@ -84,7 +84,7 @@ exports.getPurchasesByService = (req, res, next) => {
     { $project: { _id: 0, lineItem: ['$lineItems._id', '$lineItems.title'] } },
     {
       $group: {
-        _id: { lineItemd: '$lineItem' },
+        _id: { lineItems: '$lineItem' },
         count: { $sum: 1 },
       },
     },
@@ -125,7 +125,7 @@ exports.getPurchasesByServiceCount = (req, res, next) => {
     .count()
     // qty = quantity
     .then((qty) => {
-      if (!amount) {
+      if (!qty) {
         res.status(200).json({
           success: true,
           quantity: 0,
