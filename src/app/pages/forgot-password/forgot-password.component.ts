@@ -9,7 +9,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
-import { SecurityQuestionService } from '../../services/security-questiion.service';
+import { SecurityQuestionService } from '../../services/security-question.service';
 import { SecurityQuestion } from '../../models/security-question.model';
 
 @Component({
