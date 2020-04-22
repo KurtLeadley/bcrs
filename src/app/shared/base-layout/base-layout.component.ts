@@ -16,6 +16,8 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
   show = false;
   imageUrl: string;
   showAvatar = false;
+  isCollapsed = true;
+  autoclose = false;
   private sub: Subscription;
 
   year: number = Date.now();
@@ -37,7 +39,9 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
     private router: Router,
     private userService: UserService
   ) {
-    this.router.events.subscribe((event) => {
+    router.events.subscribe((event) => {
+      this.autoclose = true;
+      this.isCollapsed = true;
       // subscribe to every routing event that takes place for manipulation of data
       if (event instanceof NavigationStart) {
         this.username = auth.getUsername();
@@ -68,7 +72,7 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
       }
     });
   }
-  ngAfterContentChecked() {}
+
   ngOnInit() {
     // created subscriptions for observables so they can be destroyed to prevent memory leaks
     this.userIsAuthenticated = this.auth.getIsAuthenticated();
@@ -84,8 +88,6 @@ export class BaseLayoutComponent implements OnInit, OnDestroy, OnChanges {
       this.cdRef.detectChanges();
     });
   }
-
-  ngAfterContentInit() {}
 
   ngOnChanges() {
     this.username = this.auth.getUsername();

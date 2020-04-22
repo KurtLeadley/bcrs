@@ -28,15 +28,15 @@ $dark-background: #555555 !default;
 $grays: () !default;
 $grays: map-merge(
   (
-    "100": $gray-100,
-    "200": $gray-200,
-    "300": $gray-300,
-    "400": $gray-400,
-    "500": $gray-500,
-    "600": $gray-600,
-    "700": $gray-700,
-    "800": $gray-800,
-    "900": $gray-900
+    '100': $gray-100,
+    '200': $gray-200,
+    '300': $gray-300,
+    '400': $gray-400,
+    '500': $gray-500,
+    '600': $gray-600,
+    '700': $gray-700,
+    '800': $gray-800,
+    '900': $gray-900,
   ),
   $grays
 );
@@ -72,21 +72,21 @@ $opacity-2: rgba(255, 255, 255, 0.2) !default;
 $colors: () !default;
 $colors: map-merge(
   (
-    "blue": $blue,
-    "indigo": $indigo,
-    "purple": $purple,
-    "pink": $pink,
-    "red": $red,
-    "orange": $orange,
-    "yellow": $yellow,
-    "green": $green,
-    "teal": $teal,
-    "cyan": $cyan,
-    "white": $white,
-    "gray": $gray-600,
-    "light": $gray-400,
-    "lighter": $gray-200,
-    "gray-dark": $gray-800
+    'blue': $blue,
+    'indigo': $indigo,
+    'purple': $purple,
+    'pink': $pink,
+    'red': $red,
+    'orange': $orange,
+    'yellow': $yellow,
+    'green': $green,
+    'teal': $teal,
+    'cyan': $cyan,
+    'white': $white,
+    'gray': $gray-600,
+    'light': $gray-400,
+    'lighter': $gray-200,
+    'gray-dark': $gray-800,
   ),
   $colors
 );
@@ -94,13 +94,13 @@ $colors: map-merge(
 $default-opacity: rgba(182, 182, 182, 0.6) !default;
 $orange-color: #f96332 !default;
 
-$default: #344675 !default;
-$primary: #e14eca !default;
-$secondary: #f4f5f7 !default;
-$success: #00f2c3 !default;
+$default: #0a2459 !default;
+$primary: #03318c !default;
+$secondary: #d9043d !default;
+$success: #0ba038 !default;
 $info: #1d8cf8 !default;
-$warning: #ff8d72 !default;
-$danger: #fd5d93 !default;
+$warning: #eedb30 !default;
+$danger: #910707 !default;
 $black: #222a42 !default;
 
 // gradient
@@ -116,8 +116,8 @@ $background-black: #171941 !default;
 $background-states-black: #1e1e24 !default;
 
 // opacity
-$default-opacity: rgba(182, 182, 182, 0.6) !default;
-$primary-opacity: rgba(209, 49, 193, 0.3) !default;
+$default-opacity: rgba(10, 36, 89, 0.6) !default;
+$primary-opacity: rgba(3, 49, 140, 0.3) !default;
 $success-opacity: rgba(24, 206, 15, 0.3) !default;
 $info-opacity: rgba(44, 168, 255, 0.3) !default;
 $warning-opacity: rgba(255, 178, 54, 0.3) !default;
@@ -165,17 +165,17 @@ $behance-states: lighten($behance, 6%) !default;
 $theme-colors: () !default;
 $theme-colors: map-merge(
   (
-    "default": $default,
-    "primary": $primary,
-    "secondary": $secondary,
-    "success": $success,
-    "info": $info,
-    "warning": $warning,
-    "danger": $danger,
-    "white": $white,
-    "neutral": $white,
-    "dark": $dark,
-    "darker": $darker
+    'default': $default,
+    'primary': $primary,
+    'secondary': $secondary,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'danger': $danger,
+    'white': $white,
+    'neutral': $white,
+    'dark': $dark,
+    'darker': $darker,
   ),
   $theme-colors
 );
@@ -183,18 +183,18 @@ $theme-colors: map-merge(
 $brand-colors: () !default;
 $brand-colors: map-merge(
   (
-    "facebook": $facebook,
-    "twitter": $twitter,
-    "google-plus": $google-plus,
-    "instagram": $instagram,
-    "pinterest": $pinterest,
-    "youtube": $youtube,
-    "dribbble": $dribbble,
-    "github": $github,
-    "reddit": $reddit,
-    "behance": $behance,
-    "tumblr": $tumblr,
-    "linkedin": $linkedin
+    'facebook': $facebook,
+    'twitter': $twitter,
+    'google-plus': $google-plus,
+    'instagram': $instagram,
+    'pinterest': $pinterest,
+    'youtube': $youtube,
+    'dribbble': $dribbble,
+    'github': $github,
+    'reddit': $reddit,
+    'behance': $behance,
+    'tumblr': $tumblr,
+    'linkedin': $linkedin,
   ),
   $brand-colors
 );
@@ -241,11 +241,11 @@ $body-color: $gray-700 !default;
 $section-colors: () !default;
 $section-colors: map-merge(
   (
-    "primary": $body-bg,
-    "secondary": $secondary,
-    "light": $gray-400,
-    "dark": $dark,
-    "darker": $darker
+    'primary': $body-bg,
+    'secondary': $secondary,
+    'light': $gray-400,
+    'dark': $dark,
+    'darker': $darker,
   ),
   $section-colors
 );
@@ -264,10 +264,10 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 );
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 @include _assert-starts-at-zero($grid-breakpoints);
 
 // Grid containers
@@ -282,30 +282,30 @@ $spacers: map-merge(
   (
     0: 0,
     1: (
-      $spacer * 0.25
+      $spacer * 0.25,
     ),
     2: (
-      $spacer * 0.5
+      $spacer * 0.5,
     ),
     3: $spacer,
     4: (
-      $spacer * 1.5
+      $spacer * 1.5,
     ),
     5: (
-      $spacer * 3
+      $spacer * 3,
     ),
-    "sm": (
-      $spacer * 2
+    'sm': (
+      $spacer * 2,
     ),
-    "md": (
-      $spacer * 4
+    'md': (
+      $spacer * 4,
     ),
-    "lg": (
-      $spacer * 6
+    'lg': (
+      $spacer * 6,
     ),
-    "xl": (
-      $spacer * 8
-    )
+    'xl': (
+      $spacer * 8,
+    ),
   ),
   $spacers
 );
@@ -335,7 +335,7 @@ $sizes: map-merge(
     25: 25%,
     50: 50%,
     75: 75%,
-    100: 100%
+    100: 100%,
   ),
   $sizes
 );
@@ -369,13 +369,12 @@ $box-shadow-lg: 2px 2px 6px rgba(0, 0, 0, 0.4);
 $dropdown-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.125);
 $box-shadow-raised: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
 $box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
-$sidebar-box-shadow: 0px 2px 22px 0 rgba(0, 0, 0, 0.2),
-  0px 2px 30px 0 rgba(0, 0, 0, 0.35);
+$sidebar-box-shadow: 0px 2px 22px 0 rgba(0, 0, 0, 0.2), 0px 2px 30px 0 rgba(0, 0, 0, 0.35);
 $info-shadow: 13px 13px 50px -24px;
 
 $component-active-color: $white !default;
-$component-active-bg: theme-color("primary") !default;
-$component-active-border-color: theme-color("primary") !default;
+$component-active-bg: theme-color('primary') !default;
+$component-active-border-color: theme-color('primary') !default;
 
 $component-hover-color: $gray-300 !default;
 $component-hover-bg: $gray-300 !default;
@@ -398,8 +397,8 @@ $general-transition-time: 300ms !default;
 
 // Fonts
 
-$font-family-base: "Poppins", sans-serif !default;
-$font-family-alt: "Poppins", sans-serif !default;
+$font-family-base: 'Poppins', sans-serif !default;
+$font-family-alt: 'Poppins', sans-serif !default;
 
 $font-size-dash: 0.875rem !default;
 
@@ -567,8 +566,7 @@ $btn-font-weight: 400 !default;
 $btn-text-transform: uppercase !default;
 $btn-letter-spacing: 0.025em !default;
 $btn-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-$btn-hover-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
-  0 3px 6px rgba(0, 0, 0, 0.08);
+$btn-hover-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 $btn-focus-box-shadow: $btn-hover-box-shadow !default;
 $btn-focus-width: $input-btn-focus-width !default;
 
@@ -599,10 +597,8 @@ $input-disabled-bg: $gray-200 !default;
 
 $input-muted-bg: #edf0f5 !default;
 
-$input-alternative-box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15),
-  0 1px 0 rgba(0, 0, 0, 0.02);
-$input-focus-alternative-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11),
-  0 1px 3px rgba(0, 0, 0, 0.08);
+$input-alternative-box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+$input-focus-alternative-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 
 $input-color: $opacity-8 !default;
 $input-border-color: #cad1d7 !default;
@@ -619,8 +615,7 @@ $input-placeholder-color: $gray-500 !default;
 $input-focus-placeholder-color: $gray-500 !default;
 
 $input-height-border: $input-border-width * 2 !default;
-$input-height-inner: ($font-size-base * $input-btn-line-height) +
-  ($input-btn-padding-y * 2) !default;
+$input-height-inner: ($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2) !default;
 $input-height: calc(#{$input-height-inner} + #{$input-height-border}) !default;
 
 $input-transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -661,10 +656,7 @@ $custom-control-indicator-checked-color: $component-active-color !default;
 $custom-control-indicator-checked-bg: $component-active-bg !default;
 $custom-control-indicator-checked-border-color: $component-active-border-color !default;
 $custom-control-indicator-checked-box-shadow: $custom-control-indicator-box-shadow !default;
-$custom-control-indicator-checked-disabled-bg: rgba(
-  theme-color("primary"),
-  0.5
-);
+$custom-control-indicator-checked-disabled-bg: rgba(theme-color('primary'), 0.5);
 
 $custom-control-indicator-disabled-bg: $gray-200 !default;
 $custom-control-label-disabled-color: $gray-600 !default;
@@ -673,14 +665,14 @@ $custom-checkbox-indicator-border-radius: $border-radius-sm !default;
 //$custom-checkbox-indicator-icon-checked:        str-replace(url("data:image/svg+xml !default;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $custom-toggle-slider-bg: #ddd !default;
-$custom-toggle-checked-bg: theme-color("primary") !default;
+$custom-toggle-checked-bg: theme-color('primary') !default;
 
 // Form validation
 
 $form-feedback-valid-bg: lighten($success, 15%);
-$form-feedback-valid-color: theme-color("success") !default;
+$form-feedback-valid-color: theme-color('success') !default;
 $form-feedback-invalid-bg: lighten($warning, 15%);
-$form-feedback-invalid-color: theme-color("warning") !default;
+$form-feedback-invalid-color: theme-color('warning') !default;
 
 // Allows for customizing button radius independently from global border radius
 
@@ -701,7 +693,7 @@ $noui-slider-connect-bg: $primary !default;
 $noui-slider-connect-disabled-bg: #b2b2b2 !default;
 
 $noui-handle-width: 15px !default;
-$noui-handle-bg: theme-color("primary") !default;
+$noui-handle-bg: theme-color('primary') !default;
 $noui-handle-border: 0 !default;
 $noui-handle-border-radius: 100% !default;
 
@@ -713,8 +705,8 @@ $dropdown-bg: $white !default;
 $dropdown-border-width: 0 !default;
 $dropdown-border-color: rgba($black, 0.15);
 $dropdown-border-radius: $border-radius-xs !default;
-$dropdown-box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
-  0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+$dropdown-box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1), 0 15px 35px rgba(50, 50, 93, 0.15),
+  0 5px 15px rgba(0, 0, 0, 0.1);
 
 $dropdown-link-active-color: $component-active-color !default;
 $dropdown-link-active-bg: $component-active-bg !default;
@@ -733,13 +725,13 @@ $nav-pills-space-x: 1rem !default;
 
 $nav-pills-bg: $white;
 $nav-pills-border-width: 1px !default;
-$nav-pills-border-color: theme-color("primary") !default;
+$nav-pills-border-color: theme-color('primary') !default;
 $nav-pills-border-radius: $border-radius !default;
 
-$nav-pills-link-color: theme-color("primary") !default;
-$nav-pills-link-hover-color: darken(theme-color("primary"), 5%);
-$nav-pills-link-active-color: color-yiq(theme-color("primary"));
-$nav-pills-link-active-bg: theme-color("primary") !default;
+$nav-pills-link-color: theme-color('primary') !default;
+$nav-pills-link-hover-color: darken(theme-color('primary'), 5%);
+$nav-pills-link-active-color: color-yiq(theme-color('primary'));
+$nav-pills-link-active-bg: theme-color('primary') !default;
 $nav-pills-box-shadow: $btn-box-shadow !default;
 
 // Navbar
@@ -948,8 +940,7 @@ $modal-content-border-color: rgba($black, 0.2);
 $modal-content-border-width: 1px !default;
 $modal-content-border-radius: $border-radius-sm !default;
 $modal-content-box-shadow-xs: 0px 10px 50px 0px rgba(0, 0, 0, 0.5);
-$modal-content-box-shadow-sm-up: 0 15px 35px rgba(50, 50, 93, 0.2),
-  0 5px 15px rgba(0, 0, 0, 0.17);
+$modal-content-box-shadow-sm-up: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.17);
 
 $modal-backdrop-bg: $black !default;
 $modal-backdrop-opacity: 0.16 !default;
@@ -984,14 +975,11 @@ $datepicker-disabled-old-new-color: $gray-500 !default;
 $datepicker-header-cell-border-radius: $border-radius !default;
 
 $datepicker-active-color: $white !default;
-$datepicker-active-background: theme-color("primary") !default;
+$datepicker-active-background: theme-color('primary') !default;
 $datepicker-active-box-shadow: none !default;
 
-$datepicker-range-background: theme-color("primary") !default;
-$datepicker-range-cell-focused-background: darken(
-  $datepicker-range-background,
-  5%
-);
+$datepicker-range-background: theme-color('primary') !default;
+$datepicker-range-cell-focused-background: darken($datepicker-range-background, 5%);
 $datepicker-range-color: $white !default;
 $datepicker-range-highlighted-bg: $gray-200 !default;
 
@@ -1002,7 +990,7 @@ $datepicker-highlighted-bg: $datepicker-active-background !default;
 // Footer
 
 $footer-link-font-size: 0.85rem !default;
-$footer-bg: theme-color("secondary") !default;
+$footer-bg: theme-color('secondary') !default;
 $footer-color: $gray-600 !default;
 $footer-link-color: $gray-600 !default;
 $footer-link-hover-color: $gray-700 !default;

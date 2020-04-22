@@ -6,17 +6,72 @@
 <div class="cd-section" id="headers">
   <div class="header-2">
     <!-- !isAuthenticated -->
-    <nav *ngIf="!userIsAuthenticated" class="navbar navbar-expand-lg fixed-top mb-3" color-on-scroll="500">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300" id="navbar-top">
       <div class="container">
         <div class="navbar-translate">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#noAuthNavbar">
+          <a class="navbar-brand" routerLink="/home" placement="bottom" tooltip="Give us a call today 1 (555) 555-5555">
+            <span><img src="../../../assets/img/bcrs-logo.png" alt="BCRS logo" />&nbsp;Bob's Computer Repair Shop</span>
+          </a>
+          <button
+            aria-controls="navigation"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            [attr.aria.expand]="!isCollapsed"
+            (click)="isCollapsed = !isCollapsed"
+            id="navigation"
+            type="button"
+          >
             <span class="navbar-toggler-bar bar1"></span>
             <span class="navbar-toggler-bar bar2"></span>
             <span class="navbar-toggler-bar bar3"></span>
           </button>
-          <a href="/" class="navbar-brand">BCRS</a>
         </div>
-        <div class="collapse navbar-collapse" id="noAuthNavbar">
+        <div *ngIf="!userIsAuthenticated" class="navbar-collapse" [collapse]="isCollapsed" id="noAuthNavbar">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a> BCRS <span> Bob's Computer Repair Shop </span> </a>
+              </div>
+              <div class="col-6 collapse-close text-right">
+                <button
+                  aria-controls="navigation"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler"
+                  [attr.aria-expanded]="!isCollapsed"
+                  (click)="isCollapsed = !isCollapsed"
+                  id="noAuthNavbar"
+                  type="button"
+                >
+                  <i class="tim-icons icon-simple-remove"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/home" class="nav-link btn btn-sm btn-default">
+                <i class="tim-icons icon-paper"> </i> Home
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/about" class="nav-link btn btn-sm btn-default">
+                <i class="tim-icons icon-bulb-63"> </i> About Us
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/contact-us" class="nav-link btn btn-sm btn-default">
+                <i class="tim-icons icon-square-pin"> </i> Contact Us
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/services" class="nav-link btn btn-sm btn-default">
+                <i class="tim-icons icon-settings"> </i> Services
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- <div class="collapse navbar-collapse" id="noAuthNavbar">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item" routerLinkActive="active">
               <a routerLink="/" class="nav-link">Home</a>
@@ -52,7 +107,7 @@
       </div>
     </nav>
     <!-- isAuthenticated && !isAdmin -->
-    <nav
+        <!-- <nav
       *ngIf="userIsAuthenticated && role != 'admin'"
       class="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute"
     >
@@ -107,7 +162,7 @@
       </div>
     </nav>
     <!-- isAuthenticated && isAdmin -->
-    <nav
+        <!-- <nav
       *ngIf="userIsAuthenticated && role == 'admin'"
       class="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute"
     >
@@ -159,6 +214,8 @@
             </li>
           </ul>
         </div>
+      </div>
+    </nav> -->
       </div>
     </nav>
   </div>
