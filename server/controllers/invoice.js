@@ -155,7 +155,6 @@ exports.createInvoice = (req, res, next) => {
     lineItemTotal: req.body.lineItemTotal,
     total: req.body.total,
     username: req.body.username,
-    orderDate: req.body.orderDate,
   });
   // save invoice to database
   invoice

@@ -6,13 +6,16 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
-const RoleSchema = mongoose.Schema({
-  text: {
-    type: String,
-    unique: true,
-    dropDups: true,
+const RoleSchema = mongoose.Schema(
+  {
+    text: {
+      type: String,
+      unique: true,
+      dropDups: true,
+    },
   },
-});
+  { timestamps: { createdAt: 'dateCreated', updatedAt: 'dateModified' } }
+);
 
 // plugin used to validate unique values
 RoleSchema.plugin(uniqueValidator);

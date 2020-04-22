@@ -6,26 +6,26 @@
 const mongoose = require('mongoose');
 const LineItemSchema = require('./LineItem');
 
-const InvoiceSchema = mongoose.Schema({
-  lineItems: [LineItemSchema],
-  partsAmount: {
-    type: Number,
+const InvoiceSchema = mongoose.Schema(
+  {
+    lineItems: [LineItemSchema],
+    partsAmount: {
+      type: Number,
+    },
+    laborAmount: {
+      type: Number,
+    },
+    lineItemTotal: {
+      type: Number,
+    },
+    total: {
+      type: Number,
+    },
+    username: {
+      type: String,
+    },
   },
-  laborAmount: {
-    type: Number,
-  },
-  lineItemTotal: {
-    type: Number,
-  },
-  total: {
-    type: Number,
-  },
-  username: {
-    type: String,
-  },
-  orderDate: {
-    type: Date,
-  },
-});
+  { timestamps: { createdAt: 'orderDate', updatedAt: 'dateModified' } }
+);
 
 module.exports = mongoose.model('Invoice', InvoiceSchema);

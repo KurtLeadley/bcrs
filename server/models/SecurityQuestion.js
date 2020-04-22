@@ -6,10 +6,13 @@
 const mongoose = require('mongoose');
 const mongooseDisabled = require('mongoose-disable');
 
-const SecurityQuestionSchema = new mongoose.Schema({
-  text: { type: String },
-  disabled: { type: Boolean, default: false },
-});
+const SecurityQuestionSchema = new mongoose.Schema(
+  {
+    text: { type: String },
+    disabled: { type: Boolean, default: false },
+  },
+  { timestamps: { createdAt: 'dateCreated', updatedAt: 'dateModified' } }
+);
 
 // plugin used to toggle disabled field
 SecurityQuestionSchema.plugin(mongooseDisabled, {
