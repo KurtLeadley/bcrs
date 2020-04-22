@@ -23,7 +23,7 @@ export class SecurityQuestionsComponent implements OnInit {
   loading = false;
   securityQuestions: SecurityQuestion[] = [];
 
-  displayedColumns: string[] = ['text', 'disabled', 'actiion'];
+  displayedColumns: string[] = ['text', 'disabled', 'action'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 

@@ -1,3 +1,57 @@
-<p>
-  security-questions works!
-</p>
+<mat-card class="card">
+  <mat-card-header class="card_header" fxLayout="column" fxLayoutWrap fxLayoutGap="1rem">
+    <h2 class="card_header-title">Security Questions Configuration</h2>
+    <div fxLayout="row" fxLAyout.xs="column" fxLayoutWrap fxLayoutGap="1rem" fxLayoutAlign="space-between center">
+      <div class="card_header-filter">
+        <mat-form-field>
+          <mat-label>Table Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Filter Security Questions" />
+        </mat-form-field>
+      </div>
+
+      <div class="card_header-button">
+        <button mat-raised-button (click)="openDialog('Add', null)">
+          <mat-icon>group_add</mat-icon>
+          <span>Add Security Question</span>
+        </button>
+      </div>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content class="card_content">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate" style="margin: 10 0;"></mat-progress-bar>
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="text">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Security Question Text</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Text: ">{{ element.text }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="disabled">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Disabled</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Disabled: ">
+          <mat-slide-toggle [checked]="element.disabled" (click)="openDialog('Disable', element)" color="primary">
+            {{ element.disabled ? 'Yes' : 'No' }}
+          </mat-slide-toggle>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_cert</mat-icon>
+          </button>
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item (click)="openDialog('Update', element)">Edit Security Question</button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions class="card_footer">
+    <mat-paginator class="card_footer-pager" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </mat-card-actions>
+</mat-card>

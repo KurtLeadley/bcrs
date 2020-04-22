@@ -17,6 +17,7 @@ import { NotFoundComponent } from './pages/error/not-found/not-found.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,7 +28,14 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   {
     path: 'admin',
-    children: [{ path: 'users', component: UsersComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] }],
+    children: [
+      { path: 'users', component: UsersComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
+      {
+        path: 'security-questions',
+        component: SecurityQuestionsComponent,
+        canActivate: [AuthenticationGuard, AuthorizationGuard],
+      },
+    ],
   },
   {
     path: 'error',

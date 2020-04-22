@@ -44,7 +44,7 @@ import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ContactUsComponent} from './pages/contact-us/contact-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UsersComponent } from './pages/admin/users/users.component';
@@ -55,6 +55,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     RegisterComponent,
     UsersComponent,
     UsersDialogComponent,
+    SecurityQuestionsComponent,
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
@@ -105,7 +107,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     TabViewModule,
     FontAwesomeModule,
     MatSlideToggleModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   providers: [
     AuthenticationGuard,

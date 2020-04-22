@@ -1,0 +1,23 @@
+.presentation-page .section-pricing .card-pricing ul.b-left li:after {
+  border-color: #fd5d93;
+}
+.presentation-page .section-pricing .card-pricing ul.b-left:after {
+  background: #fd5d93;
+}
+.index-page .squares {
+  @include linear-gradient($danger-states, $danger);
+}
+.register-page,
+.login-page,
+.section.section-signup {
+  .squares,
+  .square {
+    @include linear-gradient($danger-states, $danger);
+  }
+}
+.footer {
+  border-top: 2px solid $danger;
+}
+.landing-page .section-lg {
+  overflow: unset;
+}
