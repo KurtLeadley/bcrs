@@ -18,12 +18,12 @@ const router = express.Router();
 // Invoice routes
 // POST
 router.post('/', createInvoice);
+router.post('/:username', getInvoicesByUser);
 // GET
-router.get('/', getInvoices);
-router.get('/:id', getInvoice);
-router.get('/:username', getInvoicesByUser);
-router.get('/purchases', getPurchasesByService);
 router.get('/purchases/:serviceId', getPurchasesByServiceCount);
+router.get('/purchases', getPurchasesByService);
+router.get('/:id', getInvoice);
+router.get('/', getInvoices);
 // PUT
 
 // DELETE
