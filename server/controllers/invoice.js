@@ -51,7 +51,7 @@ exports.getInvoice = (req, res, next) => {
 
 /**
  * @desc        Get Invoices By Username
- * @route       GET /api/v1/invoices/:username
+ * @route       POST /api/v1/invoices/:username
  * @access      Private
  */
 exports.getInvoicesByUser = (req, res, next) => {
@@ -155,7 +155,6 @@ exports.createInvoice = (req, res, next) => {
     lineItemTotal: req.body.lineItemTotal,
     total: req.body.total,
     username: req.body.username,
-    orderDate: req.body.orderDate,
   });
   // save invoice to database
   invoice
