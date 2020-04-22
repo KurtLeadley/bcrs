@@ -73,6 +73,7 @@ import { AuthorizationGuard } from './guards/authorization.guard';
 import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
+import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { SecurityQuestionsComponent } from './pages/admin/security-questions/sec
     UsersComponent,
     UsersDialogComponent,
     SecurityQuestionsComponent,
+    SecurityQuestionsDialogComponent,
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
