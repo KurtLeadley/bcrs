@@ -8,7 +8,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300" id="navbar-top">
       <div class="container">
         <div class="navbar-translate">
-          <a class="navbar-brand" routerLink="/home" placement="bottom" tooltip="Give us a call today 1 (555) 555-5555">
+          <a class="navbar-brand" routerLink="/" placement="bottom" tooltip="Give us a call today 1 (555) 555-5555">
             <span><img src="../../../assets/img/bcrs-logo.png" alt="BCRS logo" /><br />Bob's Computer Repair Shop</span>
           </a>
           <button
@@ -151,7 +151,7 @@
               </a>
               <div
                 aria-labelledby="adminConfigDropdownMenuLink"
-                class="dropdown-menu dropdown-menu-right"
+                class="dropdown-menu dropdown-menu-right dropdown-primary"
                 *dropdownMenu
               >
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-money-coins"> </i> Purchases </a>
@@ -167,7 +167,11 @@
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" dropdownToggle id="adminDropdownMenuLink">
                 <i class="tim-icons icon-atom"> </i> Admin Services
               </a>
-              <div aria-labelledby="adminDropdownMenuLink" class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <div
+                aria-labelledby="adminDropdownMenuLink"
+                class="dropdown-menu dropdown-menu-right dropdown-primary"
+                *dropdownMenu
+              >
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-molecule-40"> </i> Profile </a>
                 <a class="dropdown-item" routerLink="/admin/invoices"> <i class="tim-icons icon-single-copy-04"> </i> Invoices </a>
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-settings"> </i> Service Repair </a>
