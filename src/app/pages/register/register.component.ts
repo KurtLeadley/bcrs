@@ -3,7 +3,7 @@
  * Authors: Group 4
  * Description: bcrs
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,6 +19,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  focus;
+  focus1;
+  focus2;
+  focus3;
+  focus4;
+  focus5;
+  focus6;
+  focus7;
+  focus8;
+  focus9;
+  focus10;
+  focus11;
+  focus12;
+  focus13;
+  focus14;
+  focus15;
+  focus16;
   loading = false;
   usernameCheckSpinner = false;
   isLinear = true;
@@ -39,8 +56,33 @@ export class RegisterComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private router: Router
   ) {}
+  @HostListener('document:mouseover', ['$event'])
+  onMouseMove(e) {
+    const squares1 = document.getElementById('square1');
+    const squares2 = document.getElementById('square2');
+    const squares3 = document.getElementById('square3');
+    const squares4 = document.getElementById('square4');
+    const squares5 = document.getElementById('square5');
+    const squares6 = document.getElementById('square6');
+    const squares7 = document.getElementById('square7');
+    const squares8 = document.getElementById('square8');
+
+    const posX = e.clientX - window.innerWidth / 2;
+    const posY = e.clientY - window.innerWidth / 6;
+
+    squares1.style.transform = 'perspective(500px) rotateY(' + posX * 0.05 + 'deg) rotateX(' + posY * -0.05 + 'deg)';
+    squares2.style.transform = 'perspective(500px) rotateY(' + posX * 0.05 + 'deg) rotateX(' + posY * -0.05 + 'deg)';
+    squares3.style.transform = 'perspective(500px) rotateY(' + posX * 0.05 + 'deg) rotateX(' + posY * -0.05 + 'deg)';
+    squares4.style.transform = 'perspective(500px) rotateY(' + posX * 0.05 + 'deg) rotateX(' + posY * -0.05 + 'deg)';
+    squares5.style.transform = 'perspective(500px) rotateY(' + posX * 0.05 + 'deg) rotateX(' + posY * -0.05 + 'deg)';
+    squares6.style.transform = 'perspective(500px) rotateY(' + posX * 0.05 + 'deg) rotateX(' + posY * -0.05 + 'deg)';
+    squares7.style.transform = 'perspective(500px) rotateY(' + posX * 0.02 + 'deg) rotateX(' + posY * -0.02 + 'deg)';
+    squares8.style.transform = 'perspective(500px) rotateY(' + posX * 0.02 + 'deg) rotateX(' + posY * -0.02 + 'deg)';
+  }
 
   ngOnInit() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('register-page');
     this.loading = true;
     this.sqService.getSecurityQuestions().subscribe((securityQuestionList) => {
       this.sqList = securityQuestionList;
@@ -159,5 +201,10 @@ export class RegisterComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/login']);
     }, 2000);
+  }
+
+  ngOnDestory() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('register-page');
   }
 }

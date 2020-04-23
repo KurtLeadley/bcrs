@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: new FormControl('', Validators.required),
     });
     const body = document.getElementsByTagName('body')[0];
-    body.classList.add('landing-page');
+    body.classList.add('login-page');
   }
 
   onLogin() {

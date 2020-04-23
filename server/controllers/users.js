@@ -99,42 +99,35 @@ exports.createUser = (req, res, next) => {
  * @access      Private/admin
  */
 exports.updateUser = (req, res, next) => {
-  bcrypt
-    .hash(req.body.password, 10)
-    .then((hash) => {
-      User.updateOne(
-        { _id: req.params.id },
-        {
-          $set: {
-            // fields to update
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
-            street: req.body.street,
-            city: req.body.city,
-            state: req.body.state,
-            zipCode: req.body.zipCode,
-            email: req.body.email,
-            role: req.body.role,
-          },
-        }
-      )
-        .then((user) => {
-          if (user.nModified > 0) {
-            res.status(200).json({
-              success: true,
-              user,
-            });
-          } else {
-            return next(new ErrorResponse('Not Authorized', 401));
-          }
-        })
-        .catch((err) => {
-          return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
+  User.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        // fields to update
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phoneNumber: req.body.phoneNumber,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zipCode: req.body.zipCode,
+        email: req.body.email,
+        role: req.body.role,
+      },
+    }
+  )
+    .then((user) => {
+      if (user.nModified > 0) {
+        res.status(200).json({
+          success: true,
+          user,
         });
+      } else {
+        return next(new ErrorResponse('Not Authorized', 401));
+      }
     })
     .catch((err) => {
-      return next(new ErrorResponse(`Internal Error: ${err.message}`));
+      return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
     });
 };
 
