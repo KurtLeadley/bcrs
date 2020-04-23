@@ -82,6 +82,8 @@
       <button type="submit" mat-button cdkFocusInitial [class.spinner]="loading" [disabled]="loading">
         {{ data.action.toString() === 'Delete' ? 'Update' : data.action }}
       </button>
+
+      <button mat-button (click)="close()">Cancel</button>
     </div>
   </form>
 </div>

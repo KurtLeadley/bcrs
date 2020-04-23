@@ -92,7 +92,7 @@ import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
-    InvoicesComponent,
+    InvoicesComponent
   ],
   imports: [
     BrowserModule,
@@ -142,7 +142,7 @@ import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule,
+    TagInputModule
   ],
   providers: [
     AuthenticationGuard,
