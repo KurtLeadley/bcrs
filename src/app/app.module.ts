@@ -74,6 +74,7 @@ import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SecurityQuestionsDialogComponent } from './pages/admin/security-questio
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
