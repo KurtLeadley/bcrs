@@ -74,6 +74,7 @@ import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
+import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SecurityQuestionsDialogComponent } from './pages/admin/security-questio
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
+    InvoicesComponent
   ],
   imports: [
     BrowserModule,
@@ -140,7 +142,7 @@ import { SecurityQuestionsDialogComponent } from './pages/admin/security-questio
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule,
+    TagInputModule
   ],
   providers: [
     AuthenticationGuard,

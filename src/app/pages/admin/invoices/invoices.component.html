@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <div *ngIf="!loading">
+    <h2>Invoice Portal</h2>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column">
+      <div fxFlex="50">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput placeholder="Find Invoice" />
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button>
+          <mat-icon>group_add</mat-icon>
+          <span>Add Invoice</span>
+        </button>
+      </div>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <!-- Line Items Column -->
+      <ng-container matColumnDef="lineItems">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Line Items</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Line Items: ">{{ element.lineItems}}
+
+        </mat-cell>
+      </ng-container>
+
+      <!-- Parts Amount Column -->
+      <ng-container matColumnDef="partsAmount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Parts Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Parts: ">{{ element.partsAmount}}</mat-cell>
+      </ng-container>
+
+      <!-- Labor Amount Column -->
+      <ng-container matColumnDef="laborAmount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Labor Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Labor: ">{{ element.laborAmount }}</mat-cell>
+      </ng-container>
+
+      <!-- Line Item Total -->
+      <ng-container matColumnDef="lineItemTotal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Line Item Total</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Line Item Total: ">{{ element.lineItemTotal }}</mat-cell>
+      </ng-container>
+
+      <!-- Total -->
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Total</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Total: ">{{ element.total }}</mat-cell>
+      </ng-container>
+
+      <!-- Action Column-->
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item >Edit Invoice</button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+    </mat-table>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</mat-card>
