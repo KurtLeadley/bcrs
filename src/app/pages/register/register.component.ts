@@ -19,34 +19,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  focus;
-  focus1;
-  focus2;
-  focus3;
-  focus4;
-  focus5;
-  focus6;
-  focus7;
-  focus8;
-  focus9;
-  focus10;
-  focus11;
-  focus12;
-  focus13;
-  focus14;
-  focus15;
-  focus16;
   loading = false;
   usernameCheckSpinner = false;
   isLinear = true;
   date = new Date();
   cPasshide: boolean;
   hide: boolean;
+  isCollapsed1 = true;
+  isCollapsed2 = true;
+  isCollapsed3 = true;
   sqList: SecurityQuestion[];
 
-  accountFormGroup: FormGroup;
-  personalFormGroup: FormGroup;
-  secQuestionsFormGroup: FormGroup;
+  // accountFormGroup: FormGroup;
+  // personalFormGroup: FormGroup;
+  // registerFormGroup: FormGroup;
+  registerFormGroup: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -87,23 +74,17 @@ export class RegisterComponent implements OnInit {
     this.sqService.getSecurityQuestions().subscribe((securityQuestionList) => {
       this.sqList = securityQuestionList;
 
-      this.accountFormGroup = this._formBuilder.group({
-        username: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required],
-      });
-
-      this.personalFormGroup = this._formBuilder.group({
+      this.registerFormGroup = this._formBuilder.group({
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phoneNumber: [''],
         street: [''],
         city: [''],
         state: [''],
         zipCode: [''],
-        phoneNumber: ['', [Validators.required]],
-      });
-
-      this.secQuestionsFormGroup = this._formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
         question1: new FormControl(null),
         answer1: new FormControl(null),
         question2: new FormControl(null),
@@ -112,37 +93,56 @@ export class RegisterComponent implements OnInit {
         answer3: new FormControl(null),
       });
 
-      this.secQuestionsFormGroup.controls.question1.valueChanges.subscribe((value) => {
+      // this.personalFormGroup = this._formBuilder.group({
+      //   firstName: ['', Validators.required],
+      //   lastName: ['', Validators.required],
+      //   street: [''],
+      //   city: [''],
+      //   state: [''],
+      //   zipCode: [''],
+      //   phoneNumber: ['', [Validators.required]],
+      // });
+
+      // this.secQuestionsFormGroup = this._formBuilder.group({
+      //   question1: new FormControl(null),
+      //   answer1: new FormControl(null),
+      //   question2: new FormControl(null),
+      //   answer2: new FormControl(null),
+      //   question3: new FormControl(null),
+      //   answer3: new FormControl(null),
+      // });
+
+      this.registerFormGroup.controls.question1.valueChanges.subscribe((value) => {
         this.sqList.forEach((element) => {
           if (element._id === value) {
             element.tempDisabled = true;
           } else if (
-            this.secQuestionsFormGroup.get('question2').value !== element._id &&
-            this.secQuestionsFormGroup.get('question3').value !== element._id
+            this.registerFormGroup.get('question2').value !== element._id &&
+            this.registerFormGroup.get('question3').value !== element._id
           ) {
             element.tempDisabled = false;
           }
         });
       });
-      this.secQuestionsFormGroup.controls.question2.valueChanges.subscribe((value) => {
+      this.registerFormGroup.controls.question2.valueChanges.subscribe((value) => {
         this.sqList.forEach((element) => {
           if (element._id === value) {
             element.tempDisabled = true;
           } else if (
-            this.secQuestionsFormGroup.get('question1').value !== element._id &&
-            this.secQuestionsFormGroup.get('question3').value !== element._id
+            this.registerFormGroup.get('question1').value !== element._id &&
+            this.registerFormGroup.get('question3').value !== element._id
           ) {
             element.tempDisabled = false;
           }
         });
       });
-      this.secQuestionsFormGroup.controls.question3.valueChanges.subscribe((value) => {
+      this.registerFormGroup.controls.question3.valueChanges.subscribe((value) => {
         this.sqList.forEach((element) => {
           if (element._id === value) {
             element.tempDisabled = true;
           } else if (
-            this.secQuestionsFormGroup.get('question1').value !== element._id &&
-            this.secQuestionsFormGroup.get('question2').value !== element._id
+            this.registerFormGroup.get('question1').value !== element._id &&
+            this.registerFormGroup.get('question2').value !== element._id
           ) {
             element.tempDisabled = false;
           }
@@ -154,40 +154,40 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.accountFormGroup.valid || !this.personalFormGroup.valid || !this.secQuestionsFormGroup.valid) {
+    if (!this.registerFormGroup.valid || !this.registerFormGroup.valid || !this.registerFormGroup.valid) {
       return;
     }
     const user: User = {
       _id: null,
-      username: this.accountFormGroup.get('username').value,
+      username: this.registerFormGroup.get('username').value,
       role: 'standard',
       disabled: false,
       dateCreated: this.date,
-      firstName: this.personalFormGroup.get('firstName').value,
-      lastName: this.personalFormGroup.get('lastName').value,
-      email: this.accountFormGroup.get('email').value,
-      street: this.personalFormGroup.get('street').value,
-      city: this.personalFormGroup.get('city').value,
-      state: this.personalFormGroup.get('state').value,
-      zipCode: this.personalFormGroup.get('zipCode').value,
-      phoneNumber: this.personalFormGroup.get('phoneNumber').value,
+      firstName: this.registerFormGroup.get('firstName').value,
+      lastName: this.registerFormGroup.get('lastName').value,
+      email: this.registerFormGroup.get('email').value,
+      street: this.registerFormGroup.get('street').value,
+      city: this.registerFormGroup.get('city').value,
+      state: this.registerFormGroup.get('state').value,
+      zipCode: this.registerFormGroup.get('zipCode').value,
+      phoneNumber: this.registerFormGroup.get('phoneNumber').value,
       dateModified: this.date,
       avatar: null,
       securityAnswers: [
         {
-          questionId: this.secQuestionsFormGroup.get('question1').value,
-          answer: this.secQuestionsFormGroup.get('answer1').value,
+          questionId: this.registerFormGroup.get('question1').value,
+          answer: this.registerFormGroup.get('answer1').value,
         },
         {
-          questionId: this.secQuestionsFormGroup.get('question2').value,
-          answer: this.secQuestionsFormGroup.get('answer2').value,
+          questionId: this.registerFormGroup.get('question2').value,
+          answer: this.registerFormGroup.get('answer2').value,
         },
         {
-          questionId: this.secQuestionsFormGroup.get('question3').value,
-          answer: this.secQuestionsFormGroup.get('answer3').value,
+          questionId: this.registerFormGroup.get('question3').value,
+          answer: this.registerFormGroup.get('answer3').value,
         },
       ],
-      password: this.accountFormGroup.get('password').value,
+      password: this.registerFormGroup.get('password').value,
     };
 
     this.loading = true;

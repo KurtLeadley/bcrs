@@ -3,51 +3,368 @@
     <div class="page-header-image"></div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-5 col-md-12 mx-auto">
+        <div class="col-lg-10 col-md-12 mx-auto">
           <div class="square square-7" id="square7"></div>
           <div class="square square-8" id="square8"></div>
-          <div class="card card-register">
-            <div class="card-header">
-              <img src="assets/img/square1-red.png" alt="card image" class="card-img" />
-              <h4 class="card-title ml-1">Register</h4>
-            </div>
-            <div class="card-body">
-              <form class="form">
-                <div class="form-row mt-2">
-                  <div class="input-group col" [ngClass]="{ 'input-group-focus': focus === true }">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="tim-icons icon-single-02"></i>
-                      </div>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Username..."
-                      (blur)="focus = false"
-                      (focus)="focus = true"
-                    />
+          <form [formGroup]="registerFormGroup" class="js-validate">
+            <div id="collapse" class="container accordion">
+              <h1 class="title mb-2">Create Account</h1>
+              <div aria-multiselecttable="false" class="card-collapse" id="accordion">
+                <!-- Personal Information -->
+                <div class="card card-plain">
+                  <div class="card-header" id="headingOne">
+                    <a
+                      aria-controls="collapseOne"
+                      class="d-flex"
+                      data-parent="#accorfion"
+                      [attr.aria-expanded]="!isCollapsed1"
+                      (click)="isCollapsed1 = !isCollapsed1"
+                      id="collapseOne"
+                      href="javascript:void(0)"
+                    >
+                      <h3 class="mb-3">Personal Information</h3>
+                      <i class="tim-icons icon-minimal-down ml-auto"> </i>
+                    </a>
                   </div>
-                  <div class="input-group col" [ngClass]="{ 'input-group-focus': focus1 === true }">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="tim-icons icon-key-25"></i>
+                  <div
+                    aria-labelledby="headingOne"
+                    class="show"
+                    [isAnimated]="true"
+                    [collapse]="isCollapsed1"
+                    id="collapseOne"
+                    role="tabpanel"
+                  >
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="firstName" class="labels">
+                            First Name <span class="text-danger"> * </span>
+                          </label>
+                          <input
+                            aria-label="John"
+                            class="form-control"
+                            name="firstName"
+                            formControlName="firstName"
+                            #firstName
+                            placeholder="John"
+                            required
+                            type="text"
+                          />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="lastName" class="labels"> Last Name <span class="text-danger"> * </span> </label>
+                          <input
+                            aria-label="Doe"
+                            class="form-control"
+                            name="lastName"
+                            formControlName="lastName"
+                            #lastName
+                            placeholder="Doe"
+                            required
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <div class="js-form-message">
+                            <label for="email" class="labels">
+                              Email address <span class="text-danger"> * </span>
+                            </label>
+                            <input
+                              aria-label="jdoe@gmail.com"
+                              class="form-control"
+                              name="email"
+                              formControlName="email"
+                              #email
+                              placeholder="jdoe@gmail.com"
+                              required
+                              type="email"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <div class="js-form-message">
+                            <label for="phoneNumber" class="labels">
+                              Phone number
+                            </label>
+                            <input
+                              aria-label="+1 (555) 5555555"
+                              class="form-control"
+                              name="phoneNumber"
+                              formControlName="phoneNumber"
+                              #phoneNumber
+                              placeholder="+1 (555) 5555555"
+                              required
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-8 mb-3">
+                          <div class="js-form-message">
+                            <label for="street" class="labels">Street address</label>
+                            <input
+                              aria-label="100 South Lincoln Ave"
+                              class="form-control"
+                              name="street"
+                              formControlName="street"
+                              #street
+                              placeholder="100 South Lincoln Ave"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                          <div class="js-form-message">
+                            <label for="zipCode" class="labels">Zip Code</label>
+                            <input
+                              aria-label="68856"
+                              class="form-control"
+                              name="zipCode"
+                              formControlName="zipCode"
+                              #zipCode
+                              placeholder="68856"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <div class="js-form-message">
+                            <label for="city" class="labels">City</label>
+                            <input
+                              aria-label="Somewhere"
+                              class="form-control"
+                              name="city"
+                              formControlName="city"
+                              #city
+                              placeholder="Somewhere"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <div class="mb-6">
+                            <label for="state" class="labels">State</label>
+                            <input
+                              aria-label="Nebraska"
+                              class="form-control"
+                              name="state"
+                              formControlName="state"
+                              #state
+                              placeholder="Nebraska"
+                              type="text"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Password..."
-                      (blur)="focus1 = false"
-                      (focus)="focus1 = true"
-                    />
                   </div>
                 </div>
-              </form>
+                <!-- Account Information -->
+                <div class="card card-plain">
+                  <div class="card-header" id="headingTwo">
+                    <a
+                      aria-controls="collapseTwo"
+                      class="collapsed d-flex"
+                      data-parent="#accordion"
+                      [attr.aria-expanded]="!isCollapsed2"
+                      (click)="isCollapsed2 = !isCollapsed2"
+                      id="collapseTwo"
+                      href="javascript:void(0)"
+                    >
+                      <h3 class="title">Account Information</h3>
+                      <i class="tim-icons icon-minimal-down ml-auto"> </i>
+                    </a>
+                  </div>
+                  <div
+                    aria-labelledby="headingTwo"
+                    [isAnimated]="true"
+                    [collapse]="isCollapsed2"
+                    id="collapseTwo"
+                    role="tabpanel"
+                  >
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12 mb-3">
+                          <label for="username" class="labels"> Username <span class="text-danger"> * </span> </label>
+                          <input
+                            aira-label="Username"
+                            class="form-control"
+                            name="username"
+                            formControlName="username"
+                            #username
+                            required
+                            placeholder="Username"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 mb-3">
+                          <label for="password" class="labels"> Password <span class="text-danger"> * </span> </label>
+                          <input
+                            aira-label="Password"
+                            class="form-control"
+                            name="password"
+                            formControlName="password"
+                            [type]="hide ? 'text' : 'password'"
+                            #password
+                            required
+                            placeholder="Password"
+                            type="password"
+                          />
+                          <i (click)="hide = !hide" class="tim-icons icon-key-25"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Security Questions -->
+                <div class="card card-plain">
+                  <div class="card-header" id="headingThree">
+                    <a
+                      aria-controls="collapseThree"
+                      class="collapsed d-flex"
+                      data-parent="#accordion"
+                      [attr.aria-expanded]="!isCollapsed3"
+                      (click)="isCollapsed3 = !isCollapsed3"
+                      id="collapseThree"
+                      href="javascript:void(0)"
+                    >
+                      <h3 class="title">Security Questions</h3>
+                      <i class="tim-icons icon-minimal-down ml-auto"> </i>
+                    </a>
+                  </div>
+                  <div
+                    aria-labelledby="headingThree"
+                    [isAnimated]="true"
+                    [collapse]="isCollapsed3"
+                    id="collapseThree"
+                    role="tabpanel"
+                  >
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="question1" class="labels">Security Question #1</label>
+                          <select
+                            name="question1"
+                            class="form-control btn-primary"
+                            placeholder="Please select and answer a question"
+                            formControlName="question1"
+                            required
+                          >
+                            <option
+                              *ngFor="let sq of sqList"
+                              [value]="sq._id"
+                              [disabled]="sq.disabled || sq.tempDisabled"
+                            >
+                              {{ sq.text }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="answer1" class="labels">Security Answer #1</label>
+                          <input
+                            aira-label="Answer..."
+                            class="form-control"
+                            name="answer1"
+                            placeholder="Answer..."
+                            formControlName="answer1"
+                            required
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="question2" class="labels">Security Question #2</label>
+                          <select
+                            name="question2"
+                            class="form-control btn-primary"
+                            placeholder="Please select and answer a question"
+                            formControlName="question2"
+                            required
+                          >
+                            <option
+                              *ngFor="let sq of sqList"
+                              [value]="sq._id"
+                              [disabled]="sq.disabled || sq.tempDisabled"
+                            >
+                              {{ sq.text }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="answer2" class="labels">Security Answer #2</label>
+                          <input
+                            aira-label="Answer..."
+                            class="form-control"
+                            name="answer2"
+                            placeholder="Answer..."
+                            formControlName="answer2"
+                            required
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="question3" class="labels">Security Question #3</label>
+                          <select
+                            name="question3"
+                            class="form-control btn-primary"
+                            placeholder="Please select and answer a question"
+                            formControlName="question3"
+                            required
+                          >
+                            <option
+                              *ngFor="let sq of sqList"
+                              [value]="sq._id"
+                              [disabled]="sq.disabled || sq.tempDisabled"
+                            >
+                              {{ sq.text }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="answer3" class="labels">Security Answer #3</label>
+                          <input
+                            aira-label="Answer..."
+                            class="form-control"
+                            name="answer3"
+                            placeholder="Answer..."
+                            formControlName="answer3"
+                            required
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col md-12 mb-3">
+                  <button class="btn btn-primary btn-lg pull-right" type="submit">
+                    Create Account
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
+    <div class="register-bg"></div>
+    <div class="square square-1" id="square1"></div>
+    <div class="square square-2" id="square2"></div>
+    <div class="square square-3" id="square3"></div>
+    <div class="square square-4" id="square4"></div>
+    <div class="square square-5" id="square5"></div>
+    <div class="square square-6" id="square6"></div>
   </div>
 </div>
