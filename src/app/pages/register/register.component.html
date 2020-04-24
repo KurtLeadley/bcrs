@@ -6,356 +6,339 @@
         <div class="col-lg-10 col-md-12 mx-auto">
           <div class="square square-7" id="square7"></div>
           <div class="square square-8" id="square8"></div>
-          <form [formGroup]="registerFormGroup" class="js-validate">
-            <div id="collapse" class="container accordion">
-              <h1 class="title mb-2">Create Account</h1>
-              <div aria-multiselecttable="false" class="card-collapse" id="accordion">
-                <!-- Personal Information -->
-                <div class="card card-plain">
-                  <div class="card-header" id="headingOne">
-                    <a
-                      aria-controls="collapseOne"
-                      class="d-flex"
-                      data-parent="#accorfion"
-                      [attr.aria-expanded]="!isCollapsed1"
-                      (click)="isCollapsed1 = !isCollapsed1"
-                      id="collapseOne"
-                      href="javascript:void(0)"
-                    >
-                      <h3 class="mb-3">Personal Information</h3>
-                      <i class="tim-icons icon-minimal-down ml-auto"> </i>
-                    </a>
-                  </div>
-                  <div
-                    aria-labelledby="headingOne"
-                    class="show"
-                    [isAnimated]="true"
-                    [collapse]="isCollapsed1"
-                    id="collapseOne"
-                    role="tabpanel"
-                  >
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="firstName" class="labels">
-                            First Name <span class="text-danger"> * </span>
-                          </label>
-                          <input
-                            aria-label="John"
-                            class="form-control"
-                            name="firstName"
-                            formControlName="firstName"
-                            #firstName
-                            placeholder="John"
-                            required
-                            type="text"
-                          />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="lastName" class="labels"> Last Name <span class="text-danger"> * </span> </label>
-                          <input
-                            aria-label="Doe"
-                            class="form-control"
-                            name="lastName"
-                            formControlName="lastName"
-                            #lastName
-                            placeholder="Doe"
-                            required
-                            type="text"
-                          />
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <div class="js-form-message">
-                            <label for="email" class="labels">
-                              Email address <span class="text-danger"> * </span>
-                            </label>
-                            <input
-                              aria-label="jdoe@gmail.com"
-                              class="form-control"
-                              name="email"
-                              formControlName="email"
-                              #email
-                              placeholder="jdoe@gmail.com"
-                              required
-                              type="email"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <div class="js-form-message">
-                            <label for="phoneNumber" class="labels">
-                              Phone number
-                            </label>
-                            <input
-                              aria-label="+1 (555) 5555555"
-                              class="form-control"
-                              name="phoneNumber"
-                              formControlName="phoneNumber"
-                              #phoneNumber
-                              placeholder="+1 (555) 5555555"
-                              required
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-8 mb-3">
-                          <div class="js-form-message">
-                            <label for="street" class="labels">Street address</label>
-                            <input
-                              aria-label="100 South Lincoln Ave"
-                              class="form-control"
-                              name="street"
-                              formControlName="street"
-                              #street
-                              placeholder="100 South Lincoln Ave"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                          <div class="js-form-message">
-                            <label for="zipCode" class="labels">Zip Code</label>
-                            <input
-                              aria-label="68856"
-                              class="form-control"
-                              name="zipCode"
-                              formControlName="zipCode"
-                              #zipCode
-                              placeholder="68856"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <div class="js-form-message">
-                            <label for="city" class="labels">City</label>
-                            <input
-                              aria-label="Somewhere"
-                              class="form-control"
-                              name="city"
-                              formControlName="city"
-                              #city
-                              placeholder="Somewhere"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <div class="mb-6">
-                            <label for="state" class="labels">State</label>
-                            <input
-                              aria-label="Nebraska"
-                              class="form-control"
-                              name="state"
-                              formControlName="state"
-                              #state
-                              placeholder="Nebraska"
-                              type="text"
-                            />
-                          </div>
-                        </div>
+          <div class="section section-tabs">
+            <div class="container">
+              <div class="title">
+                <h3 class="mb-3">Create Account</h3>
+                <div class="row">
+                  <div class="col-md-12 ml-auto col-xl-10 mr-auto">
+                    <div class="card mb-5 pb-5">
+                      <div class="card-header">
+                        <tabset class="nav-tabs-danger">
+                          <tab>
+                            <!-- Personal information form -->
+                            <ng-template tabHeading>
+                              <i class="tim-icons icon-single-02"> </i> Personal<br />Information
+                            </ng-template>
+                            <form [formGroup]="personalFormGroup" *ngIf="personalFormGroup">
+                              <!-- Personal first row -->
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                  <label for="firstName" class="labels"
+                                    >First Name <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    aria-label="John"
+                                    class="form-control"
+                                    name="firstName"
+                                    formControlName="firstName"
+                                    #firstName
+                                    placeholder="John"
+                                    required
+                                    type="text"
+                                  />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                  <label for="lastName" class="labels"
+                                    >Last Name <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    aria-label="Doe"
+                                    class="form-control"
+                                    name="lastName"
+                                    formControlName="lastName"
+                                    #lastName
+                                    placeholder="Doe"
+                                    required
+                                    type="text"
+                                  />
+                                </div>
+                              </div>
+                              <!-- Personal second row -->
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                  <label for="email" class="labels">
+                                    Email Address <span class="text-danger"> * </span>
+                                  </label>
+                                  <input
+                                    aria-label="jdoe@email.com"
+                                    class="form-control"
+                                    name="email"
+                                    formControlName="email"
+                                    #email
+                                    placeholder="jdoe@email.com"
+                                    required
+                                    type="email"
+                                  />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                  <label for="phoneNumber" class="labels">
+                                    Phone Number <span class="text-danger"> * Required format 555-555-5555</span>
+                                  </label>
+                                  <input
+                                    aria-label="555-555-5555"
+                                    class="form-control"
+                                    name="phoneNumber"
+                                    formControlName="phoneNumber"
+                                    #phoneNumber
+                                    placeholder="555-555-5555"
+                                    required
+                                    type="tel"
+                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                  />
+                                </div>
+                              </div>
+                              <!-- Personal thrid row -->
+                              <div class="row">
+                                <div class="col-md-8 mb-3">
+                                  <label for="street" class="labels">Street Address</label>
+                                  <input
+                                    aria-label="101 Elm St"
+                                    class="form-control"
+                                    name="street"
+                                    formControlName="street"
+                                    #street
+                                    placeholder="101 Elm St"
+                                    type="text"
+                                  />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                  <label for="zipCode" class="labels">Zip Code</label>
+                                  <input
+                                    aria-label="68856"
+                                    class="form-control"
+                                    name="zipCode"
+                                    formControlName="zipCode"
+                                    #zipCode
+                                    placeholder="68856"
+                                    type="text"
+                                  />
+                                </div>
+                              </div>
+                              <!-- Personal fourth row -->
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                  <label for="city" class="labels">City</label>
+                                  <input
+                                    aria-label="Merna"
+                                    class="form-control"
+                                    name="city"
+                                    formControlName="city"
+                                    #city
+                                    placeholder="Merna"
+                                    type="text"
+                                  />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                  <label for="state" class="labels">State</label>
+                                  <input
+                                    aria-label="NE"
+                                    class="form-control"
+                                    name="state"
+                                    formControlName="state"
+                                    #state
+                                    placeholder="NE"
+                                    type="text"
+                                  />
+                                </div>
+                              </div>
+                            </form>
+                          </tab>
+                          <tab>
+                            <ng-template tabHeading>
+                              <i class="tim-icons icon-badge"> </i> Account<br />Information
+                            </ng-template>
+                            <form [formGroup]="accountFormGroup" *ngIf="accountFormGroup">
+                              <!-- Account first row -->
+                              <div class="row">
+                                <div class="col-md-12 mb-3">
+                                  <label for="username" class="labels">
+                                    Username <span class="text-danger"> * </span>
+                                  </label>
+                                  <input
+                                    aria-label="Username"
+                                    class="form-control"
+                                    name="username"
+                                    formControlName="username"
+                                    #username
+                                    required
+                                    placeholder="Username..."
+                                    type="text"
+                                  />
+                                </div>
+                              </div>
+                              <!-- Account second row -->
+                              <div class="row">
+                                <div class="col-md-12 mb-3">
+                                  <label for="password" class="labels">
+                                    Password <span class="text-danger"> * </span>
+                                  </label>
+                                  <div class="input-group">
+                                    <input
+                                      aria-label="Password"
+                                      class="form-control"
+                                      name="password"
+                                      formControlName="password"
+                                      #password
+                                      required
+                                      placeholder="Password..."
+                                      [type]="hide ? 'text' : 'password'"
+                                      type="password"
+                                    />
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">
+                                        <i (click)="hide = !hide" class="tim-icons icon-lock-circle"></i>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </tab>
+                          <tab>
+                            <ng-template tabHeading>
+                              <i class="tim-icons icon-lock-circle"> </i>Security<br />Questions
+                            </ng-template>
+                            <form [formGroup]="secQuestionsFormGroup" *ngIf="secQuestionsFormGroup">
+                              <!-- Security Questions first row -->
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                  <label for="question1" class="labels">
+                                    Security Question #1 <span class="text-danger"> * </span>
+                                  </label>
+                                  <select
+                                    name="question1"
+                                    aria-label="Please select a question"
+                                    class="form-control btn-primary"
+                                    placeholder="Please select question"
+                                    formControlName="question1"
+                                    required
+                                  >
+                                    <option
+                                      *ngFor="let sq of sqList"
+                                      [value]="sq._id"
+                                      [disabled]="sq.disabled || sq.tempDisabled"
+                                    >
+                                      {{ sq.text }}
+                                    </option>
+                                  </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                  <label for="answer1" class="labels">
+                                    Security Answer #1 <span class="text-danger"> * </span>
+                                  </label>
+                                  <input
+                                    aria-label="Please answer your selected question"
+                                    class="form-control"
+                                    name="answer1"
+                                    placeholder="Please answer your selected question"
+                                    formControlName="answer1"
+                                    required
+                                    type="text"
+                                  />
+                                </div>
+                              </div>
+                              <!-- Security Questions second row -->
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                  <label for="question2" class="labels">
+                                    Security Question #2 <span class="text-danger"> * </span>
+                                  </label>
+                                  <select
+                                    name="question2"
+                                    aria-label="Please select a question"
+                                    class="form-control btn-primary"
+                                    placeholder="Please select question"
+                                    formControlName="question2"
+                                    required
+                                  >
+                                    <option
+                                      *ngFor="let sq of sqList"
+                                      [value]="sq._id"
+                                      [disabled]="sq.disabled || sq.tempDisabled"
+                                    >
+                                      {{ sq.text }}
+                                    </option>
+                                  </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                  <label for="answer2" class="labels">
+                                    Security Answer #2 <span class="text-danger"> * </span>
+                                  </label>
+                                  <input
+                                    aria-label="Please answer your selected question"
+                                    class="form-control"
+                                    name="answer2"
+                                    placeholder="Please answer your selected question"
+                                    formControlName="answer2"
+                                    required
+                                    type="text"
+                                  />
+                                </div>
+                              </div>
+                              <!-- Security Questions thrid row -->
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                  <label for="question3" class="labels">
+                                    Security Question #3 <span class="text-danger"> * </span>
+                                  </label>
+                                  <select
+                                    name="question3"
+                                    aria-label="Please select a question"
+                                    class="form-control btn-primary"
+                                    placeholder="Please select question"
+                                    formControlName="question3"
+                                    required
+                                  >
+                                    <option
+                                      *ngFor="let sq of sqList"
+                                      [value]="sq._id"
+                                      [disabled]="sq.disabled || sq.tempDisabled"
+                                    >
+                                      {{ sq.text }}
+                                    </option>
+                                  </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                  <label for="answer3" class="labels">
+                                    Security Answer #3 <span class="text-danger"> * </span>
+                                  </label>
+                                  <input
+                                    aria-label="Please answer your selected question"
+                                    class="form-control"
+                                    name="answer3"
+                                    placeholder="Please answer your selected question"
+                                    formControlName="answer3"
+                                    required
+                                    type="text"
+                                  />
+                                </div>
+                              </div>
+                            </form>
+                          </tab>
+                          <tab>
+                            <ng-template tabHeading> <i class="tim-icons icon-send"> </i> Submit </ng-template>
+                            <h3 class="description text-danger">
+                              Before submitting, make sure all required fields are filled out in each section, and in
+                              the correct format.
+                            </h3>
+                            <button
+                              class="btn btn-primary btn-round btn-lg"
+                              (click)="onSubmit()"
+                              [class.spinner]="loading"
+                              [disabled]="loading"
+                            >
+                              Submit <i class="tim-icons icon-send"></i>
+                            </button>
+                          </tab>
+                        </tabset>
                       </div>
                     </div>
                   </div>
-                </div>
-                <!-- Account Information -->
-                <div class="card card-plain">
-                  <div class="card-header" id="headingTwo">
-                    <a
-                      aria-controls="collapseTwo"
-                      class="collapsed d-flex"
-                      data-parent="#accordion"
-                      [attr.aria-expanded]="!isCollapsed2"
-                      (click)="isCollapsed2 = !isCollapsed2"
-                      id="collapseTwo"
-                      href="javascript:void(0)"
-                    >
-                      <h3 class="title">Account Information</h3>
-                      <i class="tim-icons icon-minimal-down ml-auto"> </i>
-                    </a>
-                  </div>
-                  <div
-                    aria-labelledby="headingTwo"
-                    [isAnimated]="true"
-                    [collapse]="isCollapsed2"
-                    id="collapseTwo"
-                    role="tabpanel"
-                  >
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-12 mb-3">
-                          <label for="username" class="labels"> Username <span class="text-danger"> * </span> </label>
-                          <input
-                            aira-label="Username"
-                            class="form-control"
-                            name="username"
-                            formControlName="username"
-                            #username
-                            required
-                            placeholder="Username"
-                            type="text"
-                          />
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12 mb-3">
-                          <label for="password" class="labels"> Password <span class="text-danger"> * </span> </label>
-                          <input
-                            aira-label="Password"
-                            class="form-control"
-                            name="password"
-                            formControlName="password"
-                            [type]="hide ? 'text' : 'password'"
-                            #password
-                            required
-                            placeholder="Password"
-                            type="password"
-                          />
-                          <i (click)="hide = !hide" class="tim-icons icon-key-25"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Security Questions -->
-                <div class="card card-plain">
-                  <div class="card-header" id="headingThree">
-                    <a
-                      aria-controls="collapseThree"
-                      class="collapsed d-flex"
-                      data-parent="#accordion"
-                      [attr.aria-expanded]="!isCollapsed3"
-                      (click)="isCollapsed3 = !isCollapsed3"
-                      id="collapseThree"
-                      href="javascript:void(0)"
-                    >
-                      <h3 class="title">Security Questions</h3>
-                      <i class="tim-icons icon-minimal-down ml-auto"> </i>
-                    </a>
-                  </div>
-                  <div
-                    aria-labelledby="headingThree"
-                    [isAnimated]="true"
-                    [collapse]="isCollapsed3"
-                    id="collapseThree"
-                    role="tabpanel"
-                  >
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="question1" class="labels">Security Question #1</label>
-                          <select
-                            name="question1"
-                            class="form-control btn-primary"
-                            placeholder="Please select and answer a question"
-                            formControlName="question1"
-                            required
-                          >
-                            <option
-                              *ngFor="let sq of sqList"
-                              [value]="sq._id"
-                              [disabled]="sq.disabled || sq.tempDisabled"
-                            >
-                              {{ sq.text }}
-                            </option>
-                          </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="answer1" class="labels">Security Answer #1</label>
-                          <input
-                            aira-label="Answer..."
-                            class="form-control"
-                            name="answer1"
-                            placeholder="Answer..."
-                            formControlName="answer1"
-                            required
-                            type="text"
-                          />
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="question2" class="labels">Security Question #2</label>
-                          <select
-                            name="question2"
-                            class="form-control btn-primary"
-                            placeholder="Please select and answer a question"
-                            formControlName="question2"
-                            required
-                          >
-                            <option
-                              *ngFor="let sq of sqList"
-                              [value]="sq._id"
-                              [disabled]="sq.disabled || sq.tempDisabled"
-                            >
-                              {{ sq.text }}
-                            </option>
-                          </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="answer2" class="labels">Security Answer #2</label>
-                          <input
-                            aira-label="Answer..."
-                            class="form-control"
-                            name="answer2"
-                            placeholder="Answer..."
-                            formControlName="answer2"
-                            required
-                            type="text"
-                          />
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <label for="question3" class="labels">Security Question #3</label>
-                          <select
-                            name="question3"
-                            class="form-control btn-primary"
-                            placeholder="Please select and answer a question"
-                            formControlName="question3"
-                            required
-                          >
-                            <option
-                              *ngFor="let sq of sqList"
-                              [value]="sq._id"
-                              [disabled]="sq.disabled || sq.tempDisabled"
-                            >
-                              {{ sq.text }}
-                            </option>
-                          </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="answer3" class="labels">Security Answer #3</label>
-                          <input
-                            aira-label="Answer..."
-                            class="form-control"
-                            name="answer3"
-                            placeholder="Answer..."
-                            formControlName="answer3"
-                            required
-                            type="text"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col md-12 mb-3">
-                  <button class="btn btn-primary btn-lg pull-right" type="submit">
-                    Create Account
-                  </button>
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
