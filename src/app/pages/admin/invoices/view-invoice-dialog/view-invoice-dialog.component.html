@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+          <div class="card card-invoice">
+            <div class="card-header text-center" data-color-icon="warning">
+              <div class="row justify-content-between">
+                <div class="col-md-4 text-left">
+                  <img alt="Logo" class="mb-2" src="assets/img/bcrs-logo.png" />
+                  <h4>Sometown, Somewhere 68856</h4>
+                  <small class="d-block text-muted">tel: 555-555-5555</small>
+                </div>
+                <div class="col-lg-3 col-md-5 text-left mt-3">
+                  <h3 class="mb-1">Billed To:</h3>
+                  <span class="d-block">Customers Name</span>
+                  {{ invoice.username }}
+                  <p>
+                    Customers street address<br />
+                    City, State Zip Code
+                  </p>
+                </div>
+              </div>
+              <br />
+              <div class="row justify-content-md-between">
+                <div class="col-md-4 mt-5">
+                  <h2 class="mt-3 text-left">
+                    Invoice #<br />
+                    <small class="mr-2">{{ invoice._id }}</small>
+                  </h2>
+                </div>
+                <div class="col-lg-4 col-md-5 mt-5">
+                  <div class="row mt-5">
+                    <div class="col-md-6">Invoice Date</div>
+                    <div class="col-md-6">{{ invoice.orderDate }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 mt-5">
+                  <div class="table-responsive">
+                    <table class="table text-right">
+                      <thead class="bg-default">
+                        <tr>
+                          <th scope="col">Line Items</th>
+                          <th class="text-right">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let lineItem of invoice.lineItems">
+                          <td>{{ lineItem.title }}</td>
+                          <td>{{ lineItem.price }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
