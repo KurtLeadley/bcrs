@@ -75,6 +75,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
 import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -92,6 +94,7 @@ import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
+    FooterComponent,
     InvoicesComponent
   ],
   imports: [

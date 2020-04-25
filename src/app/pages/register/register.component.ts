@@ -19,29 +19,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  focus;
-  focus1;
-  focus2;
-  focus3;
-  focus4;
-  focus5;
-  focus6;
-  focus7;
-  focus8;
-  focus9;
-  focus10;
-  focus11;
-  focus12;
-  focus13;
-  focus14;
-  focus15;
-  focus16;
   loading = false;
   usernameCheckSpinner = false;
   isLinear = true;
   date = new Date();
   cPasshide: boolean;
   hide: boolean;
+  // isCollapsed1 = true;
+  // isCollapsed2 = true;
+  // isCollapsed3 = true;
   sqList: SecurityQuestion[];
 
   accountFormGroup: FormGroup;
@@ -49,10 +35,12 @@ export class RegisterComponent implements OnInit {
   secQuestionsFormGroup: FormGroup;
 
   constructor(
+    // tslint:disable-next-line: variable-name
     private _formBuilder: FormBuilder,
     private authService: AuthService,
     private userService: UserService,
     private sqService: SecurityQuestionService,
+    // tslint:disable-next-line: variable-name
     private _snackBar: MatSnackBar,
     private router: Router
   ) {}
@@ -87,20 +75,20 @@ export class RegisterComponent implements OnInit {
     this.sqService.getSecurityQuestions().subscribe((securityQuestionList) => {
       this.sqList = securityQuestionList;
 
-      this.accountFormGroup = this._formBuilder.group({
-        username: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required],
-      });
-
       this.personalFormGroup = this._formBuilder.group({
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phoneNumber: [''],
         street: [''],
         city: [''],
         state: [''],
         zipCode: [''],
-        phoneNumber: ['', [Validators.required]],
+      });
+
+      this.accountFormGroup = this._formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
       });
 
       this.secQuestionsFormGroup = this._formBuilder.group({
@@ -154,7 +142,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.accountFormGroup.valid || !this.personalFormGroup.valid || !this.secQuestionsFormGroup.valid) {
+    if (!this.personalFormGroup.valid || !this.accountFormGroup.valid || !this.secQuestionsFormGroup.valid) {
       return;
     }
     const user: User = {
@@ -165,7 +153,7 @@ export class RegisterComponent implements OnInit {
       dateCreated: this.date,
       firstName: this.personalFormGroup.get('firstName').value,
       lastName: this.personalFormGroup.get('lastName').value,
-      email: this.accountFormGroup.get('email').value,
+      email: this.personalFormGroup.get('email').value,
       street: this.personalFormGroup.get('street').value,
       city: this.personalFormGroup.get('city').value,
       state: this.personalFormGroup.get('state').value,
