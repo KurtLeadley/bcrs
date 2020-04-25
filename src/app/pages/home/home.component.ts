@@ -18,8 +18,5 @@ export class HomeComponent implements OnInit, OnDestroy {
     body.classList.add('landing-page');
   }
 
-  ngOnDestroy() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('landing-page');
-  }
+  ngOnDestroy() {}
 }

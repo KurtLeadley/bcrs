@@ -62,13 +62,11 @@ export class HttpJwtInterceptor implements HttpInterceptor {
 
             this.onEnd();
 
-            if (error.status === 500) {
-              this.router.navigate(['/error/500']);
-            } else if (error.status === 401) {
-              this.router.navigate(['/error/401']);
-            } else {
-              this.router.navigate(['/error/404']);
+            if (error.status !== 500) {
+              return;
             }
+
+            this.router.navigate(['/error/500']);
           }
         }
       )

@@ -1,76 +1,77 @@
-<div class="page-header">
-  <div class="squares square1"></div>
-  <div class="squares square2"></div>
-  <div class="squares square3"></div>
-  <div class="squares square4"></div>
-  <div class="squares square5"></div>
-  <div class="squares square6"></div>
-  <div class="page-header-image"></div>
-  <div class="container">
-    <div class="col-lg-5 col-md-8 mx-auto">
-      <div class="card card-login">
-        <form class="form" [formGroup]="loginForm" (submit)="onLogin()">
-          <div class="card-header">
-            <img alt="Card image" class="card-img" src="assets/img/square1-red.png" />
-            <h4 class="card-title ml-2">Login</h4>
-          </div>
-          <div class="card-body">
-            <div class="input-group input-lg" [ngClass]="{ 'input-group-focus': focus === true }">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="tim-icons icon-single-02"></i>
-                </span>
+<div class="page-header" filter-color="blue">
+  <div
+    class="page-header-image"
+    style="background-image: url(assets/img/login-background.png); background-size: cover;"
+  ></div>
+  <div class="content-center">
+    <div class="container">
+      <div class="col-md-4 content-center">
+        <div id="loginCard" class="card card-login card-plain">
+          <form class="form" [formGroup]="loginForm" (submit)="onLogin()">
+            <div class="card-header text-center">
+              <div class="logo-container">
+                <img src="assets/img/bcrs-logo.png" alt="Company Logo" />
               </div>
-              <input
-                class="form-control"
-                placeholder="Username..."
-                type="text"
-                formControlName="username"
-                (blur)="focus = false"
-                (focus)="focus = true"
-              />
             </div>
-            <div class="input-group input-lg" [ngClass]="{ 'input-group-focus': focus1 === true }">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="tim-icons icon-key-25"></i>
-                </span>
+            <div class="card-body">
+              <div
+                class="input-group form-group-no-border input-lg"
+                [ngClass]="{ 'input-group-focus': focus === true }"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Username..."
+                  formControlName="username"
+                  required
+                  (focus)="focus = true"
+                  (blur)="focus = false"
+                />
               </div>
-              <input
-                class="form-control"
-                placeholder="Password..."
-                type="password"
-                formControlName="password"
-                (blur)="focus1 = false"
-                (focus)="focus1 = true"
-              />
+              <div
+                class="input-group form-group-no-border input-lg"
+                [ngClass]="{ 'input-group-focus': focus1 === true }"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                </div>
+                <input
+                  type="password"
+                  placeholder="Password..."
+                  class="form-control"
+                  formControlName="password"
+                  required
+                  (focus)="focus1 = true"
+                  (blur)="focus1 = false"
+                />
+              </div>
             </div>
-          </div>
-          <div class="card-footer text-center">
-            <button
-              type="submit"
-              [class.spinner]="loading"
-              [disabled]="loading"
-              class="btn btn-primary btn-round btn-lg btn-block"
-            >
-              Login
-            </button>
-          </div>
-          <div class="pull-left ml-3 mb-3">
-            <h6>
-              <a routerLink="/register" class="link footer-link text-warning-states" style="font-weight: bold;"
-                >Create Account</a
+            <div class="card-footer text-center">
+              <button
+                id="btnLogin"
+                type="submit"
+                [class.spinner]="loading"
+                [disabled]="loading"
+                class="btn btn-primary btn-round btn-lg btn-block"
               >
-            </h6>
-          </div>
-          <div class="pull-right mr-3 mb-3">
-            <h6>
-              <a routerLink="/forgot-password" class="link footer-link text-warning-states" style="font-weight: bold;"
-                >Forgot Password</a
-              >
-            </h6>
-          </div>
-        </form>
+                Login
+              </button>
+              <div class="pull-left">
+                <h6>
+                  <a routerLink="/register" class="link footer-link">Create Account</a>
+                </h6>
+              </div>
+              <div class="pull-right">
+                <h6>
+                  <a routerLink="/forgot-password" class="link footer-link">Forgot Password</a>
+                </h6>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

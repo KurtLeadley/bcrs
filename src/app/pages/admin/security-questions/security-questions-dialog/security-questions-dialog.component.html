@@ -1,21 +1,3 @@
-<h1 mat-dialog-title>{{ data.action }} Security Question</h1>
-<div mat-dialog-content>
-  <form [formGroup]="securityQuestionForm" (ngSubmit)="onSave()">
-    <div [hidden]="data.action.toString() === 'Disable'">
-      <b>Security Question ID: </b>{{ data.obj._id }}<br />
-      <mat-form-field>
-        <mat-label>Question</mat-label>
-        <input matInput formControlName="text" type="text" placeholder="Question Text" />
-        <mat-error *ngIf="securityQuestionForm.controls.text?.errors?.required"
-          >Please enter a valid question.</mat-error
-        >
-      </mat-form-field>
-    </div>
-    <div [hidden]="data.action.toString() !== 'Disable'">
-      Are you sure you wish to disable this question: - {{ data.obj.text }}
-    </div>
-    <div>
-      <button mat-button type="submit" cdkFocusInitial [class.spinner]="loading">{{ data.action }}</button>
-    </div>
-  </form>
-</div>
+<p>
+  security-questions-dialog works!
+</p>

@@ -13,6 +13,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
 
+// charts module
+import { ChartsModule } from 'ng2-charts';
+
+
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -73,10 +77,7 @@ import { AuthorizationGuard } from './guards/authorization.guard';
 import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
-import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
-import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
-import { FooterComponent } from './shared/footer/footer.component';
-
+import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 
 @NgModule({
   declarations: [
@@ -90,12 +91,10 @@ import { FooterComponent } from './shared/footer/footer.component';
     UsersComponent,
     UsersDialogComponent,
     SecurityQuestionsComponent,
-    SecurityQuestionsDialogComponent,
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
-    FooterComponent,
-    InvoicesComponent
+    PurchasesGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -145,7 +144,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    ChartsModule
   ],
   providers: [
     AuthenticationGuard,

@@ -3,7 +3,7 @@
  * Authors: Group 4
  * Description: bcrs
  */
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -11,16 +11,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.scss'],
 })
-export class NotFoundComponent implements OnInit, OnDestroy {
+export class NotFoundComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('error-page');
-  }
-
-  ngOnDestroy() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('error-page');
-  }
+  ngOnInit() {}
 }
