@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loading = false;
   loginForm: FormGroup;
   hide: boolean;
@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService, private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('login-page');
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('login-page');
   }
 
   onLogin() {
@@ -41,5 +41,10 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
       this.loading = false;
     }, 1000);
+  }
+
+  ngOnDestroy() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('login-page');
   }
 }

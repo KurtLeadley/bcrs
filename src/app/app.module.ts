@@ -75,14 +75,17 @@ import { SecurityQuestionsComponent } from './pages/admin/security-questions/sec
 import { FooterComponent } from './shared/footer/footer.component';
 import { NotFoundComponent } from './pages/error/not-found/not-found.component';
 import { RolesComponent } from './pages/admin/roles/roles.component';
-
-
+import { UsersDialogComponent } from './pages/admin/users/users-dialog/users-dialog.component';
+import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
+import { RolesDialogComponent } from './pages/admin/roles/roles-dialog/roles-dialog.component';
+import { FeaturesComponent } from './pages/features/features.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseLayoutComponent,
     HomeComponent,
+    FeaturesComponent,
     AboutComponent,
     ContactUsComponent,
     LoginComponent,
@@ -90,12 +93,14 @@ import { RolesComponent } from './pages/admin/roles/roles.component';
     UsersComponent,
     UsersDialogComponent,
     SecurityQuestionsComponent,
+    SecurityQuestionsDialogComponent,
     UnauthorizedComponent,
     NotFoundComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
     FooterComponent,
     RolesComponent,
+    RolesDialogComponent,
   ],
   imports: [
     BrowserModule,
