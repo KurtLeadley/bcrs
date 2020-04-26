@@ -11,11 +11,11 @@ import { Service } from '../../../models/service.model';
   styleUrls: ['./purchases-graph.component.scss'],
 })
 export class PurchasesGraphComponent implements OnInit {
+  loading = false;
   invoices: any;
   data: any;
   options: any;
   labels;
-  services;
   passwordReset = 0;
   spywareRemoval = 0;
   ramUpgrade = 0;
@@ -24,24 +24,128 @@ export class PurchasesGraphComponent implements OnInit {
   softwareInstallation = 0;
   discCleanup = 0;
 
+  polarArea: any;
+  doughnut: any;
+  barChart: any;
+
+  @ViewChild('polarAreaCanvas') polarAreaCanvas: ElementRef;
+  @ViewChild('doughnutCanvas') doughnutCanvas: ElementRef;
+  @ViewChild('barCanvas') barCanvas: ElementRef;
+
+  public ctx: CanvasRenderingContext2D;
+
   constructor(private invoiceService: InvoiceService, private sService: ServiceService) {}
 
   ngOnInit() {
-    this.sService.getServices().subscribe((res) => {
-      this.services = res;
-    });
     this.invoiceService.getInvoices().subscribe((res) => {
+      this.loading = true;
       this.invoices = res;
 
       const tempLabels = [];
-      const graphData = {};
-
+      // Get labels and save them to a temp variable
       for (const item of this.invoices) {
         item.lineItems.forEach((e) => {
           tempLabels.push(e.title);
         });
       }
-      console.log(tempLabels);
+
+      this.labels = tempLabels.filter((item, index) => {
+        return tempLabels.indexOf(item) === index;
+      });
+
+      // Get data for graph - this is not scalable without adding new services to this switch statement
+      for (const item of this.invoices) {
+        item.lineItems.forEach((e) => {
+          switch (e.title) {
+            case 'Password Reset':
+              this.passwordReset += e.price;
+              break;
+            case 'Spyware Removal':
+              this.spywareRemoval += e.price;
+              break;
+            case 'RAM Upgrade':
+              this.ramUpgrade += e.price;
+              break;
+            case 'Software Installation':
+              this.softwareInstallation += e.price;
+              break;
+            case 'PC Tune-up':
+              this.tuneup += e.price;
+              break;
+            case 'Keyboard Cleaning':
+              this.keyboardCleaning += e.price;
+              break;
+            case 'Disk Clean-up':
+              this.discCleanup += e.price;
+              break;
+            default:
+              console.log('Line item title does not match a service');
+              break;
+          }
+        });
+
+        // Polar Area
+        this.polarArea = {
+          labels: this.labels,
+          datasets: [
+            {
+              label: 'Services',
+              data: [
+                this.passwordReset.toFixed(2),
+                this.spywareRemoval.toFixed(2),
+                this.ramUpgrade.toFixed(2),
+                this.tuneup.toFixed(2),
+                this.keyboardCleaning.toFixed(2),
+                this.softwareInstallation.toFixed(2),
+                this.discCleanup.toFixed(2),
+              ],
+              backgroundColor: ['#344675', '#e14eca', '#00f2c3', '#1d8cf8', '#ff8d72', '#fd5d93', '#ba54f5'],
+            },
+          ],
+        };
+
+        // Doughnut Chart
+        this.doughnut = {
+          labels: this.labels,
+          datasets: [
+            {
+              label: 'Services',
+              data: [
+                this.passwordReset.toFixed(2),
+                this.spywareRemoval.toFixed(2),
+                this.ramUpgrade.toFixed(2),
+                this.tuneup.toFixed(2),
+                this.keyboardCleaning.toFixed(2),
+                this.softwareInstallation.toFixed(2),
+                this.discCleanup.toFixed(2),
+              ],
+              backgroundColor: ['#344675', '#e14eca', '#00f2c3', '#1d8cf8', '#ff8d72', '#fd5d93', '#ba54f5'],
+            },
+          ],
+        };
+
+        // Bar Chart
+        this.barChart = {
+          labels: this.labels,
+          datasets: [
+            {
+              label: 'Services',
+              data: [
+                this.passwordReset.toFixed(2),
+                this.spywareRemoval.toFixed(2),
+                this.ramUpgrade.toFixed(2),
+                this.tuneup.toFixed(2),
+                this.keyboardCleaning.toFixed(2),
+                this.softwareInstallation.toFixed(2),
+                this.discCleanup.toFixed(2),
+              ],
+              backgroundColor: ['#344675', '#e14eca', '#00f2c3', '#1d8cf8', '#ff8d72', '#fd5d93', '#ba54f5'],
+            },
+          ],
+        };
+
+        this.loading = false;
+      }
     });
   }
 }
