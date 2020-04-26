@@ -6,4 +6,6 @@
 export interface Role {
   _id: String;
   text: String;
+  dateCreated?: Date;
+  dateModified?: Date;
 }

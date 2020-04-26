@@ -1,0 +1,76 @@
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 ml-auto mr-auto">
+          <div class="section">
+            <header>
+              <h2 mat-dialog-title class="text-uppercase">{{ data.action }} Role</h2>
+            </header>
+            <hr class="line-danger" />
+            <br />
+            <form [formGroup]="rolesFormGroup" (ngSubmit)="onSave()">
+              <div [hidden]="data.action.toString() === 'Delete'">
+                <div class="row">
+                  <div class="col-md-3 align-self-center">
+                    <label for="_id" class="labels">
+                      Role ID:
+                    </label>
+                  </div>
+                  <div class="col-md-9 align-self-center">
+                    <div class="form-group">
+                      <input
+                        class="form-control"
+                        name="_id"
+                        placeholder="{{ data.obj._id }}"
+                        formControlName="_id"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 align-self-center">
+                    <label for="text" class="labels">Role Text:</label>
+                  </div>
+                  <div class="col-md-9 align-self-center">
+                    <div class="form-group">
+                      <input
+                        class="form-control"
+                        name="text"
+                        value="{{ data.obj.text }}"
+                        formControlName="text"
+                        required
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div [hidden]="data.action.toString() !== 'Delete'">
+                Are you sure you wish to delete {{ data.obj.text }}?
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                  <button
+                    class="btn btn-danger mr-1"
+                    type="submit"
+                    cdkFocusInitial
+                    [class.spinner]="loading"
+                    [disabled]="loading"
+                  >
+                    {{ data.action.toString() }}
+                  </button>
+                  <button (click)="onNoClick()" class="btn btn-danger btn-simple" type="reset">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

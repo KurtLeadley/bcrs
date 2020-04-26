@@ -19,6 +19,7 @@ import { AuthorizationGuard } from './guards/authorization.guard';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 import { FeaturesComponent } from './pages/features/features.component';
+import { RolesComponent } from './pages/admin/roles/roles.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -37,12 +38,18 @@ const routes: Routes = [
         component: SecurityQuestionsComponent,
         canActivate: [AuthenticationGuard, AuthorizationGuard],
       },
+      {
+        path: 'roles',
+        component: RolesComponent,
+        canActivate: [AuthenticationGuard, AuthorizationGuard],
+      },
     ],
   },
   {
     path: 'error',
     children: [
       { path: '401', component: UnauthorizedComponent },
+      { path: '404', component: NotFoundComponent },
       { path: '500', component: InternalServerComponent },
     ],
   },

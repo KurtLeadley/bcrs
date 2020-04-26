@@ -75,6 +75,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NotFoundComponent } from './pages/error/not-found/not-found.component';
+import { RolesComponent } from './pages/admin/roles/roles.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,9 @@ import { FooterComponent } from './shared/footer/footer.component';
     UsersDialogComponent,
     SecurityQuestionsComponent,
     SecurityQuestionsDialogComponent,
+    RolesComponent,
     UnauthorizedComponent,
+    NotFoundComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
     FooterComponent,
