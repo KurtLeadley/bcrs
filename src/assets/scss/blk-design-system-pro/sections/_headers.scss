@@ -42,7 +42,7 @@
     display: block;
     left: 0;
     top: 0;
-    content: '';
+    content: "";
     background-color: rgba(0, 0, 0, 0.5);
   }
 }
@@ -202,8 +202,8 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: #344675;
-    opacity: 0.8;
+    background-color: black;
+    opacity: 0.5;
     z-index: 1;
   }
 
@@ -270,7 +270,7 @@
 // HEADER 6
 
 .header-6 {
-  background-image: url('../../assets/img/dots.png');
+  background-image: url("../../assets/img/dots.png");
   background-size: contain;
 
   .path {

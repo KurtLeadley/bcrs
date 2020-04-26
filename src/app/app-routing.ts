@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 import { FeaturesComponent } from './pages/features/features.component';
 import { RolesComponent } from './pages/admin/roles/roles.component';
+import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,7 +29,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'features', component: FeaturesComponent },
   {
     path: 'admin',
     children: [
@@ -37,6 +37,11 @@ const routes: Routes = [
         path: 'security-questions',
         component: SecurityQuestionsComponent,
         canActivate: [AuthenticationGuard, AuthorizationGuard],
+      },
+      {
+        path: 'purchases-graph',
+        component: PurchasesGraphComponent,
+        // canActivate: [AuthenticationGuard, AuthorizationGuard],
       },
       {
         path: 'roles',
@@ -50,7 +55,6 @@ const routes: Routes = [
     children: [
       { path: '401', component: UnauthorizedComponent },
       { path: '500', component: InternalServerComponent },
-      { path: '404', component: NotFoundComponent },
     ],
   },
   { path: '**', component: NotFoundComponent },

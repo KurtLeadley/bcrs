@@ -1,69 +1,57 @@
-<div class="wrapper">
-  <div class="section">
-    <div class="container">
-      <div class="space-90"></div>
-      <div class="cd-section">
-        <div id="tables">
-          <div class="row">
-            <div class="col-md-12 ml-auto mr-auto">
-              <div class="card card-plain bg-default">
-                <div class="card-header">
-                  <h1 class="card-title text-center text-primary">
-                    Security Question Configuration
-                  </h1>
-                  <button
-                    (click)="openDialog('Create', null)"
-                    class="btn btn-neutral btn-round btn-icon pull-right mr-5 mb-5"
-                    placement="right"
-                    tooltip="Create New Security Question"
-                  >
-                    <i class="tim-icons icon-simple-add"></i>
-                  </button>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table tablesorter">
-                        <thead>
-                          <tr>
-                            <th class="text-left"><h4 class="text-danger">Question</h4></th>
-                            <th class="text-center"><h4 class="text-danger">Disabled</h4></th>
-                            <th class="text-right"><h4 class="text-danger">Actions</h4></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let question of securityQuestions">
-                            <td class="text-left">{{ question.text }}</td>
-                            <td class="text-center">
-                              <bSwitch
-                                [switch-on-color]="'primary'"
-                                [switch-off-color]="'primary'"
-                                [(ngModel)]="question.disabled"
-                                (changeState)="openDialog('Delete', question)"
-                              >
-                                {{ question.disabled ? 'On' : 'Off' }}
-                              </bSwitch>
-                            </td>
-                            <td class="text-right">
-                              <button
-                                class="btn btn-success btn-simple btn-icon btn-sm mr-1"
-                                type="button"
-                                (click)="openDialog('Update', question)"
-                                placement="left"
-                                tooltip="Update Security Question"
-                              >
-                                <i class="tim-icons icon-settings"></i>
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<mat-card class="card">
+  <mat-card-header class="card_header" fxLayout="column" fxLayoutWrap fxLayoutGap="1rem">
+    <h2 class="card_header-title">Security Questions Configuration</h2>
+    <div fxLayout="row" fxLAyout.xs="column" fxLayoutWrap fxLayoutGap="1rem" fxLayoutAlign="space-between center">
+      <div class="card_header-filter">
+        <mat-form-field>
+          <mat-label>Table Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Filter Security Questions" />
+        </mat-form-field>
+      </div>
+
+      <div class="card_header-button">
+        <button mat-raised-button (click)="openDialog('Add', null)">
+          <mat-icon>group_add</mat-icon>
+          <span>Add Security Question</span>
+        </button>
       </div>
     </div>
-  </div>
-</div>
+  </mat-card-header>
+
+  <mat-card-content class="card_content">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate" style="margin: 10 0;"></mat-progress-bar>
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="text">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Security Question Text</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Text: ">{{ element.text }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="disabled">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Disabled</mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Disabled: ">
+          <mat-slide-toggle [checked]="element.disabled" (click)="openDialog('Disable', element)" color="primary">
+            {{ element.disabled ? 'Yes' : 'No' }}
+          </mat-slide-toggle>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_cert</mat-icon>
+          </button>
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item (click)="openDialog('Update', element)">Edit Security Question</button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions class="card_footer">
+    <mat-paginator class="card_footer-pager" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </mat-card-actions>
+</mat-card>

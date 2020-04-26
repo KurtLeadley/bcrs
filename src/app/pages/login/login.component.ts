@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   loading = false;
   loginForm: FormGroup;
   hide: boolean;
@@ -41,10 +41,5 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.auth.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
       this.loading = false;
     }, 1000);
-  }
-
-  ngOnDestroy() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('landing-page');
   }
 }

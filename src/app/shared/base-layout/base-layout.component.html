@@ -8,7 +8,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300" id="navbar-top">
       <div class="container">
         <div class="navbar-translate">
-          <a class="navbar-brand" routerLink="/" placement="bottom" tooltip="Give us a call today 1 (555) 555-5555">
+          <a class="navbar-brand" routerLink="/home" placement="bottom" tooltip="Give us a call today 1 (555) 555-5555">
             <span><img src="../../../assets/img/bcrs-logo.png" alt="BCRS logo" /><br />Bob's Computer Repair Shop</span>
           </a>
           <button
@@ -49,7 +49,7 @@
           </div>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/" class="nav-link"> <i class="tim-icons icon-paper"> </i> Home </a>
+              <a routerLink="/home" class="nav-link"> <i class="tim-icons icon-paper"> </i> Home </a>
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a routerLink="/about" class="nav-link"> <i class="tim-icons icon-bulb-63"> </i> About Us </a>
@@ -58,7 +58,7 @@
               <a routerLink="/contact-us" class="nav-link"> <i class="tim-icons icon-square-pin"> </i> Contact Us </a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/features" class="nav-link"> <i class="tim-icons icon-settings"> </i> Services </a>
+              <a routerLink="/services" class="nav-link"> <i class="tim-icons icon-settings"> </i> Services </a>
             </li>
           </ul>
         </div>
@@ -91,7 +91,7 @@
           </div>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/" class="nav-link"> <i class="tim-icons icon-paper"> </i> Home </a>
+              <a routerLink="/home" class="nav-link"> <i class="tim-icons icon-paper"> </i> Home </a>
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a routerLink="/about" class="nav-link"> <i class="tim-icons icon-bulb-63"> </i> About Us </a>
@@ -100,7 +100,7 @@
               <a routerLink="/contact-us" class="nav-link"> <i class="tim-icons icon-square-pin"> </i> Contact Us </a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/features" class="nav-link"> <i class="tim-icons icon-settings"> </i> Services </a>
+              <a routerLink="/services" class="nav-link"> <i class="tim-icons icon-settings"> </i> Services </a>
             </li>
             <li class="nav-item">
               <button class="nav-link btn btn-sm btn-danger btn-sm" (click)="onLogout()">
@@ -138,7 +138,7 @@
           </div>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/" class="nav-link"> <i class="tim-icons icon-paper"> </i> Home </a>
+              <a routerLink="/home" class="nav-link"> <i class="tim-icons icon-paper"> </i> Home </a>
             </li>
             <li class="dropdown nav-item" dropdown>
               <a
@@ -151,7 +151,7 @@
               </a>
               <div
                 aria-labelledby="adminConfigDropdownMenuLink"
-                class="dropdown-menu dropdown-menu-right dropdown-primary"
+                class="dropdown-menu dropdown-menu-right"
                 *dropdownMenu
               >
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-money-coins"> </i> Purchases </a>
@@ -167,16 +167,16 @@
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" dropdownToggle id="adminDropdownMenuLink">
                 <i class="tim-icons icon-atom"> </i> Admin Services
               </a>
-              <div
-                aria-labelledby="adminDropdownMenuLink"
-                class="dropdown-menu dropdown-menu-right dropdown-primary"
-                *dropdownMenu
-              >
+              <div aria-labelledby="adminDropdownMenuLink" class="dropdown-menu dropdown-menu-right" *dropdownMenu>
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-molecule-40"> </i> Profile </a>
                 <a class="dropdown-item" routerLink="/admin/invoices">
                   <i class="tim-icons icon-single-copy-04"> </i> Invoices
                 </a>
+                <a class="dropdown-item" href="#"> <i class="tim-icons icon-single-copy-04"> </i> Invoices </a>
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-settings"> </i> Service Repair </a>
+                <a class="dropdown-item" routerLink="/admin/purchases-graph">
+                  <i class="tim-icons icon-settings"> </i> Purchases by Service Graph
+                </a>
               </div>
             </li>
             <li class="nav-item">

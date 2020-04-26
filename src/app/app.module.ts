@@ -13,6 +13,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
 
+// charts module
+import { ChartsModule } from 'ng2-charts';
+
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -77,6 +80,7 @@ import { SecurityQuestionsDialogComponent } from './pages/admin/security-questio
 import { FooterComponent } from './shared/footer/footer.component';
 import { RolesComponent } from './pages/admin/roles/roles.component';
 import { RolesDialogComponent } from './pages/admin/roles/roles-dialog/roles-dialog.component';
+import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 
 @NgModule({
   declarations: [
@@ -90,13 +94,13 @@ import { RolesDialogComponent } from './pages/admin/roles/roles-dialog/roles-dia
     UsersComponent,
     UsersDialogComponent,
     SecurityQuestionsComponent,
-    SecurityQuestionsDialogComponent,
     UnauthorizedComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
     FooterComponent,
     RolesComponent,
     RolesDialogComponent,
+    PurchasesGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -147,6 +151,7 @@ import { RolesDialogComponent } from './pages/admin/roles/roles-dialog/roles-dia
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
     TagInputModule,
+    ChartsModule,
   ],
   providers: [
     AuthenticationGuard,

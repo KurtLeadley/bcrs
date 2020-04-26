@@ -76,14 +76,12 @@
       </mat-form-field>
     </div>
     <div [hidden]="data.action.toString() !== 'Delete'">
-      Are you sure you wish to <b>{{ !data.obj.disabled ? 'enable' : 'disable' }}</b> user: {{ data.obj.username }}
+      Are you sure you wish to <b>{{ !data.obj.disabled ? 'lock' : 'unlock' }}</b> user: {{ data.obj.username }}
     </div>
     <div>
       <button type="submit" mat-button cdkFocusInitial [class.spinner]="loading" [disabled]="loading">
         {{ data.action.toString() === 'Delete' ? 'Update' : data.action }}
       </button>
-
-      <button mat-button (click)="close()">Cancel</button>
     </div>
   </form>
 </div>

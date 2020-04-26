@@ -152,8 +152,4 @@ export class UsersDialogComponent implements OnInit {
       duration: 2000,
     });
   }
-
-  close() {
-    this.dialogRef.close();
-  }
 }
