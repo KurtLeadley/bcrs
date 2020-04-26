@@ -1,16 +1,35 @@
-<mat-card class="graph-background">
-<div>
-    <div style="display: block">
-      <canvas baseChart
-              [datasets]="barChartData"
-              [labels]="barChartLabels"
-              [options]="barChartOptions"
-              [legend]="barChartLegend"
-              [chartType]="barChartType"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)">
-      </canvas>
+<div class="wrapper">
+  <div class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-header">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h1 class="text-danger">Service Purchase Graphs</h1>
+            </div>
+          </div>
+          <div id="graph_card" class="card mb-5 pb-5">
+            <div class="card-header mr-auto ml-auto">
+              <tabset class="nav-tabs-danger">
+                <tab>
+                  <ng-template tabHeading> <i class="tim-icons icon-atom"></i> Polar Area </ng-template>
+                  <!-- <div *ngIf="polarArea">
+                    <p-chart type="polarArea" [data]="polarArea" height="60vh"></p-chart>
+                  </div> -->
+                </tab>
+                <tab>
+                  <ng-template tabHeading> <i class="tim-icons icon-support-17"></i> Doughnut </ng-template>
+                  <!-- <p-chart type="doughnut" [data]="doughnut" height="60vh"></p-chart> -->
+                </tab>
+                <tab>
+                  <ng-template tabHeading> <i class="tim-icons icon-chart-bar-32"></i> Bar Chart </ng-template>
+                  <!-- <p-chart type="bar" [data]="barChart" height="60vh"></p-chart> -->
+                </tab>
+              </tabset>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-</mat-card>
+</div>
