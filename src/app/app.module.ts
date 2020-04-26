@@ -10,7 +10,6 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
 
 // Material
@@ -55,6 +54,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { TagInputModule } from 'ngx-chips';
+import { ChartModule } from 'primeng/chart';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -79,6 +79,7 @@ import { UsersDialogComponent } from './pages/admin/users/users-dialog/users-dia
 import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
 import { RolesDialogComponent } from './pages/admin/roles/roles-dialog/roles-dialog.component';
 import { FeaturesComponent } from './pages/features/features.component';
+import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { FeaturesComponent } from './pages/features/features.component';
     FooterComponent,
     RolesComponent,
     RolesDialogComponent,
+    PurchasesGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,7 +134,6 @@ import { FeaturesComponent } from './pages/features/features.component';
     MatCheckboxModule,
     MatProgressBarModule,
     MatExpansionModule,
-    ChartModule,
     TabViewModule,
     MatSlideToggleModule,
     MatTabsModule,
@@ -151,6 +152,7 @@ import { FeaturesComponent } from './pages/features/features.component';
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
     TagInputModule,
+    ChartModule,
   ],
   providers: [
     AuthenticationGuard,
