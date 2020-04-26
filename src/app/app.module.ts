@@ -13,9 +13,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
 
-// charts module
-import { ChartsModule } from 'ng2-charts';
-
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -151,7 +148,6 @@ import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
     TagInputModule,
-    ChartsModule,
   ],
   providers: [
     AuthenticationGuard,
