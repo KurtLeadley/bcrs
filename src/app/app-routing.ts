@@ -20,7 +20,6 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
 import { FeaturesComponent } from './pages/features/features.component';
 import { RolesComponent } from './pages/admin/roles/roles.component';
-import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,11 +38,6 @@ const routes: Routes = [
         canActivate: [AuthenticationGuard, AuthorizationGuard],
       },
       {
-        path: 'purchases-graph',
-        component: PurchasesGraphComponent,
-        // canActivate: [AuthenticationGuard, AuthorizationGuard],
-      },
-      {
         path: 'roles',
         component: RolesComponent,
         canActivate: [AuthenticationGuard, AuthorizationGuard],
@@ -54,6 +48,7 @@ const routes: Routes = [
     path: 'error',
     children: [
       { path: '401', component: UnauthorizedComponent },
+      { path: '404', component: NotFoundComponent },
       { path: '500', component: InternalServerComponent },
     ],
   },
