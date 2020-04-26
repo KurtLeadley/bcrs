@@ -28,7 +28,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'features', component: FeaturesComponent },
   {
     path: 'admin',
     children: [

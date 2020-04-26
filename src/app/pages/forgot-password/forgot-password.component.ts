@@ -43,8 +43,6 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('reset-page');
     this.usernameFormGroup = this._formBuilder.group({
       username: ['', Validators.required],
     });
@@ -61,7 +59,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     });
   }
 
-  onCheckUsername(usernameFormGroup: FormGroup) {
+  onCheckUsername(stepper: MatStepper) {
     if (this.usernameFormGroup.invalid) {
       return;
     }
@@ -79,13 +77,14 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
             this.questionsFormGroup.controls['question' + i].setValue(element[0].text, [Validators.required]);
             i++;
           });
+          stepper.next();
         });
       }
       this.loading = false;
     });
   }
 
-  onCheckSecurityAnswers(questionFormGroup) {
+  onCheckSecurityAnswers(stepper: MatStepper) {
     if (this.questionsFormGroup.invalid) {
       return;
     }
@@ -98,8 +97,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     this.auth.verifyUsersSecurityQuestions(this.username, this.securityAnswers).subscribe((valid) => {
       this.securityQuestionsCorrect = valid;
       if (valid === true) {
-        this.loading = false;
-        return true;
+        stepper.next();
       } else {
         this.questionsFormGroup.setErrors({ error: 'There are incorrect security answers.' });
       }
@@ -123,8 +121,5 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     }, 2000);
   }
 
-  ngOnDestroy() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('reset-page');
-  }
+  ngOnDestroy() {}
 }

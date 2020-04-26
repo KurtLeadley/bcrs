@@ -1,20 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })
-export class AboutComponent implements OnInit, OnDestroy {
-  constructor() {}
+export class AboutComponent implements OnInit {
 
-  ngOnInit() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('about-us');
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
-  ngOnDestroy() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('about-us');
-  }
 }

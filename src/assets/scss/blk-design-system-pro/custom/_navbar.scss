@@ -1,7 +1,7 @@
 .navbar {
   padding: $navbar-padding-x;
   width: $full-width;
-  z-index: 1200;
+  z-index: 1050;
   background: $primary;
 
   .photo {
@@ -315,7 +315,7 @@
       color: $default;
     }
 
-    button.navbar-toggler[data-target='#navigation'] {
+    button.navbar-toggler[data-target="#navigation"] {
       padding-top: 0;
     }
 
@@ -448,7 +448,7 @@
   }
 }
 @media screen and (max-width: 576px) {
-  .navbar[class*='navbar-toggleable-'] .container {
+  .navbar[class*="navbar-toggleable-"] .container {
     margin-left: 0;
     margin-right: 0;
   }
