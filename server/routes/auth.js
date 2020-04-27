@@ -14,6 +14,7 @@ const {
   findSelectedSecurityQuestions,
   verifySecurityAnswersExist,
   checkUserSecurityAnswers,
+  editProfile,
 } = require('../controllers/auth');
 const router = express.Router();
 
@@ -29,5 +30,6 @@ router.get('/verify/users/:username/security-answers', verifySecurityAnswersExis
 // PUT
 router.patch('/verify/:username/reset-password', resetPassword);
 router.put('/update-profile/:userId', updateDetails);
+router.put('/profile/userid', editProfile);
 
 module.exports = router;

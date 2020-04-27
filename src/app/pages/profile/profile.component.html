@@ -1,0 +1,271 @@
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="section">
+            <section class="text-center">
+              <form *ngIf="uploadForm" [formGroup]="uploadForm" (ngSubmit)="submitAvatar()">
+                <app-picture-upload [avatar]="true"></app-picture-upload>
+              </form>
+            </section>
+            <!-- Tab list -->
+            <section>
+              <br />
+              <ul class="nav flex-column" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active text-danger" data-toggle="tab" href="#link1" role="tablist">
+                    <i class="tim-icons icon-single-02"></i> Profile
+                  </a>
+                </li>
+                <hr class="line-danger" />
+              </ul>
+            </section>
+          </div>
+        </div>
+        <!-- Profile form -->
+        <div class="col-md 8 ml-auto">
+          <div class="section">
+            <div class="tab-content">
+              <div class="tab-pane active" id="link1">
+                <div>
+                  <header>
+                    <h2 class="text-uppercase">
+                      Profile Information
+                    </h2>
+                  </header>
+                  <hr class="line-danger" />
+                  <br />
+                  <!-- first name -->
+                  <form [formGroup]="profileForm" *ngIf="profileForm">
+                    <div class="row">
+                      <div class="col-md-3 align-self-center">
+                        <label for="#firstName" class="labels">First Name</label>
+                      </div>
+                      <div class="col-md-9 align-self-center">
+                        <div class="form-group">
+                          <input
+                            class="form-control"
+                            id="firstName"
+                            name="firstName"
+                            required
+                            formControlName="firstName"
+                            type="text"
+                            #firstName
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- last name -->
+                    <div class="row">
+                      <div class="col-md-3 align-self-center">
+                        <label for="#lastName" class="labels">Last Name</label>
+                      </div>
+                      <div class="col-md-9 align-self-center">
+                        <div class="form-group">
+                          <input
+                            class="form-control"
+                            id="lastName"
+                            name="lastName"
+                            required
+                            formControlName="lastName"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- email -->
+                    <div class="row">
+                      <div class="col-md-3 align-self-center">
+                        <label for="#email" class="labels">Email Address</label>
+                      </div>
+                      <div class="col-md-9 align-self-center">
+                        <div class="form-group">
+                          <input class="form-control" id="email" name="email" formControlName="email" type="email" />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- phone number -->
+                    <div class="row">
+                      <div class="col-md-3 align-self-center">
+                        <label for="#phoneNumber" class="labels">Phone Number</label>
+                      </div>
+                      <div class="col-md-9 align-self-center">
+                        <div class="form-group">
+                          <input
+                            class="form-control"
+                            id="phoneNumber"
+                            name="phoneNumber"
+                            formControlName="phoneNumber"
+                            required
+                            type="tel"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- street & zip -->
+                    <div class="row">
+                      <div class="col-md-3 align-self-center">
+                        <label for="street" class="labels">Street & Zip</label>
+                      </div>
+                      <div class="col-md-6 align-self center">
+                        <div class="form-group">
+                          <input class="form-control" id="street" name="street" formControlName="street" type="text" />
+                        </div>
+                      </div>
+                      <div class="col-md-3 align-self-center">
+                        <div class="form-group">
+                          <input
+                            class="form-control"
+                            id="zipCode"
+                            name="zipCode"
+                            formControlName="zipCode"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- City & State -->
+                    <div class="row">
+                      <div class="col-md-3 align-self-center">
+                        <label for="#city" class="labels">City & State</label>
+                      </div>
+                      <div class="col-md-6 align-self-center">
+                        <div class="form-group">
+                          <input class="form-control" id="city" name="city" formControlName="city" type="text" />
+                        </div>
+                      </div>
+                      <div class="col-md-3 align-self-center">
+                        <div class="form-group">
+                          <input class="form-control" id="state" name="state" formControlName="state" type="text" />
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <header>
+                    <h2 class="text-uppercase">Security Questions</h2>
+                  </header>
+                  <hr class="line-danger" />
+                  <br />
+                  <form [formGroup]="secQuestionsForm" *ngIf="secQuestionsForm">
+                    <!-- Security Questions first row -->
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="question1" class="labels">
+                          Security Question #1 <span class="text-danger"> * </span>
+                        </label>
+                        <select name="question1" class="form-control btn-primary" formControlName="question1" required>
+                          <option
+                            *ngFor="let sq of sqList"
+                            [value]="sq._id"
+                            [disabled]="sq.disabled || sq.tempDisabled"
+                          >
+                            {{ sq.text }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="answer1" class="labels">
+                          Security Answer #1 <span class="text-danger"> * </span>
+                        </label>
+                        <input class="form-control" name="answer1" formControlName="answer1" required type="text" />
+                      </div>
+                    </div>
+                    <!-- Security Questions second row -->
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="question2" class="labels">
+                          Security Question #2 <span class="text-danger"> * </span>
+                        </label>
+                        <select name="question2" class="form-control btn-primary" formControlName="question2" required>
+                          <option
+                            *ngFor="let sq of sqList"
+                            [value]="sq._id"
+                            [disabled]="sq.disabled || sq.tempDisabled"
+                          >
+                            {{ sq.text }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="answer2" class="labels">
+                          Security Answer #2 <span class="text-danger"> * </span>
+                        </label>
+                        <input class="form-control" name="answer2" formControlName="answer2" required type="text" />
+                      </div>
+                    </div>
+                    <!-- Security Questions thrid row -->
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="question3" class="labels">
+                          Security Question #3 <span class="text-danger"> * </span>
+                        </label>
+                        <select name="question3" class="form-control btn-primary" formControlName="question3" required>
+                          <option
+                            *ngFor="let sq of sqList"
+                            [value]="sq._id"
+                            [disabled]="sq.disabled || sq.tempDisabled"
+                          >
+                            {{ sq.text }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="answer3" class="labels">
+                          Security Answer #3 <span class="text-danger"> * </span>
+                        </label>
+                        <input class="form-control" name="answer3" formControlName="answer3" required type="text" />
+                      </div>
+                    </div>
+                  </form>
+                  <header>
+                    <h2 class="text-uppercase">Password</h2>
+                  </header>
+                  <hr class="line-danger" />
+                  <br />
+                  <form [formGroup]="passwordForm" *ngIf="passwordForm">
+                    <div class="row">
+                      <div class="col-md-3 align-self-center">
+                        <label for="password" class="labels">Password</label>
+                      </div>
+                      <div class="col-md-9 align-self-center">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input
+                              class="form-control"
+                              formControlName="password"
+                              required
+                              #password
+                              [type]="hide ? 'text' : 'password'"
+                            />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i (click)="hide = !hide" class="tim-icons icon-lock-circle"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="row mt-4">
+                    <div class="col-md-6">
+                      <button
+                        class="btn btn-danger mr-1"
+                        (click)="onSubmit()"
+                        [class.spinner]="loading"
+                        [disabled]="loading"
+                      >
+                        Save Changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

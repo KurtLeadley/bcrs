@@ -132,6 +132,65 @@ exports.updateUser = (req, res, next) => {
 };
 
 /**
+ * @desc        Update Avatar
+ * @route       PUT /api/v1/users/avatar/:id
+ * @access      Private/user
+ */
+exports.updateAvatar = (req, res, next) => {
+  User.updateOne(
+    { _id: req.params._id },
+    {
+      $set: {
+        avatar: req.body.avatar,
+      },
+    }
+  )
+    .then((user) => {
+      if (user.nModified > 0) {
+        res.status(200).json({
+          success: true,
+          user,
+        });
+      } else {
+        return next(new ErrorResponse('Not Authorized!', 401));
+      }
+    })
+    .catch((err) => {
+      return next(new ErrorResponse(`Internal Server Error: ${err.message}`, 500));
+    });
+};
+
+/**
+ * @desc        Delete Avatar
+ * @route       DELETE /api/v1/users/avatar/:id
+ * @access      Private/user
+ */
+exports.deleteAvatar = (req, res, next) => {
+  User.updateOne(
+    { _id: req.params._id },
+    {
+      $set: {
+        // set avatar string to null
+        avatar: null,
+      },
+    }
+  )
+    .then((user) => {
+      if (user.nModified > 0) {
+        res.status(200).json({
+          success: true,
+          user,
+        });
+      } else {
+        return next(new ErrorResponse('Not Authorized!', 401));
+      }
+    })
+    .catch((err) => {
+      return next(new ErrorResponse(`Internal Server Error: ${err.message}!`, 500));
+    });
+};
+
+/**
  * @desc        Delete user
  * @route       DELETE /api/v1/users/:id
  * @access      Private/admin

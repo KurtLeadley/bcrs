@@ -19,11 +19,11 @@ export class UserService {
 
   // User CRUD methods
   getUsers(): Observable<User[]> {
-    return this.http.get<{ message: String; users: User[] }>(this.apiUrl + '/users').pipe(map((x) => x.users));
+    return this.http.get<{ message: string; users: User[] }>(this.apiUrl + '/users').pipe(map((x) => x.users));
   }
 
   getUser(_id: string): Observable<User> {
-    return this.http.get<{ message: String; user: User }>(this.apiUrl + '/users/' + _id).pipe(map((x) => x.user));
+    return this.http.get<{ message: string; user: User }>(this.apiUrl + '/users/' + _id).pipe(map((x) => x.user));
   }
 
   createUser(user: User): Observable<string> {
@@ -34,6 +34,16 @@ export class UserService {
     return this.http
       .put<{ message: string; user: User }>(this.apiUrl + '/users/' + user._id, user)
       .pipe(map((x) => x.message));
+  }
+
+  updateAvatar(user: User): Observable<string> {
+    return this.http
+      .put<{ message: string; user: User }>(`${this.apiUrl}/users/avatar/` + user._id, user)
+      .pipe(map((x) => x.message));
+  }
+
+  deleteAvatar(id: string): Observable<string> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/users/avatar` + id).pipe(map((x) => x.message));
   }
 
   deleteUser(user: User): Observable<string> {

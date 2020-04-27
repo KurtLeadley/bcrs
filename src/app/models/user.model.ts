@@ -6,19 +6,19 @@
 import { SecurityAnswer } from '../models/security-answer.model';
 
 export interface User {
-  _id: String;
-  username: String;
-  password: String;
-  firstName: String;
-  lastName: String;
-  phoneNumber: String;
-  street: String;
-  city: String;
-  state: String;
-  zipCode: String;
-  email: String;
-  disabled: Boolean;
-  role: String;
+  _id: string;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  email: string;
+  disabled: boolean;
+  role: string;
   securityAnswers: SecurityAnswer[];
   dateCreated: Date;
   dateModified: Date;

@@ -4,7 +4,16 @@
  * Description: bcrs-api
  */
 const express = require('express');
-const { getUsers, getUser, createUser, updateUser, deleteUser, getUserRole } = require('../controllers/users');
+const {
+  getUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+  getUserRole,
+  updateAvatar,
+  deleteAvatar,
+} = require('../controllers/users');
 
 const router = express.Router();
 // User api endpoints
@@ -16,7 +25,9 @@ router.get('/:username/role', getUserRole);
 router.post('/', createUser);
 // PUT
 router.put('/:id', updateUser);
+router.put('/avatar/:id', updateAvatar);
 // DELETE
 router.delete('/:id', deleteUser);
+router.delete('/avatar/:id', deleteAvatar);
 
 module.exports = router;

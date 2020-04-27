@@ -55,6 +55,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: 'standard',
     },
+    avatar: {
+      type: String,
+    },
     securityAnswers: {
       type: [UserSecurityAnswer],
     },

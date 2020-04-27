@@ -132,7 +132,7 @@ export class AuthService {
   // allow user to update their profile
   editProfile(userProfile: User): Observable<string> {
     return this.http
-      .patch<{ message: string; user: User }>(this.apiUrl + '/auth/updateProfile/' + userProfile._id, userProfile)
+      .patch<{ message: string; user: User }>(this.apiUrl + '/auth/profile/' + userProfile._id, userProfile)
       .pipe(map((x) => x.message));
   }
 

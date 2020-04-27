@@ -170,6 +170,44 @@ exports.updateDetails = (req, res, next) => {
 };
 
 /**
+ * @desc        Update user profile
+ * @route       PUT /api/v1/auth/profile/:userid
+ * @access      Private
+ */
+exports.editProfile = (req, res, next) => {
+  User.updateOne(
+    { _: req.params.userid },
+    {
+      $set: {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zipCode: req.body.zipCode,
+        dateModified: req.body.dateModified,
+        securityAnswers: req.body.securityAnswers,
+      },
+    }
+  )
+    .then((user) => {
+      if (user.nModified > 0) {
+        res.status(200).json({
+          success: true,
+          user,
+        });
+      } else {
+        return next(new ErrorResponse('User not found!', 404));
+      }
+    })
+    .catch((err) => {
+      return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
+    });
+};
+
+/**
  * @desc        Reset Users Password
  * @route       PUT /api/v1/auth/verify/:username/reset-password
  * @access      Private

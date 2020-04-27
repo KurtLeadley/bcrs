@@ -82,7 +82,10 @@ import { FeaturesComponent } from './pages/features/features.component';
 import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 import { ServicesComponent } from './pages/admin/services/services.component';
 import { ServicesDialogComponent } from './pages/admin/services/services-dialog/services-dialog.component';
-import { InvoicesComponent } from './pages/invoices/invoices.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { PictureUploadComponent } from './shared/picture-upload/picture-upload.component';
+import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
+import { ServiceRepairDialogComponent } from './pages/service-repair/service-repair-dialog/service-repair-dialog.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +111,10 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
     PurchasesGraphComponent,
     ServicesComponent,
     ServicesDialogComponent,
-    InvoicesComponent,
+    ProfileComponent,
+    PictureUploadComponent,
+    ServiceRepairComponent,
+    ServiceRepairDialogComponent,
   ],
   imports: [
     BrowserModule,
