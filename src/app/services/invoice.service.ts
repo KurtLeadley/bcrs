@@ -31,6 +31,7 @@ export class InvoiceService {
   }
 
   getInvoicesByUsername(username: string): Observable<Invoice[]> {
+    console.log(`${apiUrl}/invoices/` + username);
     return this.http
       .get<{ message: string; invoices: Invoice[] }>(`${apiUrl}/invoices/` + username)
       .pipe(map((x) => x.invoices));

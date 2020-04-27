@@ -83,6 +83,7 @@ import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases
 import { ServicesComponent } from './pages/admin/services/services.component';
 import { ServicesDialogComponent } from './pages/admin/services/services-dialog/services-dialog.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
+import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
     ServicesComponent,
     ServicesDialogComponent,
     InvoicesComponent,
+    AdminInvoicesComponent
   ],
   imports: [
     BrowserModule,

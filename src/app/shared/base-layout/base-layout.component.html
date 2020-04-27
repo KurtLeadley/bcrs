@@ -109,6 +109,14 @@
             </li>
           </ul>
         </div>
+        <!-- isAuthenticated  -->
+        <div
+          *ngIf="userIsAuthenticated && role != 'admin'"
+          class="navbar-collapse"
+          [collapse]="isCollapsed"
+        >
+          <!-- create navbar for non admins logged in here-->
+        </div>
         <!-- isAuthenticated & isAdmin -->
         <div
           *ngIf="userIsAuthenticated && role == 'admin'"
@@ -175,7 +183,7 @@
                 *dropdownMenu
               >
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-molecule-40"> </i> Profile </a>
-                <a class="dropdown-item" routerLink="/invoices">
+                <a class="dropdown-item" routerLink="admin/invoices">
                   <i class="tim-icons icon-single-copy-04"> </i> Invoices
                 </a>
                 <a class="dropdown-item" href="#"> <i class="tim-icons icon-settings"> </i> Service Repair </a>

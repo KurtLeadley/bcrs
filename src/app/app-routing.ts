@@ -23,6 +23,7 @@ import { RolesComponent } from './pages/admin/roles/roles.component';
 import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 import { ServicesComponent } from './pages/admin/services/services.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
+import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -63,6 +64,11 @@ const routes: Routes = [
       {
         path: 'services',
         component: ServicesComponent,
+        canActivate: [AuthenticationGuard, AuthorizationGuard],
+      },
+      {
+        path: 'invoices',
+        component: AdminInvoicesComponent,
         canActivate: [AuthenticationGuard, AuthorizationGuard],
       },
     ],

@@ -26,7 +26,9 @@ export class InvoicesComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+    console.log(localStorage.getItem('username'));
     this.invoiceService.getInvoicesByUsername(localStorage.getItem('username')).subscribe((invoiceList) => {
+      console.log(invoiceList);
       setTimeout(() => {
         const rows$ = of(invoiceList);
         this.totalRow$ = rows$.pipe(map((rows) => rows.length));
