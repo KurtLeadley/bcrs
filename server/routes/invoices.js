@@ -18,7 +18,7 @@ const router = express.Router();
 // Invoice routes
 // POST
 router.post('/', createInvoice);
-router.post('/:username', getInvoicesByUser);
+router.get('/:username', getInvoicesByUser);
 // GET
 router.get('/purchases/:serviceId', getPurchasesByServiceCount);
 router.get('/purchases', getPurchasesByService);
