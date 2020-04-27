@@ -58,6 +58,7 @@ exports.getInvoicesByUser = (req, res, next) => {
   Invoice.find()
     .where('username')
     .equals(req.params.username)
+    //.equals('kleadley')
     .then((invoice) => {
       if (!invoice) {
         return next(new ErrorResponse('Invoices not found', 404));
