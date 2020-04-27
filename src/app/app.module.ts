@@ -80,6 +80,8 @@ import { SecurityQuestionsDialogComponent } from './pages/admin/security-questio
 import { RolesDialogComponent } from './pages/admin/roles/roles-dialog/roles-dialog.component';
 import { FeaturesComponent } from './pages/features/features.component';
 import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
+import { ServicesComponent } from './pages/admin/services/services.component';
+import { ServicesDialogComponent } from './pages/admin/services/services-dialog/services-dialog.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases
     RolesComponent,
     RolesDialogComponent,
     PurchasesGraphComponent,
+    ServicesComponent,
+    ServicesDialogComponent,
   ],
   imports: [
     BrowserModule,
