@@ -3,51 +3,352 @@
     <div class="page-header-image"></div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-5 col-md-12 mx-auto">
+        <div class="col-lg-10 col-md-12 mx-auto">
           <div class="square square-7" id="square7"></div>
           <div class="square square-8" id="square8"></div>
-          <div class="card card-register">
-            <div class="card-header">
-              <img src="assets/img/square1-red.png" alt="card image" class="card-img" />
-              <h4 class="card-title ml-1">Register</h4>
-            </div>
-            <div class="card-body">
-              <form class="form">
-                <div class="form-row mt-2">
-                  <div class="input-group col" [ngClass]="{ 'input-group-focus': focus === true }">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="tim-icons icon-single-02"></i>
-                      </div>
+          <div class="section section-tabs">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 ml-auto col-xl-10 mr-auto">
+                  <div class="card card-register mb-5 pb-5">
+                    <div class="card-header">
+                      <img alt="Register card header" class="card-img" src="assets/img/square1-red.png" />
+                      <h4 class="card-title ml-1">Register</h4>
                     </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Username..."
-                      (blur)="focus = false"
-                      (focus)="focus = true"
-                    />
-                  </div>
-                  <div class="input-group col" [ngClass]="{ 'input-group-focus': focus1 === true }">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="tim-icons icon-key-25"></i>
-                      </div>
+                    <div class="card-body">
+                      <tabset class="nav-tabs-danger">
+                        <tab>
+                          <!-- Personal information form -->
+                          <ng-template tabHeading>
+                            <i class="tim-icons icon-single-02"> </i> Personal<br />Information
+                          </ng-template>
+                          <form [formGroup]="personalFormGroup" *ngIf="personalFormGroup">
+                            <!-- Personal first row -->
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="firstName" class="labels"
+                                  >First Name <span class="text-danger"> * </span></label
+                                >
+                                <input
+                                  aria-label="John"
+                                  class="form-control"
+                                  name="firstName"
+                                  formControlName="firstName"
+                                  #firstName
+                                  placeholder="John"
+                                  required
+                                  type="text"
+                                />
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="lastName" class="labels"
+                                  >Last Name <span class="text-danger"> * </span></label
+                                >
+                                <input
+                                  aria-label="Doe"
+                                  class="form-control"
+                                  name="lastName"
+                                  formControlName="lastName"
+                                  #lastName
+                                  placeholder="Doe"
+                                  required
+                                  type="text"
+                                />
+                              </div>
+                            </div>
+                            <!-- Personal second row -->
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="email" class="labels">
+                                  Email Address <span class="text-danger"> * </span>
+                                </label>
+                                <input
+                                  aria-label="jdoe@email.com"
+                                  class="form-control"
+                                  name="email"
+                                  formControlName="email"
+                                  #email
+                                  placeholder="jdoe@email.com"
+                                  required
+                                  type="email"
+                                />
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="phoneNumber" class="labels">
+                                  Phone Number <span class="text-danger"> * Required format 555-555-5555</span>
+                                </label>
+                                <input
+                                  aria-label="555-555-5555"
+                                  class="form-control"
+                                  name="phoneNumber"
+                                  formControlName="phoneNumber"
+                                  #phoneNumber
+                                  placeholder="555-555-5555"
+                                  required
+                                  type="tel"
+                                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                />
+                              </div>
+                            </div>
+                            <!-- Personal thrid row -->
+                            <div class="row">
+                              <div class="col-md-8 mb-3">
+                                <label for="street" class="labels">Street Address</label>
+                                <input
+                                  aria-label="101 Elm St"
+                                  class="form-control"
+                                  name="street"
+                                  formControlName="street"
+                                  #street
+                                  placeholder="101 Elm St"
+                                  type="text"
+                                />
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="zipCode" class="labels">Zip Code</label>
+                                <input
+                                  aria-label="68856"
+                                  class="form-control"
+                                  name="zipCode"
+                                  formControlName="zipCode"
+                                  #zipCode
+                                  placeholder="68856"
+                                  type="text"
+                                />
+                              </div>
+                            </div>
+                            <!-- Personal fourth row -->
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="city" class="labels">City</label>
+                                <input
+                                  aria-label="Merna"
+                                  class="form-control"
+                                  name="city"
+                                  formControlName="city"
+                                  #city
+                                  placeholder="Merna"
+                                  type="text"
+                                />
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="state" class="labels">State</label>
+                                <input
+                                  aria-label="NE"
+                                  class="form-control"
+                                  name="state"
+                                  formControlName="state"
+                                  #state
+                                  placeholder="NE"
+                                  type="text"
+                                />
+                              </div>
+                            </div>
+                          </form>
+                        </tab>
+                        <tab>
+                          <ng-template tabHeading>
+                            <i class="tim-icons icon-badge"> </i> Account<br />Information
+                          </ng-template>
+                          <form [formGroup]="accountFormGroup" *ngIf="accountFormGroup">
+                            <!-- Account first row -->
+                            <div class="row">
+                              <div class="col-md-12 mb-3">
+                                <label for="username" class="labels">
+                                  Username <span class="text-danger"> * </span>
+                                </label>
+                                <input
+                                  aria-label="Username"
+                                  class="form-control"
+                                  name="username"
+                                  formControlName="username"
+                                  #username
+                                  required
+                                  placeholder="Username..."
+                                  type="text"
+                                />
+                              </div>
+                            </div>
+                            <!-- Account second row -->
+                            <div class="row">
+                              <div class="col-md-12 mb-3">
+                                <label for="password" class="labels">
+                                  Password <span class="text-danger"> * </span>
+                                </label>
+                                <div class="input-group">
+                                  <input
+                                    aria-label="Password"
+                                    class="form-control"
+                                    name="password"
+                                    formControlName="password"
+                                    #password
+                                    required
+                                    placeholder="Password..."
+                                    [type]="hide ? 'text' : 'password'"
+                                    type="password"
+                                  />
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i (click)="hide = !hide" class="tim-icons icon-lock-circle"></i>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </tab>
+                        <tab>
+                          <ng-template tabHeading>
+                            <i class="tim-icons icon-lock-circle"> </i>Security<br />Questions
+                          </ng-template>
+                          <form [formGroup]="secQuestionsFormGroup" *ngIf="secQuestionsFormGroup">
+                            <!-- Security Questions first row -->
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="question1" class="labels">
+                                  Security Question #1 <span class="text-danger"> * </span>
+                                </label>
+                                <select
+                                  name="question1"
+                                  aria-label="Please select a question"
+                                  class="form-control btn-primary"
+                                  placeholder="Please select question"
+                                  formControlName="question1"
+                                  required
+                                >
+                                  <option
+                                    *ngFor="let sq of sqList"
+                                    [value]="sq._id"
+                                    [disabled]="sq.disabled || sq.tempDisabled"
+                                  >
+                                    {{ sq.text }}
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="answer1" class="labels">
+                                  Security Answer #1 <span class="text-danger"> * </span>
+                                </label>
+                                <input
+                                  aria-label="Please answer your selected question"
+                                  class="form-control"
+                                  name="answer1"
+                                  placeholder="Please answer your selected question"
+                                  formControlName="answer1"
+                                  required
+                                  type="text"
+                                />
+                              </div>
+                            </div>
+                            <!-- Security Questions second row -->
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="question2" class="labels">
+                                  Security Question #2 <span class="text-danger"> * </span>
+                                </label>
+                                <select
+                                  name="question2"
+                                  aria-label="Please select a question"
+                                  class="form-control btn-primary"
+                                  placeholder="Please select question"
+                                  formControlName="question2"
+                                  required
+                                >
+                                  <option
+                                    *ngFor="let sq of sqList"
+                                    [value]="sq._id"
+                                    [disabled]="sq.disabled || sq.tempDisabled"
+                                  >
+                                    {{ sq.text }}
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="answer2" class="labels">
+                                  Security Answer #2 <span class="text-danger"> * </span>
+                                </label>
+                                <input
+                                  aria-label="Please answer your selected question"
+                                  class="form-control"
+                                  name="answer2"
+                                  placeholder="Please answer your selected question"
+                                  formControlName="answer2"
+                                  required
+                                  type="text"
+                                />
+                              </div>
+                            </div>
+                            <!-- Security Questions thrid row -->
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <label for="question3" class="labels">
+                                  Security Question #3 <span class="text-danger"> * </span>
+                                </label>
+                                <select
+                                  name="question3"
+                                  aria-label="Please select a question"
+                                  class="form-control btn-primary"
+                                  placeholder="Please select question"
+                                  formControlName="question3"
+                                  required
+                                >
+                                  <option
+                                    *ngFor="let sq of sqList"
+                                    [value]="sq._id"
+                                    [disabled]="sq.disabled || sq.tempDisabled"
+                                  >
+                                    {{ sq.text }}
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="answer3" class="labels">
+                                  Security Answer #3 <span class="text-danger"> * </span>
+                                </label>
+                                <input
+                                  aria-label="Please answer your selected question"
+                                  class="form-control"
+                                  name="answer3"
+                                  placeholder="Please answer your selected question"
+                                  formControlName="answer3"
+                                  required
+                                  type="text"
+                                />
+                              </div>
+                            </div>
+                          </form>
+                        </tab>
+                        <tab>
+                          <ng-template tabHeading> <i class="tim-icons icon-send"> </i> Submit </ng-template>
+                          <h3 class="description text-danger">
+                            Before submitting, make sure all required fields are filled out in each section, and in the
+                            correct format.
+                          </h3>
+                          <button
+                            class="btn btn-primary btn-round btn-lg"
+                            (click)="onSubmit()"
+                            [class.spinner]="loading"
+                            [disabled]="loading"
+                          >
+                            Submit <i class="tim-icons icon-send"></i>
+                          </button>
+                        </tab>
+                      </tabset>
                     </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Password..."
-                      (blur)="focus1 = false"
-                      (focus)="focus1 = true"
-                    />
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="register-bg"></div>
+    <div class="square square-1" id="square1"></div>
+    <div class="square square-2" id="square2"></div>
+    <div class="square square-3" id="square3"></div>
+    <div class="square square-4" id="square4"></div>
+    <div class="square square-5" id="square5"></div>
+    <div class="square square-6" id="square6"></div>
   </div>
 </div>

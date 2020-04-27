@@ -10,7 +10,6 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
 
 // Material
@@ -55,6 +54,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { TagInputModule } from 'ngx-chips';
+import { ChartModule } from 'primeng/chart';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -65,7 +65,6 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UsersComponent } from './pages/admin/users/users.component';
-import { UsersDialogComponent } from './pages/admin/users/users-dialog/users-dialog.component';
 import { UnauthorizedComponent } from './pages/error/unauthorized/unauthorized.component';
 import { InternalServerComponent } from './pages/error/internal-server/internal-server.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
@@ -73,14 +72,21 @@ import { AuthorizationGuard } from './guards/authorization.guard';
 import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { SecurityQuestionsComponent } from './pages/admin/security-questions/security-questions.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NotFoundComponent } from './pages/error/not-found/not-found.component';
+import { RolesComponent } from './pages/admin/roles/roles.component';
+import { UsersDialogComponent } from './pages/admin/users/users-dialog/users-dialog.component';
 import { SecurityQuestionsDialogComponent } from './pages/admin/security-questions/security-questions-dialog/security-questions-dialog.component';
-import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
+import { RolesDialogComponent } from './pages/admin/roles/roles-dialog/roles-dialog.component';
+import { FeaturesComponent } from './pages/features/features.component';
+import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseLayoutComponent,
     HomeComponent,
+    FeaturesComponent,
     AboutComponent,
     ContactUsComponent,
     LoginComponent,
@@ -90,9 +96,13 @@ import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
     SecurityQuestionsComponent,
     SecurityQuestionsDialogComponent,
     UnauthorizedComponent,
+    NotFoundComponent,
     InternalServerComponent,
     ForgotPasswordComponent,
-    InvoicesComponent
+    FooterComponent,
+    RolesComponent,
+    RolesDialogComponent,
+    PurchasesGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,7 +134,6 @@ import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
     MatCheckboxModule,
     MatProgressBarModule,
     MatExpansionModule,
-    ChartModule,
     TabViewModule,
     MatSlideToggleModule,
     MatTabsModule,
@@ -142,7 +151,8 @@ import { InvoicesComponent } from './pages/admin/invoices/invoices.component';
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    ChartModule,
   ],
   providers: [
     AuthenticationGuard,

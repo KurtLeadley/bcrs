@@ -31,12 +31,9 @@
               "node_modules/@glidejs/glide/src/assets/sass/glide.core.scss",
               "node_modules/@glidejs/glide/src/assets/sass/glide.theme.scss",
               "src/assets/scss/blk-design-system-pro.scss",
-              "src/styles.scss",
-              "node_modules/primeicons/primeicons.css"
+              "src/styles.scss"
             ],
-            "scripts": ["node_modules/rellax/rellax.min.js",
-              "node_modules/chart.js/dist/Chart.js"
-            ]
+            "scripts": ["node_modules/rellax/rellax.min.js"]
           },
           "configurations": {
             "production": {

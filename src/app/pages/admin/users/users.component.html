@@ -1,81 +1,86 @@
-<mat-card>
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-  <div *ngIf="!loading">
-    <h2>Users Portal</h2>
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column">
-      <div fxFlex="50">
-        <mat-form-field>
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Find User" />
-        </mat-form-field>
-      </div>
-      <div>
-        <button mat-raised-button (click)="openDialog('Add', null)">
-          <mat-icon>group_add</mat-icon>
-          <span> Add User</span>
-        </button>
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="space-90"></div>
+      <div class="cd-section">
+        <div id="tables">
+          <div class="row">
+            <div class="col-md-12 ml-auto mr-auto">
+              <div class="card card-plain bg-default">
+                <div class="card-header">
+                  <h1 class="card-title text-center text-primary">
+                    User Configuration
+                  </h1>
+                  <button
+                    (click)="openDialog('Create', null)"
+                    class="btn btn-neutral btn-round btn-icon pull-right mr-5 mb-5"
+                    placement="right"
+                    tooltip="Create New User"
+                  >
+                    <i class="tim-icons icon-simple-add"></i>
+                  </button>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table tablesorter">
+                        <thead>
+                          <tr>
+                            <th class="text-left"><h4 class="text-danger">Username</h4></th>
+                            <th class="text-left"><h4 class="text-danger">First Name</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Last Name</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Email</h4></th>
+                            <th class="text-center"><h4 class="text-danger">Disabled</h4></th>
+                            <th class="text-center"><h4 class="text-danger">Role</h4></th>
+                            <th class="text-right"><h4 class="text-danger">Actions</h4></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let user of userList">
+                            <td class="text-left">{{ user.username }}</td>
+                            <td class="text-left">{{ user.firstName }}</td>
+                            <td class="text-left">{{ user.lastName }}</td>
+                            <td class="text-left">{{ user.email }}</td>
+                            <td class="text-center">
+                              <bSwitch
+                                [switch-on-color]="'primary'"
+                                [switch-off-color]="'primary'"
+                                [(ngModel)]="user.disabled"
+                                (changeState)="openDialog('Delete', user)"
+                              >
+                                {{ user.disabled ? 'On' : 'Off' }}
+                              </bSwitch>
+                            </td>
+                            <td class="text-center">{{ user.role }}</td>
+                            <td class="text-right">
+                              <button
+                                class="btn btn-info btn-simple btn-icon btn-sm mr-1"
+                                type="button"
+                                (click)="openDialog('Reset', user)"
+                                placement="top"
+                                tooltip="Reset User's Password"
+                              >
+                                <i class="tim-icons icon-single-02"></i>
+                              </button>
+                              <button
+                                class="btn btn-success btn-simple btn-icon btn-sm mr-1"
+                                type="button"
+                                (click)="openDialog('Update', user)"
+                                placement="bottom"
+                                tooltip="Update User"
+                              >
+                                <i class="tim-icons icon-settings"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <mat-table #table [dataSource]="dataSource" matSort>
-      <!-- Username Column -->
-      <ng-container matColumnDef="username">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Username: ">{{ element.username }}</mat-cell>
-      </ng-container>
-
-      <!-- First Name Column -->
-      <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="First Name: ">{{ element.firstName }}</mat-cell>
-      </ng-container>
-
-      <!-- Last Name Column -->
-      <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Last Name: ">{{ element.lastName }}</mat-cell>
-      </ng-container>
-
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Email: ">{{ element.email }}</mat-cell>
-      </ng-container>
-
-      <!-- Archived Column -->
-      <ng-container matColumnDef="disabled">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Account Locked</mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Account Locked: ">
-          <mat-slide-toggle [checked]="element.disabled" (click)="openDialog('Delete', element)">
-            {{ element.disabled ? 'Yes' : 'No' }}
-          </mat-slide-toggle>
-        </mat-cell>
-      </ng-container>
-
-      <!-- Role Column -->
-      <ng-container matColumnDef="role">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Role: ">{{ element.role }}</mat-cell>
-      </ng-container>
-
-      <!-- Action Column-->
-      <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-icon-button [matMenuTriggerFor]="appMenu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #appMenu="matMenu">
-            <button mat-menu-item (click)="openDialog('Update', element)">Edit User</button>
-            <button mat-menu-item (click)="openDialog('Reset', element)">Reset Password</button>
-          </mat-menu>
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
   </div>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</mat-card>
+</div>

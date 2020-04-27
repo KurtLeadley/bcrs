@@ -1,0 +1,52 @@
+.hero{
+/* background-color: #117a8b; */
+margin: 15px 10%;
+}
+
+form {
+  display: grid;
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin: 2rem 0;
+  padding: 1em;
+}
+form input {
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+form button {
+  background: lightgrey;
+  padding: 0.7em;
+  width: 100%;
+  border: 0;
+}
+form button:hover {
+  background: #007bff;
+}
+
+label {
+  display:inline-block;
+  width:150px;
+  color:black;
+  padding: 0.5em 0.5em 0.5em 0;
+}
+
+input {
+  width:350px;
+  padding:5px;
+  display:inline-block;
+  margin-bottom: 0.5rem;
+}
+input[type=radio] {
+  width:auto;
+}
+input:focus {
+  outline: 3px solid #007bff;
+}
+.textarea {
+  width:350px;
+  height:150px;
+  padding:5px;
+  font-family: Arial, sans-serif;
+}

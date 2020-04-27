@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private auth: AuthService, private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('login-page');
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('login-page');
   }
 
   onLogin() {
@@ -45,6 +45,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('landing-page');
+    body.classList.remove('login-page');
   }
 }

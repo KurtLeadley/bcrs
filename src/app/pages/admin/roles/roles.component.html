@@ -1,0 +1,84 @@
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="space-90"></div>
+      <div class="cd-section">
+        <div id="tables">
+          <div class="row">
+            <div class="col-md-12 ml-auto mr-auto">
+              <div class="card card-plain bg-default">
+                <div class="card-header">
+                  <h1 class="card-title text-center text-primary">
+                    Role Configuration
+                  </h1>
+                  <button
+                    (click)="openDialog('Create', null)"
+                    class="btn btn-neutral btn-round btn-icon pull-right mr-5 mb-5"
+                    placement="right"
+                    tooltip="Create New Role"
+                  >
+                    <i class="tim-icons icon-simple-add"></i>
+                  </button>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table tablesorter">
+                        <thead>
+                          <tr>
+                            <th class="text-left"><h4 class="text-danger">Name</h4></th>
+                            <th class="text-right"><h4 class="text-danger">Date Created</h4></th>
+                            <th class="text-right"><h4 class="text-danger">Date Modified</h4></th>
+                            <th class="text-right"><h4 class="text-danger">Actions</h4></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let role of roleList">
+                            <td class="text-left">{{ role.text }}</td>
+                            <td class="text-right" *ngIf="role.dateCreated; else noCreated">
+                              {{ role.dateCreated | date: 'short' }}
+                            </td>
+                            <ng-template #noCreated>
+                              <td class="text-right">
+                                No created date
+                              </td>
+                            </ng-template>
+                            <td class="text-right" *ngIf="role.dateModified; else noModified">
+                              {{ role.dateModified | date: 'short' }}
+                            </td>
+                            <ng-template #noModified>
+                              <td class="text-right">
+                                No modified date
+                              </td>
+                            </ng-template>
+                            <td class="text-right">
+                              <button
+                                class="btn btn-success btn-simple btn-icon btn-sm mr-1"
+                                type="button"
+                                (click)="openDialog('Update', role)"
+                                placement="top"
+                                tooltip="Update Role"
+                              >
+                                <i class="tim-icons icon-settings"></i>
+                              </button>
+                              <button
+                                class="btn btn-danger btn-simple btn-icon btn-sm mr-1"
+                                (click)="openDialog('Delete', role)"
+                                placement="bottom"
+                                tooltip="Delete Role"
+                              >
+                                <i class="tim-icons icon-trash-simple"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
