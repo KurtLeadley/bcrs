@@ -21,6 +21,7 @@ import { SecurityQuestionsComponent } from './pages/admin/security-questions/sec
 import { FeaturesComponent } from './pages/features/features.component';
 import { RolesComponent } from './pages/admin/roles/roles.component';
 import { PurchasesGraphComponent } from './pages/admin/purchases-graph/purchases-graph.component';
+import { ServicesComponent } from './pages/admin/services/services.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,10 +34,9 @@ const routes: Routes = [
   {
     path: 'admin',
     children: [
-      { path: 'users', component: UsersComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
       {
-        path: 'security-questions',
-        component: SecurityQuestionsComponent,
+        path: 'purchases',
+        component: PurchasesGraphComponent,
         canActivate: [AuthenticationGuard, AuthorizationGuard],
       },
       {
@@ -45,8 +45,18 @@ const routes: Routes = [
         canActivate: [AuthenticationGuard, AuthorizationGuard],
       },
       {
-        path: 'purchases',
-        component: PurchasesGraphComponent,
+        path: 'security-questions',
+        component: SecurityQuestionsComponent,
+        canActivate: [AuthenticationGuard, AuthorizationGuard],
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        canActivate: [AuthenticationGuard, AuthorizationGuard],
+      },
+      {
+        path: 'services',
+        component: ServicesComponent,
         canActivate: [AuthenticationGuard, AuthorizationGuard],
       },
     ],

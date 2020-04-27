@@ -1,0 +1,71 @@
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="space-90"></div>
+      <div class="cd-section">
+        <div id="tables">
+          <div class="row">
+            <div class="col-md-12 ml-auto mr-auto">
+              <div class="card card-plain bg-default">
+                <div class="card-header">
+                  <h1 class="card-title text-center text-primary">
+                    Service Configuration
+                  </h1>
+                  <button
+                    (click)="openDialog('Create', null)"
+                    class="btn btn-neutral btn-round btn-icon pull-right mr-5 mb-5"
+                    placement="right"
+                    tooltip="Create New Service"
+                  >
+                    <i class="tim-icons icon-simple-add"></i>
+                  </button>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table tablesorter">
+                        <thead>
+                          <tr>
+                            <th class="text-left"><h4 class="text-danger">Title</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Price</h4></th>
+                            <th class="text-center"><h4 class="text-danger">Disabled</h4></th>
+                            <th class="text-right"><h4 class="text-danger">Actions</h4></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let service of serviceList">
+                            <td class="text-left">{{ service.title }}</td>
+                            <td class="text-left">{{ service.price | currency }}</td>
+                            <td class="text-center">
+                              <bSwitch
+                                [switch-on-color]="'primary'"
+                                [switch-off-color]="'primary'"
+                                [(ngModel)]="service.disabled"
+                                (changeState)="openDialog('Delete', service)"
+                              >
+                                {{ service.disabled ? 'On' : 'Off' }}
+                              </bSwitch>
+                            </td>
+                            <td class="text-right">
+                              <button
+                                class="btn btn-success btn-simple btn-icon btn-sm mr-1"
+                                type="button"
+                                (click)="openDialog('Update', service)"
+                                placement="bottom"
+                                tooltip="Update Service"
+                              >
+                                <i class="tim-icons icon-settings"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="card card-login">
+  <form [formGroup]="serviceForm" (ngSubmit)="onSave()">
+    <div class="card-header">
+      <img alt="Card image" class="card-img" src="assets/img/square-purple-1.png" />
+      <h4 class="card-title">{{ data.action }}<br /><br /><br /><span class="mb-2">Service</span></h4>
+    </div>
+    <div [hidden]="data.action.toString() === 'Delete'">
+      <div class="card-body">
+        <div class="input-group input-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="tim-icons icon-badge"></i>
+            </span>
+          </div>
+          <input class="form-control" type="text" formControlName="_id" readonly />
+        </div>
+        <div class="input-group input-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="tim-icons icon-caps-small"></i>
+            </span>
+          </div>
+          <input class="form-control" type="text" formControlName="title" required />
+        </div>
+        <div class="input-group input-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="tim-icons icon-money-coins"></i>
+            </span>
+          </div>
+          <input class="form-control" type="number" formControlName="price" required />
+        </div>
+      </div>
+    </div>
+    <div [hidden]="data.action.toString() !== 'Delete'" class="text-danger">
+      Are you sure you wish to disable {{ data.obj.title }}?
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-danger mr-1" type="submit" [class.spinner]="loading" [disabled]="loading">
+        {{ data.action.toString() }}
+      </button>
+      <button (click)="onCancel()" class="btn btn-danger btn-simple" type="reset">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
