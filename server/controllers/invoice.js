@@ -55,10 +55,9 @@ exports.getInvoice = (req, res, next) => {
  * @access      Private
  */
 exports.getInvoicesByUser = (req, res, next) => {
-  Invoice.find()
-    .where('username')
-    .equals(req.params.username)
-    //.equals('kleadley')
+  Invoice.find({"username" : req.params.username})
+    // .where('username')
+    // .equals(req.params.username)
     .then((invoice) => {
       if (!invoice) {
         return next(new ErrorResponse('Invoices not found', 404));

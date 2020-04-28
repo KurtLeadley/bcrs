@@ -1,9 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { InvoiceService } from '../../../services/invoice.service';
-import { ServiceService } from '../../../services/service.service';
-import { Invoice } from '../../../models/invoice.model';
-import { LineItem } from '../../../models/line-item.model';
-import { Service } from '../../../models/service.model';
 
 @Component({
   selector: 'app-purchases-graph',
@@ -34,7 +30,7 @@ export class PurchasesGraphComponent implements OnInit {
 
   public ctx: CanvasRenderingContext2D;
 
-  constructor(private invoiceService: InvoiceService, private sService: ServiceService) {}
+  constructor(private invoiceService: InvoiceService) {}
 
   ngOnInit() {
     this.invoiceService.getInvoices().subscribe((res) => {
@@ -58,25 +54,25 @@ export class PurchasesGraphComponent implements OnInit {
         item.lineItems.forEach((e) => {
           switch (e.title) {
             case 'Password Reset':
-              this.passwordReset += e.price;
+              this.passwordReset += 1;
               break;
             case 'Spyware Removal':
-              this.spywareRemoval += e.price;
+              this.spywareRemoval += 1;
               break;
             case 'RAM Upgrade':
-              this.ramUpgrade += e.price;
+              this.ramUpgrade += 1;
               break;
             case 'Software Installation':
-              this.softwareInstallation += e.price;
+              this.softwareInstallation += 1;
               break;
             case 'PC Tune-up':
-              this.tuneup += e.price;
+              this.tuneup += 1;
               break;
             case 'Keyboard Cleaning':
-              this.keyboardCleaning += e.price;
+              this.keyboardCleaning += 1;
               break;
             case 'Disk Clean-up':
-              this.discCleanup += e.price;
+              this.discCleanup += 1;
               break;
             default:
               console.log('Line item title does not match a service');
@@ -91,13 +87,13 @@ export class PurchasesGraphComponent implements OnInit {
             {
               label: 'Services',
               data: [
-                this.passwordReset.toFixed(2),
-                this.spywareRemoval.toFixed(2),
-                this.ramUpgrade.toFixed(2),
-                this.tuneup.toFixed(2),
-                this.keyboardCleaning.toFixed(2),
-                this.softwareInstallation.toFixed(2),
-                this.discCleanup.toFixed(2),
+                this.passwordReset.toFixed(1),
+                this.spywareRemoval.toFixed(1),
+                this.ramUpgrade.toFixed(1),
+                this.tuneup.toFixed(1),
+                this.keyboardCleaning.toFixed(1),
+                this.softwareInstallation.toFixed(1),
+                this.discCleanup.toFixed(1),
               ],
               backgroundColor: ['#344675', '#e14eca', '#00f2c3', '#1d8cf8', '#ff8d72', '#fd5d93', '#ba54f5'],
             },
@@ -111,13 +107,13 @@ export class PurchasesGraphComponent implements OnInit {
             {
               label: 'Services',
               data: [
-                this.passwordReset.toFixed(2),
-                this.spywareRemoval.toFixed(2),
-                this.ramUpgrade.toFixed(2),
-                this.tuneup.toFixed(2),
-                this.keyboardCleaning.toFixed(2),
-                this.softwareInstallation.toFixed(2),
-                this.discCleanup.toFixed(2),
+                this.passwordReset.toFixed(1),
+                this.spywareRemoval.toFixed(1),
+                this.ramUpgrade.toFixed(1),
+                this.tuneup.toFixed(1),
+                this.keyboardCleaning.toFixed(1),
+                this.softwareInstallation.toFixed(1),
+                this.discCleanup.toFixed(1),
               ],
               backgroundColor: ['#344675', '#e14eca', '#00f2c3', '#1d8cf8', '#ff8d72', '#fd5d93', '#ba54f5'],
             },
@@ -131,13 +127,13 @@ export class PurchasesGraphComponent implements OnInit {
             {
               label: 'Services',
               data: [
-                this.passwordReset.toFixed(2),
-                this.spywareRemoval.toFixed(2),
-                this.ramUpgrade.toFixed(2),
-                this.tuneup.toFixed(2),
-                this.keyboardCleaning.toFixed(2),
-                this.softwareInstallation.toFixed(2),
-                this.discCleanup.toFixed(2),
+                this.passwordReset.toFixed(1),
+                this.spywareRemoval.toFixed(1),
+                this.ramUpgrade.toFixed(1),
+                this.tuneup.toFixed(1),
+                this.keyboardCleaning.toFixed(1),
+                this.softwareInstallation.toFixed(1),
+                this.discCleanup.toFixed(1),
               ],
               backgroundColor: ['#344675', '#e14eca', '#00f2c3', '#1d8cf8', '#ff8d72', '#fd5d93', '#ba54f5'],
             },
