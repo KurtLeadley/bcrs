@@ -1,3 +1,85 @@
-<p>
-  service-repair works!
-</p>
+<mat-card class="card">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card-header class="card__header">
+      <h2 class="card__header-title">Services Form</h2>
+    </mat-card-header>
+
+    <mat-card-content class="card__content">
+      <div fxLayoutAlign="center" fxLayout="row wrap" fxLayoutGap.gt-md="20px" fxLayoutGap.lt-lg="0px" *ngIf="!loading">
+        <!--<div *ngFor="let control of servicesFormArr?.controls; let i = index">
+          <label>
+            <mat-checkbox type="checkbox" [formControl]="control"></mat-checkbox>
+            {{ serviceList[i]?.title }} ({{ serviceList[i]?.price | currency}})
+          </label>
+        </div>-->
+
+        <div
+          class="chip chip--service"
+          fxFlex.lt-lg="100"
+          fxFlex.gt-md="48"
+          fxLayout="column"
+          *ngFor="let control of servicesFormArr?.controls; let i = index"
+          (click)="activateClass(control)"
+          [ngClass]="{ 'chip--checked': control.touched }"
+        >
+          <label class="chip__label">
+            <!-- <div class="chip__image-wrapper">
+              <img class="chip__image"
+                src="../../../assets/images/{{ serviceList[i]?.title | titleizer | lowercase }}.png"
+                alt="{{ serviceList[i]?.title }} image." role="presentation">
+            </div> -->
+
+            <mat-checkbox class="chip__checkbox" type="checkbox" [formControl]="control"></mat-checkbox>
+
+            <div class="chip__text">
+              <h6 class="chip__text-title">{{ serviceList[i]?.title }}</h6>
+              <p class="chip__text-price">{{ serviceList[i]?.price | currency }}</p>
+            </div>
+          </label>
+        </div>
+      </div>
+      <mat-error fxLayoutAlign="center" *ngIf="f['servicesFormArr']?.errors && f['servicesFormArr']?.dirty">
+        *At least one checkbox is required to proceed with order.
+      </mat-error>
+      <div fxLayout.gt-md="row" fxLayout.lt-lg="column" fxLayoutGap.gt-md="50px">
+        <mat-form-field class="service" fxFlex.gt-md="50" fxFlex.lt-lg="100">
+          <mat-label class="service__label">Select hours</mat-label>
+          <mat-select class="service__select" matNativeControl required formControlName="laborHours" name="laborHours">
+            <mat-option class="service__option">--</mat-option>
+            <mat-option class="service__option" *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" value="{{ i + 1 }}">
+              {{ i + 1 }} hours</mat-option
+            >
+          </mat-select>
+          <mat-error *ngIf="form.controls['laborHours'].errors?.required">
+            This field is required
+          </mat-error>
+          <mat-hint>Hours of Labor are calculated at $50.00 per hour</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="service" fxFlex.gt-md="50" fxFlex.lt-lg="100">
+          <input
+            class="service__input"
+            type="number"
+            matInput
+            name="parts"
+            placeholder="Additional parts cost"
+            formControlName="parts"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="card__footer card__footer--transparent">
+      <button
+        class="card__footer-submit"
+        mat-button
+        mat-raised-button
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary"
+      >
+        Calculate
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,0 +1,51 @@
+<div class="container" id="no-more-tables">
+  <table class="table table-hover">
+    <thead>
+      <tr class="active">
+        <th class="col-xs-2"><strong>Username</strong></th>
+        <th class="col-xs-2"><strong>Order Date</strong></th>
+        <th class="col-xs-2"><strong>Parts Total</strong></th>
+        <th class="col-xs-2"><strong>Labor Total</strong></th>
+        <th class="col-xs-2"><strong>Line Item Total</strong></th>
+        <th class="col-xs-2"><strong>Total</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let item of invoiceList"
+        role="button"
+        data-toggle="collapse"
+        aria-expanded="false"
+        aria-controls="expanded"
+      >
+        <div *ngIf="item.username === this.username">
+          <td>
+            <a (click)="isCollapsed = !isCollapsed"><i class="tim-icons icon-lock-circle"></i></a>
+          </td>
+          <td data-title="Username">{{ item.username }}</td>
+          <td data-title="Order Date">{{ item.orderDate | date: 'short' }}</td>
+          <td data-title="Parts Total">{{ item.partsAmount | currency }}</td>
+          <td data-title="Labor Total">{{ item.laborAmount | currency }}</td>
+          <td data-title="Line Item Total">{{ item.lineItemTotal | currency }}</td>
+          <td data-title="Total">{{ item.total | currency }}</td>
+        </div>
+      </tr>
+      <tr class="collapse" [collapse]="isCollapsed" [isAnimated]="true">
+        <td colspan="6" class="hiddenRow">
+          <div class="collapse" id="expanded">
+            <table class="table table-nested">
+              <tbody>
+                <tr *ngFor="let item of invoiceList.lineItems">
+                  <td class="col-xs-4 col-sm-2 active">
+                    <strong>{{ item.title }}</strong>
+                  </td>
+                  <td>{{ item.price | currency }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

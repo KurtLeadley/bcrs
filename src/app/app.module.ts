@@ -87,8 +87,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PictureUploadComponent } from './shared/picture-upload/picture-upload.component';
 import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
 import { ServiceRepairDialogComponent } from './pages/service-repair/service-repair-dialog/service-repair-dialog.component';
-import { InvoicesComponent } from './pages/invoices/invoices.component';
 import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
+import { InvoicesComponent } from './pages/invoices/invoices.component';
 
 @NgModule({
   declarations: [
@@ -118,8 +118,8 @@ import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.co
     PictureUploadComponent,
     ServiceRepairComponent,
     ServiceRepairDialogComponent,
-    InvoicesComponent,
     AdminInvoicesComponent,
+    InvoicesComponent,
   ],
   imports: [
     BrowserModule,

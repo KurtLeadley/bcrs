@@ -18,12 +18,12 @@ import { ServiceRepairDialogComponent } from './service-repair-dialog/service-re
   templateUrl: './service-repair.component.html',
   styleUrls: ['./service-repair.component.scss'],
 })
-export class ServiceRepairComponent implements OnInit, OnDestroy {
+export class ServiceRepairComponent implements OnInit {
   loading = false;
   serviceList: Service[] = [];
   invoice: Invoice;
   date = new Date();
-  repairForm: FormGroup;
+  form: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -33,21 +33,118 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar
   ) {}
 
-  get form() {
+  get f() {
     return this.form && this.form.controls;
   }
 
-  get services(): FormArray {
-    return this.form && (this.form.services as FormArray);
+  get servicesFormArr(): FormArray {
+    return this.f && <FormArray>this.f.servicesFormArr;
   }
 
-  ngOnInit() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('checkout-page');
+  get servicesFormArraySelected(): Service[] {
+    return this.serviceList
+      .filter((s, sIdx) =>
+        this.servicesFormArr.controls.some((control, controlIdx) => sIdx === controlIdx && control.value)
+      )
+      .map((s) => s);
   }
 
-  ngOnDestroy() {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('checkout-page');
+  ngOnInit(): void {
+    this.loading = true;
+    this.form = this._formBuilder.group({
+      laborHours: new FormControl('', [Validators.required]),
+      parts: new FormControl(''),
+    });
+    this.sService.getServices().subscribe((serviceList) => {
+      this.serviceList = serviceList;
+      this.form.addControl('servicesFormArr', this.buildServicesFormArr(this.serviceList));
+    });
+    this.loading = false;
   }
+
+  buildServicesFormArr(services: Service[], selectedServiceIds: String[] = []): FormArray {
+    const controlArr = this.serviceList.map((service) => {
+      let isSelected = selectedServiceIds.some((id) => id === service._id);
+      return this._formBuilder.control(isSelected);
+    });
+    return this._formBuilder.array(controlArr, atLeastOneCheckboxCheckedValidator());
+  }
+
+  onSubmit() {
+    let lineItemTotal: number = 0.0;
+    let laborAmount: number = 0.0;
+    let partsAmount: number = 0.0;
+    let total: number = 0.0;
+    this.servicesFormArraySelected.forEach((element) => {
+      lineItemTotal += Number(element.price);
+    });
+    if (this.form.get('laborHours').value != '' && this.form.get('laborHours').value != null) {
+      laborAmount = Number(this.form.get('laborHours').value * 50);
+    }
+    if (this.form.get('parts').value != '' && this.form.get('parts').value != null) {
+      partsAmount = Number(this.form.get('parts').value);
+    }
+    total = lineItemTotal + laborAmount + partsAmount;
+    this.invoice = {
+      _id: null,
+      lineItems: [],
+      partsAmount: partsAmount,
+      laborAmount: laborAmount,
+      lineItemTotal: lineItemTotal,
+      total: total,
+      username: localStorage.getItem('username'),
+      orderDate: this.date,
+    };
+    this.servicesFormArraySelected.forEach((element) => {
+      this.invoice.lineItems.push({
+        _id: element._id,
+        price: element.price,
+        title: element.title,
+      });
+    });
+    this.invoiceService.createInvoice(this.invoice).subscribe((message) => {
+      this._snackBar.open(message, 'x', {
+        duration: 2000,
+      });
+    });
+    this.openDialog();
+  }
+
+  activateClass(subModule) {
+    subModule.touched = !subModule.touched;
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ServiceRepairDialogComponent, {
+      width: '50%',
+      height: '80%',
+      data: { obj: this.invoice },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.form.reset();
+    });
+  }
+}
+
+function atLeastOneCheckboxCheckedValidator(minRequired = 1): ValidatorFn {
+  return function validate(formGroup: FormGroup) {
+    let checked = 0;
+
+    Object.keys(formGroup.controls).forEach((key) => {
+      const control = formGroup.controls[key];
+
+      if (control.value === true) {
+        checked++;
+      }
+    });
+
+    if (checked < minRequired) {
+      return {
+        requireCheckboxToBeChecked: true,
+      };
+    }
+
+    return null;
+  };
 }
