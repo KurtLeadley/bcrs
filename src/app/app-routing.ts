@@ -27,6 +27,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
 import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
+import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,7 +39,16 @@ const routes: Routes = [
   { path: 'features', component: FeaturesComponent },
   // { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard] },
   { path: 'service-repair', component: ServiceRepairComponent, canActivate: [AuthenticationGuard] },
-  { path: 'invoices', component: InvoicesComponent, canActivate: [AuthenticationGuard] },
+  {
+    path: 'invoices',
+    component: InvoicesComponent,
+    canActivate: [AuthenticationGuard],
+  },
+  {
+    path: 'invoice-view/:invoiceId',
+    component: InvoiceViewComponent,
+    canActivate: [AuthenticationGuard],
+  },
   {
     path: 'admin',
     children: [

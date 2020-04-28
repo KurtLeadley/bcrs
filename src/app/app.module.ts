@@ -89,6 +89,7 @@ import { ServiceRepairComponent } from './pages/service-repair/service-repair.co
 import { ServiceRepairDialogComponent } from './pages/service-repair/service-repair-dialog/service-repair-dialog.component';
 import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
+import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +121,7 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
     ServiceRepairDialogComponent,
     AdminInvoicesComponent,
     InvoicesComponent,
+    InvoiceViewComponent,
   ],
   imports: [
     BrowserModule,

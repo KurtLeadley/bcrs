@@ -26,13 +26,13 @@ export class InvoiceService {
   // tslint:disable-next-line: variable-name
   getInvoice(_id: string): Observable<Invoice> {
     return this.http
-      .get<{ message: string; invoice: Invoice }>(`${apiUrl}/invoices/` + _id)
+      .get<{ message: string; invoice: Invoice }>(`${apiUrl}/invoices/${_id}`)
       .pipe(map((x) => x.invoice));
   }
 
   getInvoicesByUsername(username: string): Observable<Invoice[]> {
     return this.http
-      .get<{ message: string; invoices: Invoice[] }>(`${apiUrl}/invoices/${username}`)
+      .get<{ message: string; invoices: Invoice[] }>(`${apiUrl}/invoices/users/${username}`)
       .pipe(map((x) => x.invoices));
   }
 

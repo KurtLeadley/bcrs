@@ -26,6 +26,12 @@ export class UserService {
     return this.http.get<{ message: string; user: User }>(this.apiUrl + '/users/' + _id).pipe(map((x) => x.user));
   }
 
+  getUserByUsername(username: string): Observable<User> {
+    return this.http
+      .get<{ message: string; user: User }>(`${this.apiUrl}/users/username/${username}`)
+      .pipe(map((x) => x.user));
+  }
+
   createUser(user: User): Observable<string> {
     return this.http.post<{ message: string; user: User }>(this.apiUrl + '/users', user).pipe(map((x) => x.message));
   }

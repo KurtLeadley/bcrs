@@ -236,3 +236,24 @@ exports.getUserRole = (req, res, next) => {
       return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
     });
 };
+
+/**
+ * @desc        Find User By Username
+ * @route       GET /api/v1/users/:username
+ * @access      Private
+ */
+exports.getUserByUsername = (req, res, next) => {
+  User.findOne({ username: req.params.username })
+    .then((user) => {
+      if (!user) {
+        return next(new ErrorResponse('User not found', 404));
+      }
+      res.status(200).json({
+        success: true,
+        user,
+      });
+    })
+    .catch((err) => {
+      return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
+    });
+};

@@ -11,6 +11,7 @@ const {
   updateUser,
   deleteUser,
   getUserRole,
+  getUserByUsername,
   updateAvatar,
   deleteAvatar,
 } = require('../controllers/users');
@@ -20,6 +21,7 @@ const router = express.Router();
 // GET
 router.get('/', getUsers);
 router.get('/:id', getUser);
+router.get('/username/:username', getUserByUsername);
 router.get('/:username/role', getUserRole);
 // POST
 router.post('/', createUser);

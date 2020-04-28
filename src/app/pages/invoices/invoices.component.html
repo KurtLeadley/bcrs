@@ -22,6 +22,7 @@
                             <th class="text-left"><h4 class="text-danger">Line Item Total</h4></th>
                             <th class="text-left"><h4 class="text-danger">Labor Total</h4></th>
                             <th class="text-center"><h4 class="text-danger">Total</h4></th>
+                            <th class="text-right"><h4 class="text-danger">View</h4></th>
                           </tr>
                         </thead>
                         <tbody *ngFor="let invoice of invoiceList">
@@ -32,6 +33,17 @@
                             <td class="text-left">{{ invoice.lineItemTotal }}</td>
                             <td class="text-left">{{ invoice.laborAmount }}</td>
                             <td class="text-center">{{ invoice.total }}</td>
+                            <td class="text-right">
+                              <button
+                                class="btn btn-primary btn-simple btn-icon btn-sm mr-1"
+                                type="button"
+                                placement="bottom"
+                                tooltip="View Invoice"
+                                [routerLink]="['/invoice-view', invoice._id]"
+                              >
+                                <i class="fas fa-eye"></i>
+                              </button>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
