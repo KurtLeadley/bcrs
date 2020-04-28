@@ -108,7 +108,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   }
 
   onChangePassword() {
-    if (this.passwordFormGroup.invalid) {
+    if (this.passwordFormGroup.invalid || this.securityQuestionsCorrect === false) {
       return;
     }
     this.loading = true;
