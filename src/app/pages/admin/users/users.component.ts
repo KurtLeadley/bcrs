@@ -34,14 +34,14 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   openDialog(action, obj): void {
-    //modal for edit, delete, create, archive, assign users
+    // modal for edit, delete, create, archive, assign users
     if (obj === null) {
       obj = this.userList;
     }
 
     const dialogRef = this.dialog.open(UsersDialogComponent, {
       width: '750px',
-      data: { action: action, obj: obj }, //pass row data
+      data: { action, obj }, //pass row data
     });
 
     dialogRef.afterClosed().subscribe((result) => {

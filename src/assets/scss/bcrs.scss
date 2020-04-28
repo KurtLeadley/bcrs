@@ -1,0 +1,141 @@
+// Title:
+// Authors:
+// Description:
+@import 'bcrs/custom/functions';
+@import 'bcrs/bootstrap/functions';
+
+@import 'bcrs/variables';
+@import 'bcrs/bootstrap/variables';
+
+@import 'bcrs/custom/mixins';
+@import 'bcrs/bootstrap/mixins';
+
+// Bootstrap components
+
+@import 'bcrs/bootstrap/root';
+@import 'bcrs/bootstrap/reboot';
+@import 'bcrs/bootstrap/type';
+@import 'bcrs/bootstrap/images';
+@import 'bcrs/bootstrap/code';
+@import 'bcrs/bootstrap/grid';
+@import 'bcrs/bootstrap/tables';
+@import 'bcrs/bootstrap/forms';
+@import 'bcrs/bootstrap/buttons';
+@import 'bcrs/bootstrap/transitions';
+@import 'bcrs/bootstrap/dropdown';
+@import 'bcrs/bootstrap/button-group';
+@import 'bcrs/bootstrap/input-group';
+@import 'bcrs/bootstrap/custom-forms';
+@import 'bcrs/bootstrap/nav';
+@import 'bcrs/bootstrap/navbar';
+@import 'bcrs/bootstrap/card';
+@import 'bcrs/bootstrap/breadcrumb';
+@import 'bcrs/bootstrap/pagination';
+@import 'bcrs/bootstrap/badge';
+@import 'bcrs/bootstrap/jumbotron';
+@import 'bcrs/bootstrap/alert';
+@import 'bcrs/bootstrap/progress';
+@import 'bcrs/bootstrap/media';
+@import 'bcrs/bootstrap/list-group';
+@import 'bcrs/bootstrap/close';
+@import 'bcrs/bootstrap/modal';
+@import 'bcrs/bootstrap/tooltip';
+@import 'bcrs/bootstrap/popover';
+@import 'bcrs/bootstrap/carousel';
+@import 'bcrs/bootstrap/utilities';
+@import 'bcrs/bootstrap/print';
+
+// Custom components
+
+@import 'bcrs/custom/alerts.scss';
+@import 'bcrs/custom/buttons.scss';
+@import 'bcrs/custom/dropdown.scss';
+@import 'bcrs/custom/footer.scss';
+@import 'bcrs/custom/forms.scss';
+@import 'bcrs/custom/images.scss';
+@import 'bcrs/custom/modal.scss';
+@import 'bcrs/custom/navbar.scss';
+@import 'bcrs/custom/type.scss';
+@import 'bcrs/custom/icons.scss';
+@import 'bcrs/custom/checkboxes-radio';
+@import 'bcrs/custom/fixed-plugin';
+@import 'bcrs/custom/pagination.scss';
+@import 'bcrs/custom/misc.scss';
+@import 'bcrs/custom/rtl.scss';
+@import 'bcrs/custom/input-group.scss';
+@import 'bcrs/custom/progress.scss';
+@import 'bcrs/custom/badge.scss';
+@import 'bcrs/custom/pills.scss';
+@import 'bcrs/custom/tabs.scss';
+@import 'bcrs/info-areas.scss';
+@import 'bcrs/misc-extend.scss';
+@import 'bcrs/sections-extend.scss';
+@import 'bcrs/footers.scss';
+@import 'bcrs/tables.scss';
+
+// Pro components
+
+@import 'bcrs/example-pages.scss';
+@import 'bcrs/social-buttons.scss';
+@import 'bcrs/media.scss';
+@import 'bcrs/modals-extend.scss';
+@import 'bcrs/navbar-extend.scss';
+@import 'bcrs/buttons-extend.scss';
+@import 'bcrs/pills-extend.scss';
+@import 'bcrs/dropdown-extend.scss';
+
+// Sections
+@import 'bcrs/custom/sections.scss';
+
+// Vendor / Plugins
+
+@import 'bcrs/custom/vendor/plugin-perfect-scrollbar.scss';
+@import 'bcrs/custom/vendor/plugin-animate-bootstrap-notify.scss';
+@import 'bcrs/custom/vendor/plugin-bootstrap-switch.scss';
+@import 'bcrs/custom/vendor/plugin-nouislider.scss';
+@import 'bcrs/custom/vendor/plugin-datetimepicker.scss';
+@import 'bcrs/plugins/plugin-tagsinput.scss';
+@import 'bcrs/plugins/plugin-bootstrap-select';
+@import 'bcrs/plugins/plugin-jasny-fileupload.scss';
+@import 'bcrs/plugins/plugin-carousel-slick.scss';
+
+// Cards
+
+@import 'bcrs/custom/card';
+@import 'bcrs/custom/cards/card-chart';
+@import 'bcrs/custom/cards/card-map';
+@import 'bcrs/custom/cards/card-user';
+@import 'bcrs/custom/cards/card-task';
+@import 'bcrs/custom/cards/card-plain';
+@import 'bcrs/custom/cards/card-register';
+@import 'bcrs/custom/cards/card-stats';
+@import 'bcrs/custom/cards/card-chart';
+@import 'bcrs/cards/card-background';
+@import 'bcrs/cards/card-blog';
+@import 'bcrs/cards/card-profile';
+@import 'bcrs/cards/card-pricing';
+@import 'bcrs/cards/card-login';
+@import 'bcrs/cards/card-testimonials';
+@import 'bcrs/cards/card-product';
+
+// Avatars
+
+@import 'bcrs/avatars/avatar-group';
+@import 'bcrs/avatars/avatar';
+
+// Responsive
+
+@import 'bcrs/responsive';
+
+// Angular changes
+@import 'bcrs/angular/tabs';
+@import 'bcrs/angular/pills';
+@import 'bcrs/angular/alerts';
+@import 'bcrs/angular/datepicker';
+@import 'bcrs/angular/example-pages';
+@import 'bcrs/angular/plugin-ngx-chips';
+@import 'bcrs/angular/plugin-angular2-multiselect-dropdown';
+@import 'bcrs/angular/carousel';
+@import 'bcrs/angular/misc-extend';
+@import 'bcrs/angular/glidejs';
+@import 'bcrs/angular/navbar-extend';

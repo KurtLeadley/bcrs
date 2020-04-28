@@ -30,7 +30,7 @@
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/@glidejs/glide/src/assets/sass/glide.core.scss",
               "node_modules/@glidejs/glide/src/assets/sass/glide.theme.scss",
-              "src/assets/scss/blk-design-system-pro.scss",
+              "src/assets/scss/bcrs.scss",
               "src/styles.scss"
             ],
             "scripts": ["node_modules/rellax/rellax.min.js"]

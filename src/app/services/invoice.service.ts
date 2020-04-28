@@ -32,7 +32,7 @@ export class InvoiceService {
 
   getInvoicesByUsername(username: string): Observable<Invoice[]> {
     return this.http
-      .get<{ message: string; invoices: Invoice[] }>(`${apiUrl}/invoices/` + username)
+      .get<{ message: string; invoices: Invoice[] }>(`${apiUrl}/invoices/${username}`)
       .pipe(map((x) => x.invoices));
   }
 

@@ -94,13 +94,31 @@
               <a routerLink="/" class="nav-link"> <i class="tim-icons icon-paper"> </i> Home </a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a routerLink="/about" class="nav-link"> <i class="tim-icons icon-bulb-63"> </i> About Us </a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
               <a routerLink="/contact-us" class="nav-link"> <i class="tim-icons icon-square-pin"> </i> Contact Us </a>
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a routerLink="/features" class="nav-link"> <i class="tim-icons icon-settings"> </i> Services </a>
+            </li>
+            <li class="dropdown nav-item" dropdown>
+              <a
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                dropdownToggle
+                id="adminConfigDropdownMenuLink"
+              >
+                <i aria-hidden="true" class="tim-icons icon-badge"> </i> {{ username }}
+              </a>
+              <div
+                aria-labelledby="adminConfigDropdownMenuLink"
+                class="dropdown-menu dropdown-menu-right dropdown-primary"
+                *dropdownMenu
+              >
+                <a class="dropdown-item" routerLink="/profile"> <i class="tim-icons icon-single-02"> </i> Profile </a>
+                <a class="dropdown-item" routerLink="/service-repair">
+                  <i class="tim-icons icon-settings"> </i> Service Repair
+                </a>
+                <a class="dropdown-item" routerLink="/invoices"> <i class="tim-icons icon-paper"> </i> Invoices </a>
+              </div>
             </li>
             <li class="nav-item">
               <button class="nav-link btn btn-sm btn-danger btn-sm" (click)="onLogout()">
@@ -108,10 +126,6 @@
               </button>
             </li>
           </ul>
-        </div>
-        <!-- isAuthenticated  -->
-        <div *ngIf="userIsAuthenticated && role != 'admin'" class="navbar-collapse" [collapse]="isCollapsed">
-          <!-- create navbar for non admins logged in here-->
         </div>
         <!-- isAuthenticated & isAdmin -->
         <div

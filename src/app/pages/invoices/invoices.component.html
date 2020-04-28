@@ -1,51 +1,48 @@
-<div class="container" id="no-more-tables">
-  <table class="table table-hover">
-    <thead>
-      <tr class="active">
-        <th class="col-xs-2"><strong>Username</strong></th>
-        <th class="col-xs-2"><strong>Order Date</strong></th>
-        <th class="col-xs-2"><strong>Parts Total</strong></th>
-        <th class="col-xs-2"><strong>Labor Total</strong></th>
-        <th class="col-xs-2"><strong>Line Item Total</strong></th>
-        <th class="col-xs-2"><strong>Total</strong></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let item of invoiceList"
-        role="button"
-        data-toggle="collapse"
-        aria-expanded="false"
-        aria-controls="expanded"
-      >
-        <div *ngIf="item.username === this.username">
-          <td>
-            <a (click)="isCollapsed = !isCollapsed"><i class="tim-icons icon-lock-circle"></i></a>
-          </td>
-          <td data-title="Username">{{ item.username }}</td>
-          <td data-title="Order Date">{{ item.orderDate | date: 'short' }}</td>
-          <td data-title="Parts Total">{{ item.partsAmount | currency }}</td>
-          <td data-title="Labor Total">{{ item.laborAmount | currency }}</td>
-          <td data-title="Line Item Total">{{ item.lineItemTotal | currency }}</td>
-          <td data-title="Total">{{ item.total | currency }}</td>
-        </div>
-      </tr>
-      <tr class="collapse" [collapse]="isCollapsed" [isAnimated]="true">
-        <td colspan="6" class="hiddenRow">
-          <div class="collapse" id="expanded">
-            <table class="table table-nested">
-              <tbody>
-                <tr *ngFor="let item of invoiceList.lineItems">
-                  <td class="col-xs-4 col-sm-2 active">
-                    <strong>{{ item.title }}</strong>
-                  </td>
-                  <td>{{ item.price | currency }}</td>
-                </tr>
-              </tbody>
-            </table>
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="space-90"></div>
+      <div class="cd-section">
+        <div id="tables">
+          <div class="row">
+            <div class="col-md-12 ml-auto mr-auto">
+              <div class="card card-plain bg-default">
+                <div class="card-header">
+                  <h1 class="card-title text-center text-primary">
+                    My Invoices
+                  </h1>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table tablesorter">
+                        <thead>
+                          <tr>
+                            <th class="text-left"><h4 class="text-danger">Username</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Invoice Date</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Parts Total</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Line Item Total</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Labor Total</h4></th>
+                            <th class="text-center"><h4 class="text-danger">Total</h4></th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let invoice of invoiceList">
+                          <tr *ngIf="invoice.username === this.username">
+                            <td class="text-left">{{ invoice.username }}</td>
+                            <td class="text-left">{{ invoice.orderDate | date: 'medium' }}</td>
+                            <td class="text-left">{{ invoice.partsAmount }}</td>
+                            <td class="text-left">{{ invoice.lineItemTotal }}</td>
+                            <td class="text-left">{{ invoice.laborAmount }}</td>
+                            <td class="text-center">{{ invoice.total }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
