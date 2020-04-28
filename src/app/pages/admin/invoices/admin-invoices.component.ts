@@ -3,7 +3,7 @@
  * Authors: Group 4
  * Description: bcrs
  */
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
@@ -27,7 +27,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ],
 })
 export class AdminInvoicesComponent implements OnInit {
-
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild('outerSort', { static: true }) sort: MatSort;
   @ViewChildren('innerTables') innerTables: QueryList<MatTable<LineItem>>;
@@ -35,13 +34,18 @@ export class AdminInvoicesComponent implements OnInit {
   dataSource: MatTableDataSource<Invoice>;
   loading = false;
   invoiceList: Invoice[] = [];
-  columnsToDisplay = ['username','partsAmount','lineItemTotal','laborAmount','total'];
-  innerDisplayedColumns = ['title','price'];
-  //todo: make dynamic headers below
-  //innerDisplayedColumns = [{'data': 'title', 'display': 'Line Item'}, {'data': 'price', 'display': 'Line Item Amount'}];
+  columnsToDisplay = ['username', 'partsAmount', 'lineItemTotal', 'laborAmount', 'total'];
+  innerDisplayedColumns = ['title', 'price'];
+  // todo: make dynamic headers below
+  // innerDisplayedColumns = [{'data': 'title', 'display': 'Line Item'}, {'data': 'price', 'display': 'Line Item Amount'}];
   expandedElement: Invoice | null;
 
-  constructor(public invoiceService: InvoiceService, public dialog: MatDialog, private _snackBar: MatSnackBar, private cd: ChangeDetectorRef) { }
+  constructor(
+    public invoiceService: InvoiceService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.invoiceService.getInvoices().subscribe((invoiceList) => {
@@ -58,8 +62,10 @@ export class AdminInvoicesComponent implements OnInit {
 
   toggleRow(element: Invoice) {
     console.log(element.lineItems);
-    element.lineItems && (element.lineItems as MatTableDataSource<LineItem>) ? (this.expandedElement = this.expandedElement === element ? null : element) : null;
+    element.lineItems && ((element.lineItems as unknown) as MatTableDataSource<LineItem>)
+      ? (this.expandedElement = this.expandedElement === element ? null : element)
+      : // tslint:disable-next-line: no-unused-expression
+        null;
     this.cd.detectChanges();
   }
-
 }

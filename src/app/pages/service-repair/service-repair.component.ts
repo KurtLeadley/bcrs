@@ -38,7 +38,7 @@ export class ServiceRepairComponent implements OnInit {
   }
 
   get servicesFormArr(): FormArray {
-    return this.f && <FormArray>this.f.servicesFormArr;
+    return this.f && (this.f.servicesFormArr as FormArray);
   }
 
   get servicesFormArraySelected(): Service[] {
@@ -62,43 +62,43 @@ export class ServiceRepairComponent implements OnInit {
     this.loading = false;
   }
 
-  buildServicesFormArr(services: Service[], selectedServiceIds: String[] = []): FormArray {
+  buildServicesFormArr(services: Service[], selectedServiceIds: string[] = []): FormArray {
     const controlArr = this.serviceList.map((service) => {
-      let isSelected = selectedServiceIds.some((id) => id === service._id);
+      const isSelected = selectedServiceIds.some((id) => id === service._id);
       return this._formBuilder.control(isSelected);
     });
     return this._formBuilder.array(controlArr, atLeastOneCheckboxCheckedValidator());
   }
 
   onSubmit() {
-    let lineItemTotal: number = 0.0;
-    let laborAmount: number = 0.0;
-    let partsAmount: number = 0.0;
-    let total: number = 0.0;
+    let lineItemTotal = 0.0;
+    let laborAmount = 0.0;
+    let partsAmount = 0.0;
+    let total = 0.0;
     this.servicesFormArraySelected.forEach((element) => {
       lineItemTotal += Number(element.price);
     });
-    if (this.form.get('laborHours').value != '' && this.form.get('laborHours').value != null) {
+    if (this.form.get('laborHours').value !== '' && this.form.get('laborHours').value != null) {
       laborAmount = Number(this.form.get('laborHours').value * 50);
     }
-    if (this.form.get('parts').value != '' && this.form.get('parts').value != null) {
+    if (this.form.get('parts').value !== '' && this.form.get('parts').value != null) {
       partsAmount = Number(this.form.get('parts').value);
     }
     total = lineItemTotal + laborAmount + partsAmount;
     this.invoice = {
       _id: null,
       lineItems: [],
-      partsAmount: partsAmount,
-      laborAmount: laborAmount,
-      lineItemTotal: lineItemTotal,
-      total: total,
+      partsAmount,
+      laborAmount,
+      lineItemTotal,
+      total,
       username: localStorage.getItem('username'),
       orderDate: this.date,
     };
     this.servicesFormArraySelected.forEach((element) => {
       this.invoice.lineItems.push({
         _id: element._id,
-        price: element.price,
+        price: Number(element.price),
         title: element.title,
       });
     });
