@@ -1,13 +1,17 @@
-import { Component, OnInit, Renderer2, HostListener, Inject } from '@angular/core';
+import { Component, OnInit, Renderer2, HostListener, Inject, OnDestroy } from '@angular/core';
 import { Location, DOCUMENT } from '@angular/common';
 import { AuthService } from './services/auth.service';
+
+let lastScrollTop = 0;
+const delta = 5;
+const navbarHeight = 0;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'bcrs';
 
   constructor(
@@ -34,8 +38,44 @@ export class AppComponent implements OnInit {
     }
   }
 
+  hasScrolled() {
+    const st = window.pageYOffset;
+    if (Math.abs(lastScrollTop - st) <= delta) {
+      return;
+    }
+    const navbar = document.getElementById('navbar-top');
+    if (st > lastScrollTop && st > navbarHeight) {
+      if (navbar) {
+        if (navbar.classList.contains('nav-down')) {
+          navbar.classList.remove('nav-down');
+          navbar.classList.add('nav-up');
+        }
+      }
+    } else {
+      if (st + window.innerHeight < document.body.scrollHeight) {
+        if (navbar) {
+          if (navbar.classList.contains('nav-up')) {
+            navbar.classList.remove('nav-up');
+            navbar.classList.add('nav-down');
+          }
+        }
+      }
+    }
+
+    lastScrollTop = st;
+  }
+
   ngOnInit() {
     this.auth.autoAuthUser();
     this.onWindowScroll(Event);
+    const navbar = document.getElementById('navbar-top');
+    navbar.classList.add('nav-down');
+    this.hasScrolled();
+  }
+
+  ngOnDestroy() {
+    const navbar = document.getElementById('navbar-top');
+    navbar.classList.remove('nav-down');
+    navbar.classList.remove('nav-up');
   }
 }

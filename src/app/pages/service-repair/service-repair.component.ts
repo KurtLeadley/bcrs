@@ -18,7 +18,7 @@ import { ServiceRepairDialogComponent } from './service-repair-dialog/service-re
   templateUrl: './service-repair.component.html',
   styleUrls: ['./service-repair.component.scss'],
 })
-export class ServiceRepairComponent implements OnInit {
+export class ServiceRepairComponent implements OnInit, OnDestroy {
   loading = false;
   serviceList: Service[] = [];
   invoice: Invoice;
@@ -50,6 +50,8 @@ export class ServiceRepairComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('index-page');
     this.loading = true;
     this.form = this._formBuilder.group({
       laborHours: new FormControl('', [Validators.required]),
@@ -124,6 +126,11 @@ export class ServiceRepairComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.form.reset();
     });
+  }
+
+  ngOnDestroy() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('index-page');
   }
 }
 
