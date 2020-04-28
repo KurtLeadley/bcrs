@@ -73,7 +73,11 @@ exports.login = (req, res, next) => {
       if (fetchedUser.disabled) {
         return next(new ErrorResponse('Account has beed disabled. Please contact your system admin.', 403));
       }
-      console.log(result);
+
+      if (!result) {
+        return next(new ErrorResponse('Authentication Failed', 401));
+      }
+
       const token = jwt.sign(
         {
           userId: fetchedUser._id,
