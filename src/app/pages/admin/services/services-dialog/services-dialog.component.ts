@@ -22,7 +22,7 @@ export class ServicesDialogComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialogRef: MatDialogRef<ServicesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { action: String; obj: Service },
+    @Inject(MAT_DIALOG_DATA) public data: { action: string; obj: Service },
     public sService: ServiceService,
     private formBuild: FormBuilder,
     private _snackBar: MatSnackBar,

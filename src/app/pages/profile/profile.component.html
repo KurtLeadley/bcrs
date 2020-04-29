@@ -5,7 +5,7 @@
         <div class="col-md-3">
           <div class="section">
             <section class="text-center">
-              <form *ngIf="uploadForm" [formGroup]="uploadForm" (ngSubmit)="submitAvatar()">
+              <form *ngIf="uploadForm" [formGroup]="uploadForm">
                 <app-picture-upload [avatar]="true"></app-picture-upload>
               </form>
             </section>
@@ -142,14 +142,14 @@
                       </div>
                     </div>
                   </form>
-                  <header>
+                  <!-- <header>
                     <h2 class="text-uppercase">Security Questions</h2>
                   </header>
                   <hr class="line-danger" />
                   <br />
-                  <form [formGroup]="secQuestionsForm" *ngIf="secQuestionsForm">
-                    <!-- Security Questions first row -->
-                    <div class="row">
+                  <form [formGroup]="secQuestionsForm" *ngIf="secQuestionsForm"> -->
+                  <!-- Security Questions first row -->
+                  <!-- <div class="row">
                       <div class="col-md-6 mb-3">
                         <label for="question1" class="labels">
                           Security Question #1 <span class="text-danger"> * </span>
@@ -170,9 +170,9 @@
                         </label>
                         <input class="form-control" name="answer1" formControlName="answer1" required type="text" />
                       </div>
-                    </div>
-                    <!-- Security Questions second row -->
-                    <div class="row">
+                    </div> -->
+                  <!-- Security Questions second row -->
+                  <!-- <div class="row">
                       <div class="col-md-6 mb-3">
                         <label for="question2" class="labels">
                           Security Question #2 <span class="text-danger"> * </span>
@@ -193,9 +193,9 @@
                         </label>
                         <input class="form-control" name="answer2" formControlName="answer2" required type="text" />
                       </div>
-                    </div>
-                    <!-- Security Questions thrid row -->
-                    <div class="row">
+                    </div> -->
+                  <!-- Security Questions thrid row -->
+                  <!-- <div class="row">
                       <div class="col-md-6 mb-3">
                         <label for="question3" class="labels">
                           Security Question #3 <span class="text-danger"> * </span>
@@ -217,8 +217,8 @@
                         <input class="form-control" name="answer3" formControlName="answer3" required type="text" />
                       </div>
                     </div>
-                  </form>
-                  <header>
+                  </form> -->
+                  <!-- <header>
                     <h2 class="text-uppercase">Password</h2>
                   </header>
                   <hr class="line-danger" />
@@ -247,7 +247,7 @@
                         </div>
                       </div>
                     </div>
-                  </form>
+                  </form> -->
                   <div class="row mt-4">
                     <div class="col-md-6">
                       <button

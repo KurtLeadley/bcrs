@@ -21,7 +21,7 @@ export class RolesDialogComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialogRef: MatDialogRef<RolesDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { action: String; obj: Role },
+    @Inject(MAT_DIALOG_DATA) public data: { action: string; obj: Role },
     public roleService: RoleService,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar
@@ -29,7 +29,7 @@ export class RolesDialogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const body = document.getElementsByTagName('body')[0];
-    body.classList.add('account-settings');
+    body.classList.add('index-page');
     // Build new form
     this.rolesFormGroup = this.formBuilder.group({
       action: new FormControl(this.data.action),
@@ -57,16 +57,16 @@ export class RolesDialogComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       if (action === 'Create') {
-        this.roleService.createRole(role).subscribe((role) => {
-          this.sendToastMessage(role.text + ' was created!');
+        this.roleService.createRole(role).subscribe((element) => {
+          this.sendToastMessage(element.text + ' was created!');
         });
       } else if (action === 'Update') {
-        this.roleService.updateRole(role).subscribe((role) => {
-          this.sendToastMessage(`${role.text} has been updated!`);
+        this.roleService.updateRole(role).subscribe((element) => {
+          this.sendToastMessage(`${element.text} has been updated!`);
         });
       } else if (action === 'Delete') {
-        this.roleService.deleteRole(role).subscribe((role) => {
-          this.sendToastMessage(`${role.text} has been deleted!`);
+        this.roleService.deleteRole(role).subscribe((element) => {
+          this.sendToastMessage(`${element.text} has been deleted!`);
         });
       }
 
@@ -83,6 +83,6 @@ export class RolesDialogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('account-settings');
+    body.classList.remove('index-page');
   }
 }

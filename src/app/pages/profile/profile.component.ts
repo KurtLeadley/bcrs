@@ -168,51 +168,51 @@ export class ProfileComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file);
   }
 
-  deleteAvatar() {
-    this.userService.deleteAvatar(this.profileForm.controls.id.value).subscribe((res) => {
-      this._snackBar.open(res, 'X', {
-        duration: 1000,
-      });
-      this.alreadyUploaded = true;
-      this.imageURL = null;
-      setTimeout(() => {
-        this.router.navigate(['/profile']);
-      }, 1000);
-    });
-  }
+  // deleteAvatar() {
+  //   this.userService.deleteAvatar(this.profileForm.controls.id.value).subscribe((res) => {
+  //     this._snackBar.open(res, 'X', {
+  //       duration: 1000,
+  //     });
+  //     this.alreadyUploaded = true;
+  //     this.imageURL = null;
+  //     setTimeout(() => {
+  //       this.router.navigate(['/profile']);
+  //     }, 1000);
+  //   });
+  // }
 
-  submitAvatar() {
-    const user: User = {
-      _id: this.profileForm.controls.id.value,
-      username: null,
-      firstName: null,
-      lastName: null,
-      disabled: null,
-      email: null,
-      phoneNumber: null,
-      street: null,
-      city: null,
-      state: null,
-      zipCode: null,
-      role: null,
-      avatar: this.imageURL,
-      securityAnswers: null,
-      password: null,
-      dateCreated: null,
-      dateModified: null,
-    };
-    this.userService.updateAvatar(user).subscribe((res) => {
-      this._snackBar.open(res, 'X', {
-        duration: 1000,
-      });
-      setTimeout(() => {
-        this.router.navigate(['/profile']);
-      }, 1000);
-    });
-  }
+  // submitAvatar() {
+  //   const user: User = {
+  //     _id: this.profileForm.controls.id.value,
+  //     username: null,
+  //     firstName: null,
+  //     lastName: null,
+  //     disabled: null,
+  //     email: null,
+  //     phoneNumber: null,
+  //     street: null,
+  //     city: null,
+  //     state: null,
+  //     zipCode: null,
+  //     role: null,
+  //     avatar: this.imageURL,
+  //     securityAnswers: null,
+  //     password: null,
+  //     dateCreated: null,
+  //     dateModified: null,
+  //   };
+  //   this.userService.updateAvatar(user).subscribe((res) => {
+  //     this._snackBar.open(res, 'X', {
+  //       duration: 1000,
+  //     });
+  //     setTimeout(() => {
+  //       this.router.navigate(['/profile']);
+  //     }, 1000);
+  //   });
+  // }
 
   onSubmit() {
-    if (!this.profileForm.valid || !this.secQuestionsForm.valid || !this.passwordForm) {
+    if (!this.profileForm.valid || !this.secQuestionsForm.valid) {
       return;
     }
     const profileInfo: User = {
@@ -231,32 +231,25 @@ export class ProfileComponent implements OnInit, OnDestroy {
       dateModified: this.date,
       avatar: this.user.avatar,
       disabled: this.user.disabled,
-      securityAnswers: [
-        {
-          questionId: this.secQuestionsForm.get('question1').value,
-          answer: this.secQuestionsForm.get('answer1').value,
-        },
-        {
-          questionId: this.secQuestionsForm.get('question2').value,
-          answer: this.secQuestionsForm.get('answer2').value,
-        },
-        {
-          questionId: this.secQuestionsForm.get('question3').value,
-          answer: this.secQuestionsForm.get('answer3').value,
-        },
-      ],
-      password: this.passwordForm.get('password').value,
+      securityAnswers: null,
+      password: null,
     };
     this.loading = true;
-    this.auth.editProfile(profileInfo).subscribe((message) => {
+    this.userService.updateUser(profileInfo).subscribe((message) => {
       this._snackBar.open(message, 'X', {
         duration: 2000,
       });
     });
     setTimeout(() => {
-      this.auth.logout();
-      this.router.navigate(['/login']);
+      this.sendToastMessage(`${this.user.username}'s profile has been update successfully!`);
+      this.loading = false;
     }, 1000);
+  }
+
+  sendToastMessage(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
   }
 
   ngOnDestroy() {

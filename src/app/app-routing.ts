@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'features', component: FeaturesComponent },
-  // { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard] },
   { path: 'service-repair', component: ServiceRepairComponent, canActivate: [AuthenticationGuard] },
   {
     path: 'invoices',

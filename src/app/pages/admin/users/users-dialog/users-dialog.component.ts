@@ -3,7 +3,7 @@
  * Authors: Group 4
  * Description: bcrs
  */
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -18,7 +18,7 @@ import { RoleService } from '../../../../services/role.service';
   templateUrl: './users-dialog.component.html',
   styleUrls: ['./users-dialog.component.scss'],
 })
-export class UsersDialogComponent implements OnInit {
+export class UsersDialogComponent implements OnInit, OnDestroy {
   loading = false;
   date = new Date();
   roles: Role[] = [];
@@ -27,7 +27,7 @@ export class UsersDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<UsersDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { action: String; obj: User },
+    @Inject(MAT_DIALOG_DATA) public data: { action: string; obj: User },
     private userService: UserService,
     private roleService: RoleService,
     private authService: AuthService,
@@ -36,6 +36,8 @@ export class UsersDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('index-page');
     this.roleService.getRoles().subscribe((roleList) => {
       this.roles = roleList;
     });
@@ -151,5 +153,10 @@ export class UsersDialogComponent implements OnInit {
     this._snackBar.open(message, 'X', {
       duration: 2000,
     });
+  }
+
+  ngOnDestroy() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('index-page');
   }
 }

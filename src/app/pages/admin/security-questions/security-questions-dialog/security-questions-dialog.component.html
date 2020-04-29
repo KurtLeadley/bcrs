@@ -1,21 +1,39 @@
-<h1 mat-dialog-title>{{ data.action }} Security Question</h1>
-<div mat-dialog-content>
+<div class="card card-login">
   <form [formGroup]="securityQuestionForm" (ngSubmit)="onSave()">
-    <div [hidden]="data.action.toString() === 'Disable'">
-      <b>Security Question ID: </b>{{ data.obj._id }}<br />
-      <mat-form-field>
-        <mat-label>Question</mat-label>
-        <input matInput formControlName="text" type="text" placeholder="Question Text" />
-        <mat-error *ngIf="securityQuestionForm.controls.text?.errors?.required"
-          >Please enter a valid question.</mat-error
-        >
-      </mat-form-field>
+    <div class="card-header">
+      <img alt="Card image" class="card-img" src="assets/img/square-purple-1.png" />
+      <h4 class="card-title">{{ data.action }}<br /><br /><br /><span class="mb-2">Question</span></h4>
     </div>
-    <div [hidden]="data.action.toString() !== 'Disable'">
-      Are you sure you wish to disable this question: - {{ data.obj.text }}
+    <div [hidden]="data.action.toString() === 'Delete'">
+      <div class="card-body">
+        <div class="input-group input-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="tim-icons icon-badge"></i>
+            </span>
+          </div>
+          <input class="form-control" type="text" formControlName="_id" readonly />
+        </div>
+        <div class="input-group input-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="tim-icons icon-caps-small"></i>
+            </span>
+          </div>
+          <input class="form-control" type="text" formControlName="text" required />
+        </div>
+      </div>
     </div>
-    <div>
-      <button mat-button type="submit" cdkFocusInitial [class.spinner]="loading">{{ data.action }}</button>
+    <div [hidden]="data.action.toString() !== 'Delete'" class="text-danger">
+      Are you sure you wish to disable {{ data.obj.text }}?
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-danger mr-1" type="submit" [class.spinner]="loading" [disabled]="loading">
+        {{ data.action.toString() }}
+      </button>
+      <button (click)="onNoClick()" class="btn btn-danger btn-simple" type="reset">
+        Cancel
+      </button>
     </div>
   </form>
 </div>

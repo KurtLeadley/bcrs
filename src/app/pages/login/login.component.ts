@@ -5,6 +5,7 @@
  */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   focus;
   focus1;
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder) {}
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     const body = document.getElementsByTagName('body')[0];

@@ -3,7 +3,7 @@
  * Author: Nathaniel Liebhart
  * Description: bcrs
  */
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import { SecurityQuestionService } from '../../../../services/security-question.
   templateUrl: './security-questions-dialog.component.html',
   styleUrls: ['./security-questions-dialog.component.scss'],
 })
-export class SecurityQuestionsDialogComponent implements OnInit {
+export class SecurityQuestionsDialogComponent implements OnInit, OnDestroy {
   loading = false;
   date = new Date();
   securityQuestionForm: FormGroup;
@@ -32,6 +32,8 @@ export class SecurityQuestionsDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('index-page');
     this.securityQuestionForm = this.formBuilder.group({
       action: new FormControl(this.data.action),
       _id: new FormControl(this.data.obj._id),
@@ -89,5 +91,10 @@ export class SecurityQuestionsDialogComponent implements OnInit {
     this._snackBar.open(message, 'X', {
       duration: 2000,
     });
+  }
+
+  ngOnDestroy() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('index-page');
   }
 }

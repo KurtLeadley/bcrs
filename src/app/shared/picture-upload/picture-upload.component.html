@@ -4,14 +4,14 @@
     <img src="{{ imagePreviewUrl }}" alt="..." />
   </div>
   <div>
-    <button *ngIf="file === null && avatar" class="btn-round btn btn-danger" (click)="handleClick()">
+    <button *ngIf="file === null && avatar" class="btn-round btn btn-danger">
       Add Image
     </button>
-    <button *ngIf="file === null && !avatar" class="btn-round btn btn-primary" (click)="handleClick()">
+    <button *ngIf="file === null && !avatar" class="btn-round btn btn-primary">
       Select Image
     </button>
     <span *ngIf="file !== null">
-      <button class="btn-round btn btn-primary" (click)="handleClick()">
+      <button class="btn-round btn btn-primary">
         Change
       </button>
       <br *ngIf="avatar" />
@@ -19,7 +19,7 @@
         Save
       </button>
       <br *ngIf="avatar" />
-      <button class="btn-round btn btn-danger" (click)="handleRemove()"><i class="fa fa-times"></i> Remove</button>
+      <button class="btn-round btn btn-danger"><i class="fa fa-times"></i> Remove</button>
     </span>
   </div>
 </div>

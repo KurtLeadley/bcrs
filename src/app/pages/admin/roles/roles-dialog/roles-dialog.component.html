@@ -1,63 +1,39 @@
-<div class="wrapper">
-  <div class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 ml-auto mr-auto">
-          <div class="section">
-            <header>
-              <h2 mat-dialog-title class="text-uppercase">{{ data.action }} Role</h2>
-            </header>
-            <hr class="line-danger" />
-            <br />
-            <form [formGroup]="rolesFormGroup" (ngSubmit)="onSave()">
-              <div [hidden]="data.action.toString() === 'Delete'">
-                <div class="row">
-                  <div class="col-md-3 align-self-center">
-                    <label for="_id" class="labels">
-                      Role ID:
-                    </label>
-                  </div>
-                  <div class="col-md-9 align-self-center">
-                    <div class="form-group">
-                      <input class="form-control" name="_id" formControlName="_id" readonly />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3 align-self-center">
-                    <label for="text" class="labels">Role Text:</label>
-                  </div>
-                  <div class="col-md-9 align-self-center">
-                    <div class="form-group">
-                      <input class="form-control" name="text" formControlName="text" required type="text" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div [hidden]="data.action.toString() !== 'Delete'">
-                Are you sure you wish to delete {{ data.obj.text }}?
-              </div>
-              <div class="row mt-4">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                  <button
-                    class="btn btn-danger mr-1"
-                    type="submit"
-                    cdkFocusInitial
-                    [class.spinner]="loading"
-                    [disabled]="loading"
-                  >
-                    {{ data.action.toString() }}
-                  </button>
-                  <button (click)="onNoClick()" class="btn btn-danger btn-simple" type="reset">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </form>
+<div class="card card-login">
+  <form [formGroup]="rolesFormGroup" (ngSubmit)="onSave()">
+    <div class="card-header">
+      <img alt="Card image" class="card-img" src="assets/img/square-purple-1.png" />
+      <h4 class="card-title">{{ data.action }}<br /><br /><br /><span class="mb-2">Role</span></h4>
+    </div>
+    <div [hidden]="data.action.toString() === 'Delete'">
+      <div class="card-body">
+        <div class="input-group input-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="tim-icons icon-badge"></i>
+            </span>
           </div>
+          <input class="form-control" type="text" formControlName="_id" readonly />
+        </div>
+        <div class="input-group input-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="tim-icons icon-caps-small"></i>
+            </span>
+          </div>
+          <input placeholder="Role Text" class="form-control" type="text" formControlName="title" required />
         </div>
       </div>
     </div>
-  </div>
+    <div [hidden]="data.action.toString() !== 'Delete'" class="text-danger">
+      Are you sure you wish to disable {{ data.obj.text }}?
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-danger mr-1" type="submit" [class.spinner]="loading" [disabled]="loading">
+        {{ data.action.toString() }}
+      </button>
+      <button (click)="onNoClick()" class="btn btn-danger btn-simple" type="reset">
+        Cancel
+      </button>
+    </div>
+  </form>
 </div>
