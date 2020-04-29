@@ -86,7 +86,6 @@ import { ServicesDialogComponent } from './pages/admin/services/services-dialog/
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PictureUploadComponent } from './shared/picture-upload/picture-upload.component';
 import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
-import { ServiceRepairDialogComponent } from './pages/service-repair/service-repair-dialog/service-repair-dialog.component';
 import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
 import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view.component';
@@ -118,7 +117,6 @@ import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view
     ProfileComponent,
     PictureUploadComponent,
     ServiceRepairComponent,
-    ServiceRepairDialogComponent,
     AdminInvoicesComponent,
     InvoicesComponent,
     InvoiceViewComponent,

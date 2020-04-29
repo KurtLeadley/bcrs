@@ -5,13 +5,12 @@
  */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray, ValidatorFn } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Service } from '../../models/service.model';
 import { Invoice } from '../../models/invoice.model';
 import { ServiceService } from '../../services/service.service';
 import { InvoiceService } from '../../services/invoice.service';
-import { ServiceRepairDialogComponent } from './service-repair-dialog/service-repair-dialog.component';
 
 @Component({
   selector: 'app-service-repair',
@@ -24,13 +23,14 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
   invoice: Invoice;
   date = new Date();
   form: FormGroup;
+  laborHours = 1;
 
   constructor(
     private _formBuilder: FormBuilder,
     private sService: ServiceService,
     private invoiceService: InvoiceService,
-    public dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   get f() {
@@ -51,7 +51,17 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const body = document.getElementsByTagName('body')[0];
-    body.classList.add('index-page');
+    body.classList.add('product-page');
+    const downBtn = document.querySelector('#down');
+    const upBtn = document.querySelector('#up');
+    downBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.down();
+    });
+    upBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.up();
+    });
     this.loading = true;
     this.form = this._formBuilder.group({
       laborHours: new FormControl('', [Validators.required]),
@@ -70,6 +80,15 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
       return this._formBuilder.control(isSelected);
     });
     return this._formBuilder.array(controlArr, atLeastOneCheckboxCheckedValidator());
+  }
+
+  up() {
+    this.laborHours++;
+  }
+  down() {
+    if (this.laborHours > 1) {
+      this.laborHours--;
+    }
   }
 
   onSubmit() {
@@ -105,32 +124,20 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
       });
     });
     this.invoiceService.createInvoice(this.invoice).subscribe((message) => {
-      this._snackBar.open(message, 'x', {
+      this._snackBar.open(message, 'X', {
         duration: 2000,
       });
     });
-    this.openDialog();
+    this.router.navigate(['/invoices']);
   }
 
   activateClass(subModule) {
     subModule.touched = !subModule.touched;
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ServiceRepairDialogComponent, {
-      width: '50%',
-      height: '80%',
-      data: { obj: this.invoice },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      this.form.reset();
-    });
-  }
-
   ngOnDestroy() {
     const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('index-page');
+    body.classList.remove('product-page');
   }
 }
 

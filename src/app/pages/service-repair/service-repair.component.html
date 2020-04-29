@@ -1,3 +1,152 @@
 <div class="wrapper">
   <div class="section-space"></div>
+  <div class="cd-section" id="tables">
+    <div class="tables-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto text-center">
+            <h2 class="title mb-0">Service Repair Page</h2>
+            <div class="section-space"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <div>
+              <div class="card card-plain">
+                <div class="card-body">
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="table-responsive">
+                      <table class="table table-pricing">
+                        <thead class="text-primary">
+                          <tr>
+                            <th>
+                              <h3 class="mb-0 text-primary">Services</h3>
+                            </th>
+                            <th>
+                              <h3 class="mb-0 text-primary">
+                                Prices
+                              </h3>
+                            </th>
+                            <th>
+                              <h3 class="mb-0 text-primary">
+                                Needed
+                              </h3>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            *ngFor="let control of servicesFormArr?.controls; let i = index"
+                            (click)="activateClass(control)"
+                            [ngClass]="{ 'chip--checked': control.touched }"
+                          >
+                            <td class="text-left">
+                              <h4>{{ serviceList[i]?.title }}</h4>
+                            </td>
+                            <td>
+                              <h5>{{ serviceList[i]?.price | currency }}</h5>
+                            </td>
+                            <td>
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" type="checkbox" [formControl]="control" />
+
+                                  <span class="form-check-sign"> </span>
+                                </label>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <alert
+                        class="alert-with-icons"
+                        [type]="'danger alert-with-icon'"
+                        [dismissible]="true"
+                        *ngIf="f['servicesFormArr']?.errors && f['servicesFormArr']?.dirty"
+                      >
+                        <span class="tim-icons icon-support-17" data-notify="icon"></span>
+                        <span>
+                          <b class="text-default">*</b> At least
+                          <b class="text-default">one service must be selected</b> before entering an order!
+                        </span>
+                      </alert>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 mx-auto">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="card card-pricing card-plain card-primary">
+                              <div class="card-body">
+                                <label for="laborHours" class="labels mr-4"><h2 class="title">Labor Hours</h2></label>
+                                <div class="input-group pl-4">
+                                  <div class="input-group-btn">
+                                    <button class="btn btn-info btn-round" id="down" (click)="down()">
+                                      <i class="tim-icons icon-simple-delete"></i>
+                                    </button>
+                                  </div>
+                                  <input
+                                    class="form-control input-number"
+                                    id="myNumber"
+                                    name="laborHours"
+                                    formControlName="laborHours"
+                                    type="text"
+                                    [(ngModel)]="laborHours"
+                                    value="laborHours"
+                                    required
+                                  />
+                                  <div class="input-group-btn">
+                                    <button class="btn btn-success btn-round" id="up" (click)="up()">
+                                      <i class="tim-icons icon-simple-add"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="card card-pricing card-plain card-primary">
+                              <div class="card-body">
+                                <label for="partsAmount" class="labels">
+                                  <h2 class="title">Parts Amount</h2>
+                                </label>
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text bg-default">
+                                      <i class="fas fa-dollar-sign"></i>
+                                    </span>
+                                  </div>
+                                  <input
+                                    class="form-control bg-default"
+                                    type="number"
+                                    id="parts"
+                                    name="parts"
+                                    formControlName="parts"
+                                    min="0.00"
+                                    step=".01"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mt-4">
+                            <div class="card card-pricing card-plain card-primary">
+                              <div class="card-body">
+                                <button class="btn btn-success btn-lg" type="submit" [disabled]="form.invalid">
+                                  Submit Order <i class="tim-icons icon-send"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
