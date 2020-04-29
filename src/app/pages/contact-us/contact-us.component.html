@@ -1,37 +1,235 @@
-<section class="hero is-primary is-bold">
-<div class="hero-body">
-  <div class="container">
-    <h1 class="title">Contact Us!</h1>
-    <form (ngSubmit)="submitForm()">
-      <div class="field">
-        <label class="label">First Name:</label>
-        <input type="text" name="firstName" class="input" [(ngModel)]="firstName">
-      </div><br>
-
-      <div class="field">
-        <label class="label">Last Name:</label>
-        <input type="text" name="lastName" class="input" [(ngModel)]="lastName">
-      </div><br>
-
-      <div class="field">
-        <label class="label">Email Address:</label>
-        <input type="text" name="email" class="input" [(ngModel)]="email">
-      </div><br>
-
-      <div class="field">
-        <label class="label">Your Message:</label>
-        <textarea type="text" name="message" class="textarea" [(ngModel)]="message"></textarea>
-      </div><br>
-      <div class="field">
-      <label>Have you visited the Bob's Computer Repair Shop before?</label>
-        <mat-radio-group aria-label="Select an option" >
-          <mat-radio-button value="yes" name="youvisited" [(ngModel)]="youvisited">Yes</mat-radio-button>
-          <mat-radio-button value="no" name="youvisited" [(ngModel)]="youvisited">No</mat-radio-button>
-      </mat-radio-group>
+<div class="wrapper">
+  <div class="page-header header-filter clear-filter contactus-3 rellax">
+    <div
+      id="contact_header_image"
+      class="page-header-image"
+      style="background-image: url('assets/img/dt-omaha.jpg');"
+    ></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="title">Have a question?</h1>
+          <h3>We's love to talk more about your needs</h3>
+        </div>
+      </div>
     </div>
-      <button type="submit" class="button is-large is-warning"> Send!</button>
-    </form>
+  </div>
+  <div class="main">
+    <div class="container-fluid">
+      <div class="row infos mb-5">
+        <!-- Address -->
+        <div class="col-lg-3">
+          <div class="info info-hover">
+            <div class="icon icon-primary">
+              <img class="bg-blob" src="assets/img/feature-blob/primary.png" />
+              <i class="tim-icons icon-square-pin"></i>
+            </div>
+            <h4 class="info-title">Address</h4>
+            <p class="description">
+              1000 Galvin Rd S,<br />
+              Bellevue, NE 68005
+            </p>
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="col-lg-3">
+          <div class="info info-hover">
+            <div class="icon icon-info">
+              <img src="assets/img/feature-blob/info.png" alt="Blob image" class="bg-blob" />
+              <i class="tim-icons icon-email-85"></i>
+            </div>
+            <h4 class="info-title">Email</h4>
+            <p class="description">support@bcrs.com</p>
+          </div>
+        </div>
+        <!-- Phone number -->
+        <div class="col-lg-3">
+          <div class="info info-hover">
+            <div class="icon icon-warning">
+              <img src="assets/img/feature-blob/warning.png" alt="Blob imgae" class="bg-blob" />
+              <i class="tim-icons icon-mobile"></i>
+            </div>
+            <h4 class="info-title">Phone Number</h4>
+            <p class="description">1 (555) 555-5555</p>
+          </div>
+        </div>
+        <!-- Contact -->
+        <div class="col-lg-3">
+          <div class="info info-hover">
+            <div class="icon icon-success">
+              <img src="assets/img/feature-blob/success.png" alt="Blob image" class="bg-blob" />
+              <i class="tim-icons icon-single-02"></i>
+            </div>
+            <h4 class="info-title">Contact</h4>
+            Kurt Leadley<br />
+            Loren Wetzel<br />
+            Alsaddig Ibrahim<br />
+            Nathaniel Liebhart<br />
+          </div>
+        </div>
+      </div>
+      <div class="team-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+              <h2 class="title">Our World Class Team</h2>
+              <h4 class="description">
+                Our team's talents spread across the whole spectrum of the IT universe.<br />
+                So for the best service in the business contact us today.
+              </h4>
+            </div>
+          </div>
+          <div class="row">
+            <!-- Kurt Leadley -->
+            <div class="col-lg-4 col-md-5 ml-auto mr-auto">
+              <div class="card card-profile" data-background="full">
+                <a href="javascript:void(0)">
+                  <img class="img img-raised rounded" src="assets/img/about-team/kleadley.jpg" />
+                </a>
+                <div class="card-image">
+                  <h4 class="title">Kurt Leadley</h4>
+                  <div class="dropdown" dropdown>
+                    <button
+                      aria-expand="false"
+                      class="btn btn-link dropdown-toggle btn-icon dropdown-toggle"
+                      data-toggle="dropdown"
+                      dropdownToggle
+                      type="button"
+                    >
+                      <i class="tim-icons icon-settings-gear-63"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" *dropdownMenu x-placement="bottom-end">
+                      <a routerLink="/contact-us" class="dropdown-item">
+                        Contact Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <hr class="line-primary" />
+                  <h3 class="job-title">Operations Manager</h3>
+                  <div class="table-responsive">
+                    <table class="table tablesorter" id="plain-table">
+                      <tbody>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-atom"></i> Skills</td>
+                          <td class="text-right">Organization</td>
+                        </tr>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-user-run"></i> Hobbies</td>
+                          <td class="text-right">Problem Solving</td>
+                        </tr>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-chart-bar-32"></i> Level</td>
+                          <td class="text-right">• • • • •</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Loren Wetzel -->
+            <div class="col-lg-4 col-md-5 ml-auto mr-auto">
+              <div class="card card-profile" data-background="full">
+                <a href="javascript:void(0)">
+                  <img class="img img-raised rounded" src="assets/img/about-team/lwetzel.png" />
+                </a>
+                <div class="card-image">
+                  <h4 class="title">Loren Wetzel</h4>
+                  <div class="dropdown" dropdown>
+                    <button
+                      aria-expand="false"
+                      class="btn btn-link dropdown-toggle btn-icon dropdown-toggle"
+                      data-toggle="dropdown"
+                      dropdownToggle
+                      type="button"
+                    >
+                      <i class="tim-icons icon-settings-gear-63"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" *dropdownMenu x-placement="bottom-end">
+                      <a routerLink="/contact-us" class="dropdown-item">
+                        Contact Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <hr class="line-primary" />
+                  <h3 class="job-title">Service Delivery Manager</h3>
+                  <div class="table-responsive">
+                    <table class="table tablesorter" id="plain-table">
+                      <tbody>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-atom"></i> Skills</td>
+                          <td class="text-right">Organization</td>
+                        </tr>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-user-run"></i> Hobbies</td>
+                          <td class="text-right">Problem Solving</td>
+                        </tr>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-chart-bar-32"></i> Level</td>
+                          <td class="text-right">• • • • •</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Alsaddig Ibrahim -->
+            <div class="col-lg-4 col-md-5 ml-auto mr-auto">
+              <div class="card card-profile" data-background="full">
+                <a href="javascript:void(0)">
+                  <img class="img img-raised rounded" src="assets/img/about-team/aibrahim.jpg" />
+                </a>
+                <div class="card-image">
+                  <h4 class="title">Alsaddig Ibrahim</h4>
+                  <div class="dropdown" dropdown>
+                    <button
+                      aria-expand="false"
+                      class="btn btn-link dropdown-toggle btn-icon dropdown-toggle"
+                      data-toggle="dropdown"
+                      dropdownToggle
+                      type="button"
+                    >
+                      <i class="tim-icons icon-settings-gear-63"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" *dropdownMenu x-placement="bottom-end">
+                      <a routerLink="/contact-us" class="dropdown-item">
+                        Contact Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <hr class="line-primary" />
+                  <h3 class="job-title">Sales Manager</h3>
+                  <div class="table-responsive">
+                    <table class="table tablesorter" id="plain-table">
+                      <tbody>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-atom"></i> Skills</td>
+                          <td class="text-right">Organization</td>
+                        </tr>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-user-run"></i> Hobbies</td>
+                          <td class="text-right">Problem Solving</td>
+                        </tr>
+                        <tr>
+                          <td class="text-left"><i class="tim-icons icon-chart-bar-32"></i> Level</td>
+                          <td class="text-right">• • • • •</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-</section>
-
