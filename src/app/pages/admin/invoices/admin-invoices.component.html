@@ -1,41 +1,68 @@
-<mat-card class='invoice-card'>
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-  <div *ngIf="!loading">
+<div class="wrapper">
+  <div class="section">
+    <div class="container">
+      <div class="space-90"></div>
+      <div class="cd-section">
+        <div id="tables">
+          <div class="row">
+            <div class="col-md-12 ml-auto mr-auto">
+              <mat-card class="card card-plain bg-default">
+                <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+                <div class="card-header">
+                  <h1 class="card-title text-center text-primary">Admin Invoice Configuration</h1>
+                </div>
+                <div *ngIf="!loading" class="card-body">
+                  <mat-table #table [dataSource]="dataSource" matSort multiTemplateDataRows class="table-responsive">
+                    <ng-container matColumnDef="{{ column }}" *ngFor="let column of columnsToDisplay">
+                      <mat-header-cell *matHeaderCellDef>{{ column }}</mat-header-cell>
+                      <mat-cell *matCellDef="let element">{{ element[column] }}</mat-cell>
+                    </ng-container>
+                    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+                    <ng-container matColumnDef="expandedDetail">
+                      <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                        <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                          <div *ngIf="expandedElement">
+                            <mat-table
+                              #innerTable
+                              [dataSource]="element.lineItems"
+                              *ngIf="element == expandedElement"
+                              class="table-responsive"
+                            >
+                              <ng-container
+                                matColumnDef="{{ innerColumn }}"
+                                *ngFor="let innerColumn of innerDisplayedColumns"
+                                class="invoice-expand-container"
+                              >
+                                <mat-header-cell *matHeaderCellDef>{{ innerColumn }}</mat-header-cell>
+                                <mat-cell *matCellDef="let element">{{ element[innerColumn] }}</mat-cell>
+                              </ng-container>
+                              <mat-header-row *matHeaderRowDef="innerDisplayedColumns"></mat-header-row>
+                              <mat-row *matRowDef="let row; columns: innerDisplayedColumns"></mat-row>
+                            </mat-table>
+                          </div>
+                        </div>
+                      </mat-cell>
+                    </ng-container>
 
-    <mat-table #table [dataSource]="dataSource" matSort multiTemplateDataRows >
-
-      <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-        <mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
-      </ng-container>
-
-      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-      <ng-container matColumnDef="expandedDetail">
-        <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-          <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-            <div *ngIf="expandedElement">
-              <!-- https://stackoverflow.com/questions/51948450/angular-material-header -->
-              <mat-table #innerTables [dataSource]="element.lineItems"  *ngIf="element == expandedElement">
-                <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns" class='invoice-expand-container'>
-                  <mat-header-cell *matHeaderCellDef> {{innerColumn}} </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element[innerColumn]}} </mat-cell>
-                </ng-container>
-                <mat-header-row *matHeaderRowDef="innerDisplayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></mat-row>
-              </mat-table>
+                    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                    <mat-row
+                      *matRowDef="let element; columns: columnsToDisplay"
+                      [class.example-expanded-row]="expandedElement === element"
+                      (click)="toggleRow(element)"
+                    ></mat-row>
+                    <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="invoice-expand-row"></mat-row>
+                  </mat-table>
+                </div>
+                <mat-paginator
+                  class="pagination-primary justify-content-end"
+                  [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons
+                ></mat-paginator>
+              </mat-card>
             </div>
           </div>
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-      <mat-row *matRowDef="let element; columns: columnsToDisplay;"
-        [class.example-expanded-row]="expandedElement === element" (click)="toggleRow(element)">
-      </mat-row>
-      <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="invoice-expand-row"></mat-row>
-    </mat-table>
-
+        </div>
+      </div>
+    </div>
   </div>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</mat-card>
+</div>

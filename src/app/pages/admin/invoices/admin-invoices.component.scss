@@ -3,8 +3,28 @@
 }
 
 .invoice-expand-row {
-  min-height:auto !important;
+  min-height: auto !important;
 }
 .ng-trigger-detailExpand {
-  width:50%;
+  width: 50%;
+}
+#tables {
+  margin-top: 5rem;
+}
+mat-table {
+  background-color: #344675;
+  mat-header-row {
+    mat-header-cell {
+      color: #fd5d93;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+  mat-cell {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+mat-paginator {
+  background: inherit;
+  color: #fd5d93;
 }

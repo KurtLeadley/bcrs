@@ -80,7 +80,7 @@
                                 <label for="laborHours" class="labels mr-4"><h2 class="title">Labor Hours</h2></label>
                                 <div class="input-group pl-4">
                                   <div class="input-group-btn">
-                                    <button class="btn btn-info btn-round" id="down" (click)="down()">
+                                    <button class="btn btn-info btn-round" id="down">
                                       <i class="tim-icons icon-simple-delete"></i>
                                     </button>
                                   </div>
@@ -95,7 +95,7 @@
                                     required
                                   />
                                   <div class="input-group-btn">
-                                    <button class="btn btn-success btn-round" id="up" (click)="up()">
+                                    <button class="btn btn-success btn-round" id="up">
                                       <i class="tim-icons icon-simple-add"></i>
                                     </button>
                                   </div>
@@ -129,7 +129,7 @@
                             </div>
                           </div>
                           <div class="col-md-6 mt-4">
-                            <div class="card card-pricing card-plain card-primary">
+                            <div class="card card-pricing card-plain card-primary pt-3 pb-3">
                               <div class="card-body">
                                 <button class="btn btn-success btn-lg" type="submit" [disabled]="form.invalid">
                                   Submit Order <i class="tim-icons icon-send"></i>

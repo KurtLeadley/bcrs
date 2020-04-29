@@ -1,4 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  overflow-x: hidden;
+}
+
+/* Custom Scroll Bar */
+/* Width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #171941;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e14eca;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fd5d93;
+}
 
 mat-spinner {
   margin: auto;
@@ -74,8 +99,11 @@ mat-spinner {
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

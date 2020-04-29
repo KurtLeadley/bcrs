@@ -1,6 +1,13 @@
 .wrapper {
   margin-top: 6rem;
   p-chart {
-    width: 100%;
+    canvas {
+      width: 90%;
+    }
+  }
+  .card {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
