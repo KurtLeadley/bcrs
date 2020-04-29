@@ -24,6 +24,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
   date = new Date();
   form: FormGroup;
   laborHours = 1;
+  message: string;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -124,15 +125,19 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
       });
     });
     this.invoiceService.createInvoice(this.invoice).subscribe((message) => {
-      this._snackBar.open(message, 'X', {
-        duration: 2000,
-      });
+      this.sendToastMessage(`New invoice created!`);
     });
     this.router.navigate(['/invoices']);
   }
 
   activateClass(subModule) {
     subModule.touched = !subModule.touched;
+  }
+
+  sendToastMessage(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
   }
 
   ngOnDestroy() {

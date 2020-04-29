@@ -64,11 +64,11 @@ export class SecurityQuestionsDialogComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       if (action === 'Add') {
         this.sqService.createSecurityQuestion(securityQuestion).subscribe((message) => {
-          this.sendToastMessage(message);
+          this.sendToastMessage('New security question has been successfully created!');
         });
       } else if (action === 'Update') {
         this.sqService.updateSecurityQuestion(securityQuestion).subscribe((message) => {
-          this.sendToastMessage(message);
+          this.sendToastMessage('Security question has been successfully updated!');
         });
       } else if (action === 'Disable') {
         if (securityQuestion.disabled === false) {
@@ -77,7 +77,7 @@ export class SecurityQuestionsDialogComponent implements OnInit, OnDestroy {
           securityQuestion.disabled = false;
         }
         this.sqService.deleteSecurityQuestion(securityQuestion).subscribe((message) => {
-          this.sendToastMessage(message);
+          this.sendToastMessage('Security question has been successfully disabled!');
         });
       }
 

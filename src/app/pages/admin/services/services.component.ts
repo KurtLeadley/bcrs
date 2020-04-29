@@ -35,7 +35,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
     const dialogRef = this.dialog.open(ServicesDialogComponent, {
       width: '750px',
-      data: { action: action, obj: obj },
+      data: { action, obj },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

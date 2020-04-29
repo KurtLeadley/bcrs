@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   loading = false;
   usernameCheckSpinner = false;
   isLinear = true;
@@ -181,9 +181,7 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
 
     this.authService.register(user).subscribe((message) => {
-      this._snackBar.open(message, 'x', {
-        duration: 2000,
-      });
+      this.sendToastMessage(`${user.username} has been created!`);
     });
 
     setTimeout(() => {
@@ -191,7 +189,13 @@ export class RegisterComponent implements OnInit {
     }, 2000);
   }
 
-  ngOnDestory() {
+  sendToastMessage(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
+  }
+
+  ngOnDestroy() {
     const body = document.getElementsByTagName('body')[0];
     body.classList.remove('register-page');
   }

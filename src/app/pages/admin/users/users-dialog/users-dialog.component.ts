@@ -123,11 +123,11 @@ export class UsersDialogComponent implements OnInit, OnDestroy {
       if (action === 'Add') {
         user.disabled = false;
         this.userService.createUser(user).subscribe((message) => {
-          this.sendToastMessage(message);
+          this.sendToastMessage('User has been successfully created!');
         });
       } else if (action === 'Update') {
         this.userService.updateUser(user).subscribe((message) => {
-          this.sendToastMessage(message);
+          this.sendToastMessage('User has been successfully updated!');
         });
       } else if (action === 'Delete') {
         let msg = '';
@@ -139,7 +139,7 @@ export class UsersDialogComponent implements OnInit, OnDestroy {
           user.disabled = false;
         }
         this.userService.deleteUser(user).subscribe((message) => {
-          this.sendToastMessage(message);
+          this.sendToastMessage('User has been successfully disabled!');
         });
       } else if (action === 'Reset') {
         console.log('Reset Password');

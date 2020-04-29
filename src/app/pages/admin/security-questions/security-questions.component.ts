@@ -49,9 +49,9 @@ export class SecurityQuestionsComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.sqService.getSecurityQuestions().subscribe((securityQusetionList) => {
+      this.sqService.getSecurityQuestions().subscribe((securityQuestionList) => {
         setTimeout(() => {
-          this.securityQuestions = securityQusetionList;
+          this.securityQuestions = securityQuestionList;
           this.loading = false;
         }, 500);
       });

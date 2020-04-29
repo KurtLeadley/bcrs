@@ -66,17 +66,17 @@ export class ServicesDialogComponent implements OnInit, OnDestroy {
       switch (action) {
         case 'Create':
           this.sService.createService(service).subscribe((message) => {
-            this.sendToastMessage(message);
+            this.sendToastMessage('New service has been successfully created!');
           });
           break;
         case 'Update':
           this.sService.updateService(service).subscribe((message) => {
-            this.sendToastMessage(message);
+            this.sendToastMessage('Service has been successfully updated!');
           });
           break;
         case 'Delete':
           this.sService.deleteService(service).subscribe((message) => {
-            this.sendToastMessage(message);
+            this.sendToastMessage('Service has been successfully disabled!');
           });
           break;
         default:

@@ -5,6 +5,7 @@
  */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -20,7 +21,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   focus;
   focus1;
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     const body = document.getElementsByTagName('body')[0];
@@ -40,8 +46,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       this.auth.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
+      this.sendToastMessage('Login successful!');
       this.loading = false;
     }, 1000);
+  }
+
+  sendToastMessage(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
   }
 
   ngOnDestroy() {

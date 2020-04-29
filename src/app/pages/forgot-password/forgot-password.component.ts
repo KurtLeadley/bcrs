@@ -113,14 +113,18 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     }
     this.loading = true;
     this.auth.resetPassword(this.username, this.passwordFormGroup.get('password').value).subscribe((message) => {
-      this._snackBar.open(message, 'X', {
-        duration: 2000,
-      });
+      this.sendToastMessage(`${this.username} has reset their password!`);
     });
 
     setTimeout(() => {
       this.router.navigate(['/login']);
     }, 2000);
+  }
+
+  sendToastMessage(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
   }
 
   ngOnDestroy() {

@@ -41,7 +41,7 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     const dialogRef = this.dialog.open(UsersDialogComponent, {
       width: '750px',
-      data: { action, obj }, //pass row data
+      data: { action, obj }, // pass row data
     });
 
     dialogRef.afterClosed().subscribe((result) => {

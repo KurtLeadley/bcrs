@@ -39,7 +39,7 @@ export class RolesComponent implements OnInit, OnDestroy {
 
     const dialogRef = this.dialog.open(RolesDialogComponent, {
       width: '750px',
-      data: { action: action, obj: obj },
+      data: { action, obj },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
