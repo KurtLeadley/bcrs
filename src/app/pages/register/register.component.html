@@ -133,15 +133,16 @@
                               </div>
                               <div class="col-md-6 mb-3">
                                 <label for="state" class="labels">State</label>
-                                <input
-                                  aria-label="NE"
-                                  class="form-control"
+                                <select
                                   name="state"
+                                  class="form-control btn-primary btn-simple"
                                   formControlName="state"
-                                  #state
-                                  placeholder="NE"
-                                  type="text"
-                                />
+                                  required
+                                >
+                                  <option *ngFor="let state of states" [value]="state.abbreviation">
+                                    {{ state.name }}
+                                  </option>
+                                </select>
                               </div>
                             </div>
                           </form>
@@ -328,7 +329,12 @@
                             class="btn btn-primary btn-round btn-lg"
                             (click)="onSubmit()"
                             [class.spinner]="loading"
-                            [disabled]="loading"
+                            [disabled]="
+                              loading ||
+                              accountFormGroup.invalid ||
+                              secQuestionsFormGroup.invalid ||
+                              personalFormGroup.invalid
+                            "
                           >
                             Submit <i class="tim-icons icon-send"></i>
                           </button>

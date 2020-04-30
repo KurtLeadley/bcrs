@@ -77,7 +77,7 @@ export class RolesDialogComponent implements OnInit, OnDestroy {
 
   sendToastMessage(message: string) {
     this._snackBar.open(message, 'X', {
-      duration: 2000,
+      duration: 9000,
     });
   }
 

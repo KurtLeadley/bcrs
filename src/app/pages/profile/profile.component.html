@@ -2,29 +2,8 @@
   <div class="section">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
-          <div class="section">
-            <section class="text-center">
-              <form *ngIf="uploadForm" [formGroup]="uploadForm">
-                <app-picture-upload [avatar]="true"></app-picture-upload>
-              </form>
-            </section>
-            <!-- Tab list -->
-            <section>
-              <br />
-              <ul class="nav flex-column" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active text-danger" data-toggle="tab" href="#link1" role="tablist">
-                    <i class="tim-icons icon-single-02"></i> Profile
-                  </a>
-                </li>
-                <hr class="line-danger" />
-              </ul>
-            </section>
-          </div>
-        </div>
         <!-- Profile form -->
-        <div class="col-md 8 ml-auto">
+        <div class="col-md-12 ml-auto">
           <div class="section">
             <div class="tab-content">
               <div class="tab-pane active" id="link1">
