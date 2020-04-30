@@ -24,8 +24,8 @@
         </div>
       </div>
     </div>
-    <div [hidden]="data.action.toString() !== 'Delete'" class="text-danger">
-      Are you sure you wish to disable {{ data.obj.text }}?
+    <div [hidden]="data.action.toString() !== 'Delete'" class="text-primary ml-2">
+      Are you sure you wish to <b class="text-danger">delete</b> {{ data.obj.text }}?
     </div>
     <div class="card-footer text-center">
       <button class="btn btn-danger mr-1" type="submit" [class.spinner]="loading" [disabled]="loading">
