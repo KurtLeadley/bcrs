@@ -70,28 +70,17 @@
                           <b class="text-default">one service must be selected</b> before entering an order!
                         </span>
                       </alert>
-                      <alert
-                        class="alert-with-icon"
-                        [type]="'danger alert-with-icon'"
-                        [dismissible]="true"
-                        [hidden]="hide"
-                      >
-                        <span class="tim-icons icon-support-17" data-notify="icon"></span>
-                        <span>
-                          <b class="text-default">Your Labor & Parts will be added on at a later time!</b>
-                        </span>
-                      </alert>
                     </div>
                     <div class="row">
                       <div class="col-md-12 mx-auto">
                         <div class="row">
                           <div class="col-md-3">
-                            <div (click)="showHint()" class="card card-pricing card-plain card-primary">
+                            <div class="card card-pricing card-plain card-primary">
                               <div class="card-body">
                                 <label for="laborHours" class="labels mr-4"><h2 class="title">Labor Hours</h2></label>
                                 <div class="input-group pl-4">
                                   <div class="input-group-btn">
-                                    <button disabled class="btn btn-info btn-round" id="down">
+                                    <button class="btn btn-info btn-round" id="down">
                                       <i class="tim-icons icon-simple-delete"></i>
                                     </button>
                                   </div>
@@ -103,10 +92,9 @@
                                     type="text"
                                     [(ngModel)]="laborHours"
                                     value="laborHours"
-                                    (click)="showHint()"
                                   />
                                   <div class="input-group-btn">
-                                    <button disabled class="btn btn-success btn-round" id="up">
+                                    <button class="btn btn-success btn-round" id="up">
                                       <i class="tim-icons icon-simple-add"></i>
                                     </button>
                                   </div>
@@ -115,7 +103,7 @@
                             </div>
                           </div>
                           <div class="col-md-3">
-                            <div (click)="showHint()" class="card card-pricing card-plain card-primary">
+                            <div class="card card-pricing card-plain card-primary">
                               <div class="card-body">
                                 <label for="partsAmount" class="labels">
                                   <h2 class="title">Parts Amount</h2>

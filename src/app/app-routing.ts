@@ -28,6 +28,7 @@ import { ServiceRepairComponent } from './pages/service-repair/service-repair.co
 import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
 import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view.component';
+import { InvoicePayComponent } from './pages/invoices/invoice-pay/invoice-pay.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path: 'invoice-view/:invoiceId',
     component: InvoiceViewComponent,
+    canActivate: [AuthenticationGuard],
+  },
+  {
+    path: 'invoice-pay/:invoiceId',
+    component: InvoicePayComponent,
     canActivate: [AuthenticationGuard],
   },
   {

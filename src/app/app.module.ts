@@ -90,6 +90,7 @@ import { ServiceRepairComponent } from './pages/service-repair/service-repair.co
 import { AdminInvoicesComponent } from './pages/admin/invoices/admin-invoices.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
 import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view.component';
+import { InvoicePayComponent } from './pages/invoices/invoice-pay/invoice-pay.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view
     AdminInvoicesComponent,
     InvoicesComponent,
     InvoiceViewComponent,
+    InvoicePayComponent,
   ],
   imports: [
     BrowserModule,

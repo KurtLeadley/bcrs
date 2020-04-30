@@ -18,12 +18,14 @@ export class InvoicesComponent implements OnInit {
   loading = false;
   invoiceList: Invoice[];
   username: string;
+  role: string;
   isCollapsed = true;
 
   constructor(public invoiceService: InvoiceService, public dialog: MatDialog, private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
+    this.role = localStorage.getItem('role');
     this.invoiceService.getInvoices().subscribe((invoiceList) => {
       setTimeout(() => {
         this.invoiceList = invoiceList;
