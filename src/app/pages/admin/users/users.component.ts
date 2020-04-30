@@ -4,7 +4,7 @@
  * Description: bcrs
  */
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersDialogComponent } from './users-dialog/users-dialog.component';
 import { User } from '../../../models/user.model';
@@ -40,8 +40,10 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     const dialogRef = this.dialog.open(UsersDialogComponent, {
+      panelClass: 'custom-dialog-styles',
       width: '750px',
-      data: { action, obj }, // pass row data
+      data: { action, obj },
+      hasBackdrop: true,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

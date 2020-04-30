@@ -1,4 +1,4 @@
-<div style="margin-top: 50px;" class="card card-login">
+<div class="card card-login">
   <form [formGroup]="usersForm" (ngSubmit)="onSave()">
     <div class="card-header">
       <img alt="Card image" class="card-img" src="assets/img/square-purple-1.png" />
@@ -7,99 +7,117 @@
     <div [hidden]="data.action.toString() === 'Delete' || data.action.toString() === 'Reset'">
       <div class="card-body">
         <div [hidden]="data.action.toString() === 'Add'">
-          <div class="input-group input-lg">
+          <div class="row">
+            <div class="input-group col-md-12">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-badge"></i>
+                </span>
+              </div>
+              <input class="form-control" type="text" formControlName="_id" readonly />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group col-md-12">
             <div class="input-group-prepend">
               <span class="input-group-text">
-                <i class="tim-icons icon-badge"></i>
+                <i class="tim-icons icon-single-02"></i>
               </span>
             </div>
-            <input class="form-control" type="text" formControlName="_id" readonly />
+            <input class="form-control" type="text" formControlName="username" />
           </div>
         </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-single-02"></i>
-            </span>
+
+        <div class="row">
+          <div class="input-group col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-caps-small"></i>
+              </span>
+            </div>
+            <input class="form-control" type="text" formControlName="firstName" required />
           </div>
-          <input class="form-control" type="text" formControlName="username" required />
-        </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-caps-small"></i>
-            </span>
+          <div class="input-group col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-caps-small"></i>
+              </span>
+            </div>
+            <input class="form-control" type="text" formControlName="lastName" required />
           </div>
-          <input class="form-control" type="text" formControlName="firstName" required />
         </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-caps-small"></i>
-            </span>
+        <div class="row">
+          <div class="input-group col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-email-85"></i>
+              </span>
+            </div>
+            <input class="form-control" type="email" formControlName="email" required />
           </div>
-          <input class="form-control" type="text" formControlName="lastName" required />
-        </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-email-85"></i>
-            </span>
+          <div class="input-group col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-mobile"></i>
+              </span>
+            </div>
+            <input class="form-control" type="text" formControlName="phoneNumber" />
           </div>
-          <input class="form-control" type="email" formControlName="email" required />
         </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-mobile"></i>
-            </span>
+        <div class="row">
+          <div class="input-group col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-square-pin"></i>
+              </span>
+            </div>
+            <input class="form-control" type="text" formControlName="street" />
           </div>
-          <input class="form-control" type="text" formControlName="phoneNumber" />
-        </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-square-pin"></i>
-            </span>
+          <div class="input-group col-md-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-world"></i>
+              </span>
+            </div>
+            <input class="form-control" type="text" formControlName="city" />
           </div>
-          <input class="form-control" type="text" formControlName="street" />
-        </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-world"></i>
-            </span>
+          <div class="input-group col-md-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-world"></i>
+              </span>
+            </div>
+            <input class="form-control" type="text" formControlName="zipCode" />
           </div>
-          <input class="form-control" type="text" formControlName="city" />
         </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-world"></i>
-            </span>
+        <div class="row">
+          <div class="input-group col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-world"></i>
+              </span>
+            </div>
+            <select name="state" class="form-control btn-primary btn-simple" formControlName="state" required>
+              <option *ngFor="let state of states" [value]="state.abbreviation">
+                {{ state.name }}
+              </option>
+            </select>
           </div>
-          <input class="form-control" type="text" formControlName="state" />
-        </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-world"></i>
-            </span>
+          <div class="input-group col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="tim-icons icon-puzzle-10"></i>
+              </span>
+            </div>
+            <select name="role" class="form-control btn-primary btn-simple" formControlName="roles" required>
+              <option *ngFor="let role of roles" [value]="role._id">
+                {{ role.text }}
+              </option>
+            </select>
           </div>
-          <input class="form-control" type="text" formControlName="zipCode" />
         </div>
-        <div class="input-group input-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="tim-icons icon-puzzle-10"></i>
-            </span>
-          </div>
-          <select name="role" class="form-control btn-primary btn-simple" formControlName="roles" required>
-            <option *ngFor="let role of roles" [value]="role._id">
-              {{ role.text }}
-            </option>
-          </select>
-        </div>
+
         <input type="text" formControlName="disabled" [hidden]="true" />
       </div>
     </div>
