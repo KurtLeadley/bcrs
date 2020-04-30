@@ -6,10 +6,22 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 15px;
+  border-left: 1px solid #e14eca;
 }
 .grid-left, .grid-right {
   align-self: center;
   justify-self: center;
+}
+.grid-left {
+  padding:15px;
+  border-bottom: 1px solid #e14eca;
+}
+.grid-right {
+  padding:0 15px;
+  border-right: 1px solid #00f2c3;
+}
+h2 {
+  color: #00f2c3;
 }
 @media only screen and (max-width: 768px) {
   .service-grid {
