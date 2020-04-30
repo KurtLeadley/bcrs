@@ -1,36 +1,15 @@
-.service-area {
-  margin: 30px 20%;
-}
-.service-grid {
-  margin: 90px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 15px;
-  border-left: 1px solid #e14eca;
-}
-.grid-left, .grid-right {
-  align-self: center;
-  justify-self: center;
-}
-.grid-left {
-  padding:30px;
-  border-bottom: 1px solid #e14eca;
-}
-.grid-right {
-  padding:0 30px;
-  border-right: 1px solid #00f2c3;
-}
-h2 {
-  color: #00f2c3;
-}
-@media only screen and (max-width: 768px) {
-  .service-area {
-    margin:30px 2%;
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  img {
+    z-index: 1;
   }
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
-  .grid-left {
-    border-bottom: unset;
+}
+.carousel-caption {
+  z-index: 3;
+}
+.container {
+  .col-md-6 {
+    margin-left: 290px;
   }
 }

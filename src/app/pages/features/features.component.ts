@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import Glide from '@glidejs/glide';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Service } from '../../models/service.model';
 import { ServiceService } from '../../services/service.service';
+import { NgxGlideComponent } from 'ngx-glide';
 
 @Component({
   selector: 'app-features',
@@ -9,11 +9,13 @@ import { ServiceService } from '../../services/service.service';
   styleUrls: ['./features.component.scss'],
 })
 export class FeaturesComponent implements OnInit, OnDestroy {
-
+  @ViewChild(NgxGlideComponent, { static: false }) ngxGlide: NgxGlideComponent;
   serviceList: Service[] = [];
   constructor(public sService: ServiceService) {}
 
   ngOnInit() {
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.add('presentation-page');
 
     this.sService.getServices().subscribe((serviceList) => {
       setTimeout(() => {
@@ -21,20 +23,14 @@ export class FeaturesComponent implements OnInit, OnDestroy {
         console.log(serviceList);
       }, 500);
     });
+  }
 
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('register-page');
-
-    new Glide('.glide1', {
-      type: 'carousel',
-      perView: 4,
-      startAt: 2,
-      focusAt: 2,
-    }).mount();
+  play(): void {
+    this.ngxGlide.play();
   }
 
   ngOnDestroy() {
     const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('sections-page');
+    body.classList.remove('presentation-page');
   }
 }

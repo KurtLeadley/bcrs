@@ -20,6 +20,45 @@
       </div>
     </div>
     <!-- Services -->
+    <div class="space-110"></div>
+    <div class="section section-testimonials">
+      <div class="content-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-md-8 col-12 ml-auto mr-auto text-center">
+              <h1 class="title">An IT solution</h1>
+              <h3 class="category text-info">
+                <strong>for every type of user.</strong>
+              </h3>
+              <p class="description">
+                At BCRS, we recognize that every computer users has their own unique needs when it comes to their
+                computer. And with those needs come very different challenges, that is why our trained professionals are
+                knowledgeable in every aspect of the industry, and our services reflect it.
+              </p>
+            </div>
+            <div class="row">
+              <div class="container">
+                <div class="col-md-6">
+                  <carousel [showIndicators]="true">
+                    <slide *ngFor="let service of serviceList">
+                      <div class="header-filter">
+                        <img src="{{ service.imageUrl }}" />
+                      </div>
+                      <div class="carousel-caption">
+                        <h2 class="title text-success">{{ service.title }}</h2>
+                        <h3 style="font-weight: bold;" class="category text-primary">{{ service.price | currency }}</h3>
+                        <p class="description text-danger">{{ service.description }}</p>
+                      </div>
+                    </slide>
+                  </carousel>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- <div class="header header-3">
       <div class="page-header header-filter">
         <div class="content-center">
@@ -68,7 +107,7 @@
         </div>
       </div>
     </div> -->
-    <div class="service-area">
+    <!-- <div class="service-area">
       <div class="service-grid" *ngFor="let service of serviceList">
         <div class='grid-left'>
           <h2>{{service.title}}</h2>
@@ -82,6 +121,6 @@
           <img src ='{{service.imageUrl}}' alt='{{service.title}}' height="400" width="350" />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

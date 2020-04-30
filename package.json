@@ -55,6 +55,7 @@
     "ngx-bootstrap": "5.6.1",
     "ngx-chips": "2.1.0",
     "ngx-cookie-service": "2.4.0",
+    "ngx-glide": "^1.0.1",
     "nouislider": "14.2.0",
     "popper.js": "1.16.1",
     "primeng": "9.0.2",

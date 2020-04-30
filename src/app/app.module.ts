@@ -55,6 +55,7 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { TagInputModule } from 'ngx-chips';
 import { ChartModule } from 'primeng/chart';
+import { NgxGlideModule } from 'ngx-glide';
 
 import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
@@ -170,6 +171,7 @@ import { InvoiceViewComponent } from './pages/invoices/invoice-view/invoice-view
     ModalModule.forRoot(),
     TagInputModule,
     ChartModule,
+    NgxGlideModule,
   ],
   providers: [
     AuthenticationGuard,
