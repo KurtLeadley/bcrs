@@ -44,8 +44,10 @@ export class SecurityQuestionsComponent implements OnInit, OnDestroy {
       obj = this.securityQuestions;
     }
     const dialogRef = this.dialog.open(SecurityQuestionsDialogComponent, {
+      panelClass: 'custom-dialog-styles',
       width: '750px',
       data: { action, obj },
+      hasBackdrop: true,
     });
 
     dialogRef.afterClosed().subscribe((result) => {

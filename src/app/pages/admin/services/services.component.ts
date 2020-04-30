@@ -35,8 +35,10 @@ export class ServicesComponent implements OnInit, OnDestroy {
     }
 
     const dialogRef = this.dialog.open(ServicesDialogComponent, {
+      panelClass: 'custom-dialog-styles',
       width: '750px',
       data: { action, obj },
+      hasBackdrop: true,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
