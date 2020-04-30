@@ -23,7 +23,7 @@ export class FeaturesComponent implements OnInit, OnDestroy {
     });
 
     const body = document.getElementsByTagName('body')[0];
-    body.classList.add('sections-page');
+    body.classList.add('register-page');
 
     new Glide('.glide1', {
       type: 'carousel',

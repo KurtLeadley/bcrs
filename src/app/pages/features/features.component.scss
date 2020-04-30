@@ -24,7 +24,13 @@ h2 {
   color: #00f2c3;
 }
 @media only screen and (max-width: 768px) {
+  .service-area {
+    margin:30px 2%;
+  }
   .service-grid {
     grid-template-columns: 1fr;
+  }
+  .grid-left {
+    border-bottom: unset;
   }
 }
