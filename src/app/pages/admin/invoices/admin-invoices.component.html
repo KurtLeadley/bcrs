@@ -16,7 +16,19 @@
                     <ng-container matColumnDef="{{ column }}" *ngFor="let column of columnsToDisplay">
                       <mat-header-cell *matHeaderCellDef>{{ column }}</mat-header-cell>
                       <!-- <mat-cell *matCellDef="let element">{{ element[column] | currency }}</mat-cell> -->
-                      <mat-cell *matCellDef="let element">{{ isNumber(element[column]) ? (element[column]|currency) : element[column] }} </mat-cell>
+                      <mat-cell *matCellDef="let element"
+                        >{{ isNumber(element[column]) ? (element[column] | currency) : element[column] }}
+                      </mat-cell>
+                      <mat-cell>
+                        <button
+                          class="btn btn-success btn-simple btn-icon btn-sm mr-1"
+                          type="button"
+                          placement="bottom"
+                          tooltip="Update Invoice"
+                        >
+                          <i class="tim-icons icon-settings"></i>
+                        </button>
+                      </mat-cell>
                     </ng-container>
                     <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
                     <ng-container matColumnDef="expandedDetail">
@@ -35,7 +47,11 @@
                                 class="invoice-expand-container"
                               >
                                 <mat-header-cell *matHeaderCellDef>{{ innerColumn }}</mat-header-cell>
-                                <mat-cell *matCellDef="let element">{{ isNumber(element[innerColumn]) ? (element[innerColumn]|currency) : element[innerColumn] }}</mat-cell>
+                                <mat-cell *matCellDef="let element">{{
+                                  isNumber(element[innerColumn])
+                                    ? (element[innerColumn] | currency)
+                                    : element[innerColumn]
+                                }}</mat-cell>
                               </ng-container>
                               <mat-header-row *matHeaderRowDef="innerDisplayedColumns"></mat-header-row>
                               <mat-row *matRowDef="let row; columns: innerDisplayedColumns"></mat-row>

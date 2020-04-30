@@ -42,8 +42,8 @@
     display: block;
     left: 0;
     top: 0;
-    content: "";
-    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
+    background-color: rgba(0, 0, 0, 0.8);
   }
 }
 .clear-filter {
@@ -270,7 +270,7 @@
 // HEADER 6
 
 .header-6 {
-  background-image: url("../../assets/img/dots.png");
+  background-image: url('../../assets/img/dots.png');
   background-size: contain;
 
   .path {

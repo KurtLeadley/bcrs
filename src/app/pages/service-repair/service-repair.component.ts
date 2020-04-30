@@ -25,6 +25,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
   form: FormGroup;
   laborHours = 1;
   message: string;
+  hide = true;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -65,8 +66,8 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     });
     this.loading = true;
     this.form = this._formBuilder.group({
-      laborHours: new FormControl('', [Validators.required]),
-      parts: new FormControl(''),
+      laborHours: new FormControl({ value: 0, disabled: true }),
+      parts: new FormControl({ value: 0, disabled: true }),
     });
     this.sService.getServices().subscribe((serviceList) => {
       this.serviceList = serviceList;
@@ -90,6 +91,10 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     if (this.laborHours > 1) {
       this.laborHours--;
     }
+  }
+
+  showHint() {
+    this.hide = !this.hide;
   }
 
   onSubmit() {
