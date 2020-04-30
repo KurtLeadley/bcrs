@@ -37,6 +37,8 @@ export class ServicesDialogComponent implements OnInit, OnDestroy {
       _id: new FormControl(this.data.obj._id),
       title: new FormControl(this.data.obj.title, Validators.required),
       price: new FormControl(this.data.obj.price, Validators.required),
+      description: new FormControl(this.data.obj.description),
+      imageUrl: new FormControl(this.data.obj.imageUrl)
     });
   }
 
@@ -60,6 +62,8 @@ export class ServicesDialogComponent implements OnInit, OnDestroy {
       _id: this.serviceForm.controls._id.value,
       title: this.serviceForm.controls.title.value,
       price: this.serviceForm.controls.price.value,
+      description: this.serviceForm.controls.description.value,
+      imageUrl: this.serviceForm.controls.imageUrl.value
     };
 
     setTimeout(() => {

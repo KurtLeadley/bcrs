@@ -20,50 +20,28 @@
       </div>
     </div>
     <!-- Services -->
-    <div class="header header-3">
+    <!-- <div class="header header-3">
       <div class="page-header header-filter">
         <div class="content-center">
           <div class="row">
             <div class="col-lg-5 col-md-8 col-12 ml-auto mr-auto positioned">
-              <h1 class="title">Service Title</h1>
-              <p class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, quia ullam at ad saepe culpa cupiditate
-                similique odit, error porro assumenda eius omnis mollitia quis sint natus deserunt? Cupiditate, saepe!
-              </p>
+              <h1 class="title">Title</h1>
+              <p class="description">Description</p>
               <a routerLink="/contact-us" class="btn btn-lg btn-primary">
                 Contact us today
               </a>
             </div>
           </div>
-          <!-- Glide -->
+
           <div class="col-md-12 col-md-6">
             <section class="center glide1">
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                  <li class="glide__slide">
-                    <h1>Password Reset</h1>
-                    <img height="500" src="assets/img/features/password-reset.jpg" width="450" />
-                  </li>
-                  <li class="glide__slide">
-                    <img height="500" src="assets/img/features/spyware-removal.png" width="450" />
-                  </li>
-                  <li class="glide__slide">
-                    <img height="500" src="assets/img/features/ram-upgrade.jpg" width="450" />
-                  </li>
-                  <li class="glide__slide">
-                    <img height="500" src="assets/img/features/software-install.jpg" width="450" />
-                  </li>
-                  <li class="glide__slide">
-                    <img height="500" src="assets/img/features/tune-up.jpg" width="450" />
-                  </li>
-                  <li class="glide__slide">
-                    <img height="500" src="assets/img/features/keyboard-cleaning.jpg" width="450" />
-                  </li>
-                  <li class="glide__slide">
-                    <img height="500" src="assets/img/features/disk-cleaning.jpg" width="450" />
+                  <li class="glide__slide" *ngFor="let service of serviceList">
+                    <img height="400" src="{{service.imageUrl}}" width="350" />
                   </li>
                 </ul>
-                <!-- Glide Controls -->
+
                 <div data-glide-el="controls">
                   <button
                     class="btn btn-round btn-icon btn-primary btn-simple slick-prev slick-arrow"
@@ -87,6 +65,21 @@
               </div>
             </section>
           </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="service-area">
+      <div class="service-grid" *ngFor="let service of serviceList">
+        <div class='grid-left'>
+          <h2>{{service.title}}</h2>
+          <p>{{service.description}}</p>
+          <p>For a low price of... {{service.price | currency}} !</p>
+          <a routerLink="/contact-us" class="btn btn-lg btn-primary">
+            Contact us today
+          </a>
+        </div>
+        <div class ='grid-right'>
+          <img src ='{{service.imageUrl}}' alt='{{service.title}}' height="400" width="350" />
         </div>
       </div>
     </div>

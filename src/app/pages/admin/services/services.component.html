@@ -26,6 +26,8 @@
                           <tr>
                             <th class="text-left"><h4 class="text-danger">Title</h4></th>
                             <th class="text-left"><h4 class="text-danger">Price</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Description</h4></th>
+                            <th class="text-left"><h4 class="text-danger">Image URL</h4></th>
                             <th class="text-center"><h4 class="text-danger">Disabled</h4></th>
                             <th class="text-right"><h4 class="text-danger">Actions</h4></th>
                           </tr>
@@ -34,6 +36,8 @@
                           <tr *ngFor="let service of serviceList">
                             <td class="text-left">{{ service.title }}</td>
                             <td class="text-left">{{ service.price | currency }}</td>
+                            <td class="text-left">{{ service.description }}</td>
+                            <td class="text-left">{{ service.imageUrl }}</td>
                             <td class="text-center">
                               <bSwitch
                                 [switch-on-color]="'primary'"

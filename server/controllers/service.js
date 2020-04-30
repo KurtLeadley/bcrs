@@ -58,6 +58,8 @@ exports.createService = (req, res, next) => {
   const service = new Service({
     title: req.body.title,
     price: req.body.price,
+    description: req.body.description,
+    imageUrl: req.body.imageUrl
   });
   // attempt to save service to database
   service
@@ -79,13 +81,21 @@ exports.createService = (req, res, next) => {
  * @access      Private
  */
 exports.updateService = (req, res, next) => {
+  console.log(req.params);
+  console.log(req.params._id);
+  // console.log(req.body);
   Service.updateOne(
-    { _id: req.params._id },
+    // this was undefined
+    // { _id: req.params._id },
+    // trying this instead
+    {_id : req.params.id},
     {
       // set fields to update
       $set: {
         title: req.body.title,
         price: req.body.price,
+        description: req.body.description,
+        imageUrl: req.body.imageUrl
       },
     }
   )
@@ -100,7 +110,7 @@ exports.updateService = (req, res, next) => {
       }
     })
     .catch((err) => {
-      return next(new ErrorResponse(`Internale Error: ${err.message}`, 500));
+      return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
     });
 };
 

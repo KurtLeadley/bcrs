@@ -68,4 +68,5 @@ export class AdminInvoicesComponent implements OnInit {
         null;
     this.cd.detectChanges();
   }
+  isNumber(e) {return typeof e === 'number'}
 }

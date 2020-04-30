@@ -29,10 +29,10 @@
                           <tr *ngIf="invoice.username === this.username">
                             <td class="text-left">{{ invoice.username }}</td>
                             <td class="text-left">{{ invoice.orderDate | date: 'medium' }}</td>
-                            <td class="text-left">{{ invoice.partsAmount }}</td>
-                            <td class="text-left">{{ invoice.lineItemTotal }}</td>
-                            <td class="text-left">{{ invoice.laborAmount }}</td>
-                            <td class="text-center">{{ invoice.total }}</td>
+                            <td class="text-left">{{ invoice.partsAmount | currency }}</td>
+                            <td class="text-left">{{ invoice.lineItemTotal | currency }}</td>
+                            <td class="text-left">{{ invoice.laborAmount | currency }}</td>
+                            <td class="text-center">{{ invoice.total | currency }}</td>
                             <td class="text-right">
                               <button
                                 class="btn btn-primary btn-simple btn-icon btn-sm mr-1"

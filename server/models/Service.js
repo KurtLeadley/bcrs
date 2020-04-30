@@ -16,6 +16,14 @@ const ServiceSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    description: {
+      type: String,
+      required: false,
+    },
+    imageUrl: {
+      type: String,
+      required: false,
+    },
     disabled: {
       type: Boolean,
       default: false,

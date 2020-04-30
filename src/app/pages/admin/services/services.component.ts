@@ -24,6 +24,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.serviceList = serviceList;
         this.loading = false;
+        console.log(serviceList);
       }, 500);
     });
   }

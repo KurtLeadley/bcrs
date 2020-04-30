@@ -1,0 +1,18 @@
+.service-area {
+  margin: 30px 20%;
+}
+.service-grid {
+  margin: 90px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+}
+.grid-left, .grid-right {
+  align-self: center;
+  justify-self: center;
+}
+@media only screen and (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
