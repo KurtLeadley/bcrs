@@ -45,4 +45,10 @@ export class InvoiceService {
       .post<{ message: string; invoice: Invoice }>(`${apiUrl}/invoices`, invoice)
       .pipe(map((x) => x.message));
   }
+
+  payInvoice(invoice: Invoice): Observable<string> {
+    return this.http
+      .delete<{ message: string; invoice: Invoice }>(`${apiUrl}/invoices/paid/${invoice._id}`)
+      .pipe(map((x) => x.message));
+  }
 }

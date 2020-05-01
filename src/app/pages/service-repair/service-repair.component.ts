@@ -67,6 +67,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     this.form = this._formBuilder.group({
       laborHours: new FormControl('', Validators.required),
       parts: new FormControl(''),
+      username: new FormControl('', Validators.required),
     });
     this.sService.getServices().subscribe((serviceList) => {
       this.serviceList = serviceList;
@@ -114,7 +115,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
       laborAmount,
       lineItemTotal,
       total,
-      username: localStorage.getItem('username'),
+      username: this.form.get('username').value,
       orderDate: this.date,
     };
     this.servicesFormArraySelected.forEach((element) => {
@@ -127,7 +128,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     this.invoiceService.createInvoice(this.invoice).subscribe((message) => {
       this.sendToastMessage(`New invoice created!`);
     });
-    this.router.navigate(['/invoices']);
+    this.router.navigate(['/admin/invoices']);
   }
 
   activateClass(subModule) {

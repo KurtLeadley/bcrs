@@ -127,7 +127,30 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-md-6 mt-4">
+                          <div class="col-md-3">
+                            <div class="card card-pricing card-plain card-primary">
+                              <div class="card-body">
+                                <label for="username" class="labels">
+                                  <h2 class="title">Customer's Username</h2>
+                                </label>
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text bg-default">
+                                      <i class="tim-icons icon-single-02"></i>
+                                    </span>
+                                  </div>
+                                  <input
+                                    class="form-control bg-default"
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    formControlName="username"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mt-4">
                             <div class="card card-pricing card-plain card-primary pt-3 pb-3">
                               <div class="card-body">
                                 <button class="btn btn-success btn-lg" type="submit" [disabled]="form.invalid">

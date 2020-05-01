@@ -16,4 +16,5 @@ export interface Invoice {
   total: number;
   username: string;
   orderDate: Date;
+  disabled: boolean;
 }
