@@ -14,7 +14,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class SecurityQuestionService {
-  apiUrl = 'http://localhost:8080/api/v1';
+  apiUrl = '/api/v1';
 
   constructor(private http: HttpClient, public auth: AuthService) {}
 
