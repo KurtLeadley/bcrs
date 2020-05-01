@@ -27,7 +27,7 @@
                           </tr>
                         </thead>
                         <tbody *ngFor="let invoice of invoiceList">
-                          <tr *ngIf="invoice.username === this.username">
+                          <tr *ngIf="invoice.username === this.username && invoice.disabled === false">
                             <td class="text-left">{{ invoice.username }}</td>
                             <td class="text-left">{{ invoice.orderDate | date: 'medium' }}</td>
                             <td class="text-left">{{ invoice.partsAmount | currency }}</td>

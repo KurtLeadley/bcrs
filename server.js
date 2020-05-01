@@ -14,25 +14,30 @@ const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const cors = require('cors');
-const errorHandler = require('./middleware/error');
-const connectDB = require('./config/db');
+const errorHandler = require('./server/middleware/error');
+const connectDB = require('./server/config/db');
 
 // Load env vars
-dotenv.config({ path: './config/config.env' });
+dotenv.config({ path: './server/config/config.env' });
 
 // Connect to database
 connectDB();
 
 // Route files
-const auth = require('./routes/auth');
-const users = require('./routes/users');
-const securityQuestions = require('./routes/security-questions');
-const roles = require('./routes/roles');
-const invoices = require('./routes/invoices');
-const services = require('./routes/services');
+const auth = require('./server/routes/auth');
+const users = require('./server/routes/users');
+const securityQuestions = require('./server/routes/security-questions');
+const roles = require('./server/routes/roles');
+const invoices = require('./server/routes/invoices');
+const services = require('./server/routes/services');
+const payment = require('./server/routes/payment');
 
 // Initialize express
 const app = express();
+
+// Create link to Angular build dir
+const distDir = __dirname + '/dist/';
+app.use(express.static(distDir));
 
 // Body parser
 app.use(express.json());
@@ -55,12 +60,12 @@ app.use(helmet());
 app.use(xss());
 
 // Rate limiting
-// const limiter = rateLimit({
-//   windowMs: 10 * 60 * 1000, // 10 mins
-//   max: 100,
-// });
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 mins
+  max: 100,
+});
 
-// app.use(limiter);
+app.use(limiter);
 
 // Prevent http param pollution
 app.use(hpp());
@@ -75,8 +80,9 @@ app.use('/api/v1/security-questions', securityQuestions);
 app.use('/api/v1/roles', roles);
 app.use('/api/v1/invoices', invoices);
 app.use('/api/v1/services', services);
+app.use('/api/v1/payment', payment);
 
-// Initilize errorHandler middleware
+// Initialize errorHandler middleware
 // mounted routes must be mounted before this statement
 // in order to use the middleware
 app.use(errorHandler);

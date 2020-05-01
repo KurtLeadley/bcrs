@@ -13,32 +13,32 @@ import { Role } from '../models/role.model';
   providedIn: 'root',
 })
 export class RoleService {
-  apiUrl = 'http://localhost:5000/api/v1';
+  apiUrl = '/api/v1';
 
   constructor(private http: HttpClient) {}
 
   // Role CRUD methods
   getRoles(): Observable<Role[]> {
-    return this.http.get<{ message: String; roles: Role[] }>(this.apiUrl + '/roles').pipe(map((x) => x.roles));
+    return this.http.get<{ message: string; roles: Role[] }>(this.apiUrl + '/roles').pipe(map((x) => x.roles));
   }
 
-  getRole(_id: String): Observable<Role> {
-    return this.http.get<{ message: String; role: Role }>(this.apiUrl + '/roles/' + _id).pipe(map((x) => x.role));
+  getRole(_id: string): Observable<Role> {
+    return this.http.get<{ message: string; role: Role }>(this.apiUrl + '/roles/' + _id).pipe(map((x) => x.role));
   }
 
   createRole(role: Role): Observable<Role> {
-    return this.http.post<{ message: String; role: Role }>(this.apiUrl + '/roles', role).pipe(map((x) => x.role));
+    return this.http.post<{ message: string; role: Role }>(this.apiUrl + '/roles', role).pipe(map((x) => x.role));
   }
 
   updateRole(role: Role): Observable<Role> {
     return this.http
-      .put<{ message: String; role: Role }>(this.apiUrl + '/roles/' + role._id, role)
+      .put<{ message: string; role: Role }>(this.apiUrl + '/roles/' + role._id, role)
       .pipe(map((x) => x.role));
   }
 
   deleteRole(role: Role): Observable<Role> {
     return this.http
-      .delete<{ message: String; role: Role }>(this.apiUrl + '/roles/' + role._id)
+      .delete<{ message: string; role: Role }>(this.apiUrl + '/roles/' + role._id)
       .pipe(map((x) => x.role));
   }
 }
