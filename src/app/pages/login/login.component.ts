@@ -17,6 +17,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit, OnDestroy {
   loading = false;
   loginForm: FormGroup;
+  role: string;
   hide: boolean;
   focus;
   focus1;
@@ -47,8 +48,20 @@ export class LoginComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.auth.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
       this.sendToastMessage('Login successful!');
+      this.role = localStorage.getItem('role');
+      switch (this.role) {
+        case 'admin':
+          this.router.navigate(['/admin/purchases']);
+          break;
+        case 'standard':
+          this.router.navigate(['/service-repair']);
+          break;
+        default:
+          this.router.navigate(['/invoices']);
+          break;
+      }
       this.loading = false;
-    }, 1000);
+    }, 2000);
   }
 
   sendToastMessage(message: string) {

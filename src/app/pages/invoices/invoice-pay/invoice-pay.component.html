@@ -127,55 +127,14 @@
               <h4 class="title">
                 Payment Method
               </h4>
-              <tabset class="checkout-btn-group">
-                <tab>
-                  <ng-template tabHeading>Credit Card</ng-template>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="js-form-message">
-                        <label class="form-label">Card Number</label>
-                        <input class="form-control" name="cardNumber" placeholder="**** **** **** ****" type="text" />
-                      </div>
-                    </div>
-                  </div>
-                  <br />
-                  <div class="row mb-3">
-                    <div class="col-md-8">
-                      <div class="js-form-message mb-6">
-                        <label class="form-label">Card Holder</label>
-                        <input class="form-control" name="cardHolder" type="text" placeholder="John Doe" />
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="js-form-message mb-6">
-                        <label class="form-label">Expiration</label>
-                        <input class="form-control" name="cardExpirationDate" type="text" placeholder="MM/YY" />
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="js-form-message mb-6">
-                        <label class="form-label">CVC</label>
-                        <input class="form-control" name="cardCVC" placeholder="***" type="text" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <a routerLink="/invoices"> <span class="fas fa-angle-left mr-2"></span> Cancel </a>
-                    <button (click)="checkOut()" class="btn btn-info btn-sm" type="submit">
-                      Pay
-                    </button>
-                  </div>
-                </tab>
-                <tab>
-                  <ng-template tabHeading>PayPal</ng-template>
-                  <h5>Email Address:</h5>
-                  <input class="form-control" placeholder="PayPal Email Address" type="email" />
-                  <br />
-                  <button class="btn btn-info btn-sm" type="submit">
-                    Pay with PayPal
+              <hr class="line-primary" />
+              <div class="row">
+                <div class="col-md-12">
+                  <button (click)="checkOut()" class="btn btn-lg btn-info">
+                    Pay Invoice
                   </button>
-                </tab>
-              </tabset>
+                </div>
+              </div>
             </div>
           </form>
         </div>
