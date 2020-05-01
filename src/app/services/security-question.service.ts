@@ -14,26 +14,26 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class SecurityQuestionService {
-  apiUrl = '/api/v1';
+  apiUrl = 'http://localhost:8080/api/v1';
 
   constructor(private http: HttpClient, public auth: AuthService) {}
 
   // Security Question CRUD methods
   getSecurityQuestions(): Observable<SecurityQuestion[]> {
     return this.http
-      .get<{ message: String; questions: SecurityQuestion[] }>(this.apiUrl + '/security-questions')
+      .get<{ message: string; questions: SecurityQuestion[] }>(this.apiUrl + '/security-questions')
       .pipe(map((x) => x.questions));
   }
 
-  getSecurityQuestion(_id: String): Observable<SecurityQuestion> {
+  getSecurityQuestion(_id: string): Observable<SecurityQuestion> {
     return this.http
-      .get<{ message: String; question: SecurityQuestion }>(this.apiUrl + '/security-questions/' + _id)
+      .get<{ message: string; question: SecurityQuestion }>(this.apiUrl + '/security-questions/' + _id)
       .pipe(map((x) => x.question));
   }
 
-  getSecurityQuestionsByIds(securityQuestionIds: String[]): Observable<SecurityQuestion[]> {
+  getSecurityQuestionsByIds(securityQuestionIds: string[]): Observable<SecurityQuestion[]> {
     return this.http
-      .post<{ message: String; questions: SecurityQuestion[] }>(
+      .post<{ message: string; questions: SecurityQuestion[] }>(
         this.apiUrl + '/security-questions/by-ids',
         securityQuestionIds
       )

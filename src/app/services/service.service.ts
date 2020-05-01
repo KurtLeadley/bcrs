@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Service } from '../models/service.model';
 
-const apiUrl = '/api/v1';
+const apiUrl = 'http://localhost:8080/api/v1';
 
 @Injectable({
   providedIn: 'root',
