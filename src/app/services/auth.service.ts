@@ -22,7 +22,7 @@ export class AuthService {
   private userObjId: string;
   private currentRole: string;
   private username: string;
-  apiUrl = 'http://localhost:5000/api/v1';
+  apiUrl = '/api/v1';
 
   // used to pass along auth info to other components
   private authStatusListener = new Subject<boolean>();
