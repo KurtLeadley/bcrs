@@ -16,10 +16,10 @@ export class LoaderService {
   constructor() {}
 
   show() {
-    this.loaderSubject.next(<Loader>{ show: true });
+    this.loaderSubject.next({ show: true } as Loader);
   }
 
   hide() {
-    this.loaderSubject.next(<Loader>{ show: false });
+    this.loaderSubject.next({ show: false } as Loader);
   }
 }

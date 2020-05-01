@@ -30,6 +30,7 @@ const securityQuestions = require('./server/routes/security-questions');
 const roles = require('./server/routes/roles');
 const invoices = require('./server/routes/invoices');
 const services = require('./server/routes/services');
+const payment = require('./server/routes/payment');
 
 // Initialize express
 const app = express();
@@ -79,8 +80,9 @@ app.use('/api/v1/security-questions', securityQuestions);
 app.use('/api/v1/roles', roles);
 app.use('/api/v1/invoices', invoices);
 app.use('/api/v1/services', services);
+app.use('/api/v1/payment', payment);
 
-// Initilize errorHandler middleware
+// Initialize errorHandler middleware
 // mounted routes must be mounted before this statement
 // in order to use the middleware
 app.use(errorHandler);
