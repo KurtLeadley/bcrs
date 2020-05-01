@@ -117,6 +117,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
       total,
       username: this.form.get('username').value,
       orderDate: this.date,
+      disabled: false,
     };
     this.servicesFormArraySelected.forEach((element) => {
       this.invoice.lineItems.push({
