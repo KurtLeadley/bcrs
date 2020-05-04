@@ -69,7 +69,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
       parts: new FormControl(''),
       username: new FormControl('', Validators.required),
     });
-    this.sService.getServices().subscribe((serviceList) => {
+    this.sService.getServicesDisplay().subscribe((serviceList) => {
       this.serviceList = serviceList;
       this.form.addControl('servicesFormArr', this.buildServicesFormArr(this.serviceList));
     });
@@ -91,6 +91,10 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     if (this.laborHours > 1) {
       this.laborHours--;
     }
+  }
+
+  get filteredList() {
+    return this.serviceList.filter(x => x.title === "Password Reset");
   }
 
   onSubmit() {

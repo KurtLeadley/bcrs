@@ -27,6 +27,23 @@ exports.getServices = (req, res, next) => {
     });
 };
 
+exports.getServicesDisplay = (req, res, next) => {
+  Service.find({disabled : false})
+    .then((services) => {
+      if (!services) {
+        return next(new ErrorResponse('Services not found', 404));
+      }
+      res.status(200).json({
+        success: true,
+        services,
+      });
+    })
+    .catch((err) => {
+      return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
+    });
+};
+
+
 /**
  * @desc        Get Service By ID
  * @route       GET /api/v1/services/:id

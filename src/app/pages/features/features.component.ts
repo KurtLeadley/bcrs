@@ -9,7 +9,7 @@ import { NgxGlideComponent } from 'ngx-glide';
   styleUrls: ['./features.component.scss'],
 })
 export class FeaturesComponent implements OnInit, OnDestroy {
-  @ViewChild(NgxGlideComponent, { static: false }) ngxGlide: NgxGlideComponent;
+  @ViewChild(NgxGlideComponent, { static: false, }) ngxGlide: NgxGlideComponent;
   serviceList: Service[] = [];
   constructor(public sService: ServiceService) {}
 
@@ -17,7 +17,7 @@ export class FeaturesComponent implements OnInit, OnDestroy {
     const body = document.getElementsByTagName('body')[0];
     body.classList.add('presentation-page');
 
-    this.sService.getServices().subscribe((serviceList) => {
+    this.sService.getServicesDisplay().subscribe((serviceList) => {
       setTimeout(() => {
         this.serviceList = serviceList;
         console.log(serviceList);
@@ -27,6 +27,7 @@ export class FeaturesComponent implements OnInit, OnDestroy {
 
   play(): void {
     this.ngxGlide.play();
+
   }
 
   ngOnDestroy() {
