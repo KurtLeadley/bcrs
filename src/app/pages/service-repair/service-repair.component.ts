@@ -67,8 +67,9 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     this.form = this._formBuilder.group({
       laborHours: new FormControl('', Validators.required),
       parts: new FormControl(''),
+      username: new FormControl('', Validators.required),
     });
-    this.sService.getServices().subscribe((serviceList) => {
+    this.sService.getServicesDisplay().subscribe((serviceList) => {
       this.serviceList = serviceList;
       this.form.addControl('servicesFormArr', this.buildServicesFormArr(this.serviceList));
     });
@@ -90,6 +91,10 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     if (this.laborHours > 1) {
       this.laborHours--;
     }
+  }
+
+  get filteredList() {
+    return this.serviceList.filter(x => x.title === "Password Reset");
   }
 
   onSubmit() {
@@ -114,8 +119,9 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
       laborAmount,
       lineItemTotal,
       total,
-      username: localStorage.getItem('username'),
+      username: this.form.get('username').value,
       orderDate: this.date,
+      disabled: false,
     };
     this.servicesFormArraySelected.forEach((element) => {
       this.invoice.lineItems.push({
@@ -127,7 +133,7 @@ export class ServiceRepairComponent implements OnInit, OnDestroy {
     this.invoiceService.createInvoice(this.invoice).subscribe((message) => {
       this.sendToastMessage(`New invoice created!`);
     });
-    this.router.navigate(['/invoices']);
+    this.router.navigate(['/admin/invoices']);
   }
 
   activateClass(subModule) {

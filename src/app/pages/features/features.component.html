@@ -42,7 +42,7 @@
                   <carousel [showIndicators]="true">
                     <slide *ngFor="let service of serviceList">
                       <div class="header-filter">
-                        <img src="{{ service.imageUrl }}" />
+                        <img src="{{ service.imageUrl }}" height="500px" alt="{{service.title}}"/>
                       </div>
                       <div class="carousel-caption">
                         <h2 class="title text-success">{{ service.title }}</h2>

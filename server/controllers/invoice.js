@@ -55,7 +55,7 @@ exports.getInvoice = (req, res, next) => {
  * @access      Private
  */
 exports.getInvoicesByUser = (req, res, next) => {
-  Invoice.find({"username" : req.params.username})
+  Invoice.find({ username: req.params.username })
     // .where('username')
     // .equals(req.params.username)
     .then((invoice) => {
@@ -167,5 +167,28 @@ exports.createInvoice = (req, res, next) => {
     })
     .catch((err) => {
       return next(new ErrorResponse(`Internal Error: ${err.message}`, 500));
+    });
+};
+
+/**
+ * @desc        Disable invoice to show paid
+ * @route       DELETE /api/v1/invoices/paid/:id
+ * @access      Private
+ */
+exports.paidInvoice = (req, res, next) => {
+  Invoice.findById(req.params.id)
+    .then((invoice) => {
+      if (invoice.disabled === false) {
+        invoice.disable();
+      } else {
+        invoice.enable();
+      }
+      res.status(200).json({
+        success: true,
+        data: invoice,
+      });
+    })
+    .catch((err) => {
+      return next(new ErrorResponse(`Error: ${err.message}!`, 500));
     });
 };

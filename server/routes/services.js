@@ -4,7 +4,7 @@
  * Description: bcrs-api
  */
 const express = require('express');
-const { getServices, getService, createService, updateService, deleteService } = require('../controllers/service');
+const { getServices, getServicesDisplay, getService, createService, updateService, deleteService } = require('../controllers/service');
 
 const router = express.Router();
 
@@ -13,6 +13,7 @@ const router = express.Router();
 router.post('/', createService);
 // GET
 router.get('/', getServices);
+router.get('/display', getServicesDisplay);
 router.get('/:id', getService);
 // PUT
 router.put('/:id', updateService);

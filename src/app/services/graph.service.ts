@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 import { Service } from '../models/service.model';
 import { Graph } from '../models/graph.model';
 
-const apiUrl = 'http://localhost:5000/api/v1';
+const apiUrl = '/api/v1';
 
 @Injectable({
   providedIn: 'root',

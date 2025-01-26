@@ -110,8 +110,8 @@
                 <i class="tim-icons icon-puzzle-10"></i>
               </span>
             </div>
-            <select name="role" class="form-control btn-primary btn-simple" formControlName="roles" required>
-              <option *ngFor="let role of roles" [value]="role._id">
+            <select name="role" class="form-control btn-primary btn-simple" formControlName="role" required>
+              <option *ngFor="let role of roles" [value]="role.text">
                 {{ role.text }}
               </option>
             </select>

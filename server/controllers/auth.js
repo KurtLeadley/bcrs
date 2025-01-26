@@ -22,8 +22,8 @@ exports.register = (req, res, next) => {
       //on success
       const user = new User({
         username: req.body.username.toLowerCase(),
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         phoneNumber: req.body.phoneNumber,
         street: req.body.street,
         city: req.body.city,

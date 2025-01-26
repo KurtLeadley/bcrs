@@ -1,6 +1,6 @@
 /**
  * Title: middleware/auth.js
- * Author: Nathaniel Liebhart
+ * Author: Alsaddig Ibrahim
  * Description: bcrs-api
  */
 const jwt = require('jsonwebtoken');

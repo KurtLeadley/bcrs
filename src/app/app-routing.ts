@@ -86,7 +86,7 @@ const routes: Routes = [
       {
         path: 'invoices',
         component: AdminInvoicesComponent,
-        canActivate: [AuthenticationGuard, AuthorizationGuard],
+        canActivate: [AuthenticationGuard],
       },
     ],
   },

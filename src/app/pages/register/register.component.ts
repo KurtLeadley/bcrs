@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   usernameCheckSpinner = false;
   isLinear = true;
   date = new Date();
-  cPasshide: boolean;
   hide: boolean;
   sqList: SecurityQuestion[];
   states = [
@@ -413,6 +412,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       password: this.accountFormGroup.get('password').value,
     };
 
+    console.log(user);
     this.loading = true;
 
     this.authService.register(user).subscribe((message) => {

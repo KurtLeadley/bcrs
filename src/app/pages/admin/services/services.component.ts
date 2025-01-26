@@ -1,3 +1,8 @@
+/**
+ * Title: routes/services.js
+ * Authors: Group 4
+ * Description: bcrs-api
+ */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MAT_DIALOG_SCROLL_STRATEGY } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';

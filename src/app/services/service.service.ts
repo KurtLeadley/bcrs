@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Service } from '../models/service.model';
 
-const apiUrl = 'http://localhost:5000/api/v1';
+const apiUrl = '/api/v1';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,9 @@ export class ServiceService {
     return this.http.get<{ message: string; services: Service[] }>(`${apiUrl}/services`).pipe(map((x) => x.services));
   }
 
+  getServicesDisplay(): Observable<Service[]> {
+    return this.http.get<{ message: string; services: Service[] }>(`${apiUrl}/services/display`).pipe(map((x) => x.services));
+  }
   // tslint:disable-next-line: variable-name
   getService(_id: string): Observable<Service> {
     return this.http

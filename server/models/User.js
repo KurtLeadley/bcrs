@@ -53,7 +53,7 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'standard',
+      default: 'customer',
     },
     avatar: {
       type: String,

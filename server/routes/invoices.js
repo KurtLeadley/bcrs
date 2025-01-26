@@ -11,6 +11,7 @@ const {
   getInvoicesByUser,
   getPurchasesByService,
   getPurchasesByServiceCount,
+  paidInvoice,
 } = require('../controllers/invoice');
 
 const router = express.Router();
@@ -27,5 +28,5 @@ router.get('/', getInvoices);
 // PUT
 
 // DELETE
-
+router.delete('/paid/:id', paidInvoice);
 module.exports = router;

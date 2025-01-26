@@ -4,6 +4,7 @@
  * Description: bcrs-api
  */
 const mongoose = require('mongoose');
+const mongooseDisabled = require('mongoose-disable');
 const LineItemSchema = require('./LineItem');
 
 const InvoiceSchema = mongoose.Schema(
@@ -24,8 +25,15 @@ const InvoiceSchema = mongoose.Schema(
     username: {
       type: String,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: { createdAt: 'orderDate', updatedAt: 'dateModified' } }
 );
+
+// Enable mongoose disable plugin
+InvoiceSchema.plugin(mongooseDisabled, { validateBeforeDisable: false });
 
 module.exports = mongoose.model('Invoice', InvoiceSchema);

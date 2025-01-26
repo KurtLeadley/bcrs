@@ -3,6 +3,7 @@
  * Authors: Group 4
  * Description: bcrs
  */
+// this is my heroku project (kurt leadley)
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
